@@ -184,7 +184,7 @@ function ProductDetail() {
                   {tab === "nutrition" && (
                     <table className="w-full">
                       <tbody>
-                        {product.nutrition.map((n) => (
+                        {product.nutrition.map((n: { label: { en: string; ka: string }; value: string }) => (
                           <tr key={n.value} className="border-b border-brand-roast/5">
                             <td className="py-2 text-brand-roast/60">{n.label[lang]}</td>
                             <td className="py-2 text-right font-medium">{n.value}</td>
