@@ -4,6 +4,35 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Brain Melt";
+  src: url("/fonts/SSGeoBrainMelt.otf") format("opentype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hakuna";
+  src: url("/fonts/SSGeoHakuna.otf") format("opentype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BPG Square";
+  src: url("/fonts/BPGSquare38SCond.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BPG Mtavruli";
+  src: url("/fonts/BPGExtraSquareMtavruli.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -40,40 +69,42 @@
   --color-brand-cherry: var(--brand-cherry);
   --color-brand-lime: var(--brand-lime);
 
-  --font-display: "Fraunces", serif;
-  --font-body: "Inter", "Noto Sans Georgian", sans-serif;
+  --font-display: "Brain Melt", "BPG Mtavruli", serif;
+  --font-heading: "Hakuna", "BPG Mtavruli", sans-serif;
+  --font-body: "BPG Square", "Inter", sans-serif;
+  --font-label: "BPG Mtavruli", "Hakuna", sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 
-  --brand-cream: #fdfcf8;
-  --brand-beige: #f7f3ed;
-  --brand-paper: #f1ede4;
-  --brand-toast: #d97706;
-  --brand-roast: #2a1b14;
+  --brand-cream: #fdf8f0;
+  --brand-beige: #f7ecd9;
+  --brand-paper: #f2e3c9;
+  --brand-toast: #f3820a;
+  --brand-roast: #2a1810;
   --brand-cherry: #c2410c;
   --brand-lime: #84cc16;
 
-  --background: #fdfcf8;
-  --foreground: #2a1b14;
+  --background: #fdf8f0;
+  --foreground: #2a1810;
   --card: #ffffff;
-  --card-foreground: #2a1b14;
+  --card-foreground: #2a1810;
   --popover: #ffffff;
-  --popover-foreground: #2a1b14;
-  --primary: #d97706;
+  --popover-foreground: #2a1810;
+  --primary: #f3820a;
   --primary-foreground: #ffffff;
-  --secondary: #f7f3ed;
-  --secondary-foreground: #2a1b14;
-  --muted: #f1ede4;
-  --muted-foreground: #6b5348;
-  --accent: #f1ede4;
-  --accent-foreground: #2a1b14;
+  --secondary: #f7ecd9;
+  --secondary-foreground: #2a1810;
+  --muted: #f2e3c9;
+  --muted-foreground: #6b4a35;
+  --accent: #f2e3c9;
+  --accent-foreground: #2a1810;
   --destructive: #b91c1c;
   --destructive-foreground: #ffffff;
-  --border: rgba(42, 27, 20, 0.1);
-  --input: rgba(42, 27, 20, 0.15);
-  --ring: #d97706;
+  --border: rgba(42, 24, 16, 0.1);
+  --input: rgba(42, 24, 16, 0.15);
+  --ring: #f3820a;
 }
 
 @layer base {
@@ -92,13 +123,40 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1, h2 {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
+  }
+
+  h3, h4 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.005em;
+  }
+
+  button, .font-label {
+    font-family: var(--font-label);
   }
 
   ::selection {
     background-color: var(--brand-toast);
     color: white;
+  }
+}
+
+@keyframes gloss-shine {
+  0% { transform: translateX(-100%) skewX(-20deg); opacity: 0; }
+  20% { opacity: 0.6; }
+  100% { transform: translateX(300%) skewX(-20deg); opacity: 0; }
+}
+
+.animate-gloss {
+  animation: gloss-shine 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gloss,
+  .pecho-drip path {
+    animation: none !important;
+    transition: none !important;
   }
 }
