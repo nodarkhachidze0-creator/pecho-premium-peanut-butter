@@ -56,13 +56,13 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative hero-float">
             <img
               src={heroJar}
               alt="Pecho signature peanut butter jar"
               width={1200}
               height={1500}
-              className="w-full aspect-[4/5] object-cover rounded-3xl ring-1 ring-black/5"
+              className="w-full aspect-[4/5] object-cover rounded-3xl ring-1 ring-black/5 shadow-2xl shadow-brand-toast/20"
             />
             <div className="absolute -bottom-4 -left-4 hidden md:block bg-brand-roast text-brand-cream rounded-2xl px-5 py-4 shadow-xl">
               <div className="text-[10px] uppercase tracking-widest opacity-60">Since</div>
