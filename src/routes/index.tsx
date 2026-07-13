@@ -6,6 +6,7 @@ import { news } from "@/data/news";
 import { ProductCard } from "@/components/ProductCard";
 import { DeliveryPanel } from "@/components/DeliveryPanel";
 import { DrippingPeanutButter } from "@/components/DrippingPeanutButter";
+import { Reveal } from "@/components/Reveal";
 import heroJar from "@/assets/hero-jar.jpg";
 import aboutTexture from "@/assets/about-texture.jpg";
 
@@ -43,7 +44,7 @@ function Home() {
             <div className="flex flex-wrap gap-3 pt-2">
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 bg-brand-toast text-white px-7 py-4 rounded-full font-semibold hover:brightness-110 transition-transform active:scale-95 ring-2 ring-brand-toast/20"
+                className="btn-premium inline-flex items-center gap-2 bg-brand-toast text-white px-7 py-4 rounded-full font-semibold ring-2 ring-brand-toast/20"
               >
                 {t("cta.shop")}
                 <ArrowRight className="size-4" />
@@ -56,13 +57,13 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative hero-float">
             <img
               src={heroJar}
               alt="Pecho signature peanut butter jar"
               width={1200}
               height={1500}
-              className="w-full aspect-[4/5] object-cover rounded-3xl ring-1 ring-black/5"
+              className="w-full aspect-[4/5] object-cover rounded-3xl ring-1 ring-black/5 shadow-2xl shadow-brand-toast/20"
             />
             <div className="absolute -bottom-4 -left-4 hidden md:block bg-brand-roast text-brand-cream rounded-2xl px-5 py-4 shadow-xl">
               <div className="text-[10px] uppercase tracking-widest opacity-60">Since</div>
@@ -93,8 +94,10 @@ function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {featured.map((p) => (
-              <ProductCard key={p.slug} product={p} />
+            {featured.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 90}>
+                <ProductCard product={p} />
+              </Reveal>
             ))}
           </div>
         </div>

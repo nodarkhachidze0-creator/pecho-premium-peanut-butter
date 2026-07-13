@@ -143,20 +143,229 @@
   }
 }
 
+/* ============ Gloss shine (drip highlight) ============ */
 @keyframes gloss-shine {
   0% { transform: translateX(-100%) skewX(-20deg); opacity: 0; }
   20% { opacity: 0.6; }
-  100% { transform: translateX(300%) skewX(-20deg); opacity: 0; }
+  100% { transform: translateX(calc(100vw + 200px)) skewX(-20deg); opacity: 0; }
+}
+.animate-gloss { animation: gloss-shine 6s ease-in-out infinite; }
+
+/* ============ Intro drip pour ============ */
+@keyframes pecho-slab-pour {
+  0%   { clip-path: inset(0 0 100% 0); }
+  60%  { clip-path: inset(0 0 12% 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+.pecho-slab {
+  clip-path: inset(0 0 0 0);
+  animation: pecho-slab-pour 1.6s cubic-bezier(0.6, 0.05, 0.2, 1) both;
+  transform-origin: top center;
 }
 
-.animate-gloss {
-  animation: gloss-shine 6s ease-in-out infinite;
+/* ============ Scroll droplets ============ */
+@keyframes pecho-droplet-fall {
+  0%   { transform: translateY(0) scaleY(0.6); opacity: 0; }
+  15%  { opacity: 1; transform: translateY(20px) scaleY(1.4); }
+  100% { transform: translateY(110vh) scaleY(1.1); opacity: 0.9; }
+}
+.pecho-droplet {
+  position: absolute;
+  border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+  background: radial-gradient(ellipse at 35% 25%, #ffd9a8 0%, #f3820a 45%, #a54a08 100%);
+  box-shadow: inset -2px -4px 6px rgba(90, 40, 5, 0.5), inset 2px 2px 4px rgba(255, 220, 170, 0.5);
+  transform-origin: top center;
+  animation: pecho-droplet-fall linear forwards;
+  will-change: transform, opacity;
 }
 
+/* ============ Loader (peanut butter fills logo) ============ */
+@keyframes pecho-loader-fill {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0%); }
+}
+.pecho-loader-fill > * {
+  animation: pecho-loader-fill 1.2s cubic-bezier(0.6, 0.05, 0.2, 1) forwards;
+}
+
+/* ============ Peanut mascot (breathe, blink) ============ */
+@keyframes pm-breathe {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.03) translateY(-3px); }
+}
+@keyframes pm-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95%           { transform: scaleY(0.1); }
+}
+.pm-breathe {
+  transform-origin: center;
+  animation: pm-breathe 3.6s ease-in-out infinite;
+}
+.pm-blink {
+  transform-origin: center 130px;
+  animation: pm-blink 5s ease-in-out infinite;
+}
+
+/* ============ Product jar float + tilt ============ */
+@keyframes jar-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+.jar-float { animation: jar-float 5.5s ease-in-out infinite; }
+
+.tilt-card {
+  perspective: 1200px;
+}
+.tilt-card-inner {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 500ms ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.tilt-card:hover .tilt-card-inner {
+  transform: translateY(-6px) rotateX(4deg) rotateY(-6deg);
+  box-shadow: 0 25px 45px -20px rgba(243, 130, 10, 0.35), 0 10px 20px -10px rgba(42, 24, 16, 0.2);
+}
+.tilt-card:hover .tilt-image { transform: scale(1.06); }
+.tilt-image { transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* ============ Premium button (glow, lift, ripple, press) ============ */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease, filter 200ms ease;
+}
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -8px rgba(243, 130, 10, 0.55), 0 0 0 3px rgba(243, 130, 10, 0.12);
+  filter: brightness(1.05);
+}
+.btn-premium:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 80ms;
+}
+.btn-premium .ripple {
+  position: absolute;
+  border-radius: 9999px;
+  transform: scale(0);
+  background: rgba(255, 255, 255, 0.5);
+  animation: ripple 600ms ease-out forwards;
+  pointer-events: none;
+}
+@keyframes ripple {
+  to { transform: scale(6); opacity: 0; }
+}
+
+/* ============ Cart icon bump ============ */
+@keyframes cart-bump {
+  0% { transform: scale(1) rotate(0); }
+  30% { transform: scale(1.35) rotate(-8deg); }
+  60% { transform: scale(0.9) rotate(4deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+.cart-bump { animation: cart-bump 500ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes badge-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  60% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.badge-pop { animation: badge-pop 400ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* ============ Animated underline (nav) ============ */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: var(--brand-toast);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-underline:hover::after,
+.nav-underline.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ============ Falling peanuts (success celebration) ============ */
+@keyframes peanut-fall {
+  0%   { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.9; }
+}
+.peanut-fall {
+  position: absolute;
+  top: -40px;
+  animation: peanut-fall linear forwards;
+  will-change: transform, opacity;
+}
+
+/* ============ Hero image gentle float ============ */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.hero-float { animation: hero-float 6s ease-in-out infinite; }
+
+/* ============ Custom cursor ============ */
+.pecho-cursor-dot,
+.pecho-cursor-glow {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+}
+.pecho-cursor-dot {
+  width: 8px; height: 8px;
+  border-radius: 9999px;
+  background: var(--brand-roast);
+  mix-blend-mode: normal;
+  transition: opacity 200ms ease;
+}
+.pecho-cursor-glow {
+  width: 40px; height: 40px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(243,130,10,0.45) 0%, rgba(243,130,10,0) 70%);
+  transition: width 250ms ease, height 250ms ease, background 250ms ease;
+}
+.pecho-cursor-glow.is-active {
+  width: 64px; height: 64px;
+  background: radial-gradient(circle, rgba(243,130,10,0.7) 0%, rgba(243,130,10,0) 70%);
+}
+body.pecho-cursor-on { cursor: none; }
+body.pecho-cursor-on a, body.pecho-cursor-on button,
+body.pecho-cursor-on [role='button'], body.pecho-cursor-on label,
+body.pecho-cursor-on input, body.pecho-cursor-on textarea, body.pecho-cursor-on select {
+  cursor: none;
+}
+
+/* ============ Sticky header blur intensifies on scroll ============ */
+.header-scrolled {
+  background-color: rgba(253, 248, 240, 0.92);
+  box-shadow: 0 4px 20px -12px rgba(42, 24, 16, 0.15);
+}
+
+/* ============ Reduced motion ============ */
 @media (prefers-reduced-motion: reduce) {
   .animate-gloss,
-  .pecho-drip path {
+  .pecho-slab,
+  .pecho-droplet,
+  .pm-breathe,
+  .pm-blink,
+  .jar-float,
+  .hero-float,
+  .peanut-fall,
+  .pecho-loader-fill > *,
+  .cart-bump,
+  .badge-pop {
     animation: none !important;
-    transition: none !important;
   }
+  .tilt-card:hover .tilt-card-inner { transform: none; }
+  .btn-premium:hover { transform: none; }
+  * { transition-duration: 0ms !important; }
 }
