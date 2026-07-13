@@ -49,11 +49,9 @@ export function Reveal({ children, delay = 0, as: Tag = "div", className = "", y
     willChange: visible ? "auto" : "opacity, transform",
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (
-    // @ts-expect-error dynamic tag
-    <Tag ref={ref} className={className} style={style}>
-      {children}
-    </Tag>
+  return createElement(
+    Tag,
+    { ref, className, style },
+    children,
   );
 }
