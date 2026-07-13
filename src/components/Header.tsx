@@ -3,6 +3,7 @@ import { Menu, ShoppingBag, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useCart } from "@/lib/cart";
 import { useT } from "@/lib/i18n";
+import { PechoLogo } from "@/components/PechoLogo";
 
 export function Header() {
   const { t, lang, setLang } = useT();
@@ -29,9 +30,10 @@ export function Header() {
         <div className="flex items-center gap-8 min-w-0">
           <Link
             to="/"
-            className="text-2xl font-display font-semibold tracking-tight text-brand-roast shrink-0"
+            aria-label="Pecho — home"
+            className="shrink-0 flex items-center"
           >
-            Pecho
+            <PechoLogo className="h-10 sm:h-11 w-auto" />
           </Link>
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-brand-roast/70">
             {links.map((l) => (

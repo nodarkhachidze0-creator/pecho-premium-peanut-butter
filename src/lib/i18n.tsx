@@ -297,15 +297,14 @@ type Ctx = {
 const I18nContext = createContext<Ctx | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+  const [lang, setLangState] = useState<Lang>("ka");
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem("pecho.lang") as Lang | null;
-      if (saved === "en" || saved === "ka") {
-        setLangState(saved);
-        document.documentElement.lang = saved;
-      }
+      const active: Lang = saved === "en" || saved === "ka" ? saved : "ka";
+      setLangState(active);
+      document.documentElement.lang = active;
     } catch {}
   }, []);
 

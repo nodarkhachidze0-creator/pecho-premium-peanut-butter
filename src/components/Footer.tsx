@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Mail } from "lucide-react";
 import { useT } from "@/lib/i18n";
+import { PechoLogo } from "@/components/PechoLogo";
 
 export function Footer() {
   const { t } = useT();
@@ -9,7 +10,7 @@ export function Footer() {
     <footer className="bg-brand-roast text-brand-cream mt-24 pt-20 pb-10 px-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
         <div className="md:col-span-2 space-y-6">
-          <h2 className="text-4xl font-display font-medium">Pecho</h2>
+          <PechoLogo className="h-14 w-auto brightness-0 invert" />
           <p className="max-w-sm text-brand-cream/60 text-pretty leading-relaxed">
             {t("footer.tagline")}
           </p>

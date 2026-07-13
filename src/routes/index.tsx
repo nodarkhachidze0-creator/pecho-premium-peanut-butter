@@ -5,6 +5,7 @@ import { getFeatured } from "@/data/products";
 import { news } from "@/data/news";
 import { ProductCard } from "@/components/ProductCard";
 import { DeliveryPanel } from "@/components/DeliveryPanel";
+import { DrippingPeanutButter } from "@/components/DrippingPeanutButter";
 import heroJar from "@/assets/hero-jar.jpg";
 import aboutTexture from "@/assets/about-texture.jpg";
 
@@ -25,8 +26,9 @@ function Home() {
 
   return (
     <>
+      <DrippingPeanutButter />
       {/* Hero */}
-      <section className="px-4 sm:px-6 py-12 md:py-20 lg:py-24">
+      <section className="px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20 lg:pb-24">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="space-y-6 lg:space-y-8">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-toast">
