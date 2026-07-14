@@ -1,55 +1,96 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Realistic dripping peanut butter across the top of the page.
+ * Fixed, organic peanut butter drip layer attached to the top of the page.
  *
- * 1. Intro (~1.8s): the slab and drips "pour" down using CSS clip-path.
- * 2. Idle: gentle gloss shine sweeps across.
- * 3. On scroll: occasional glossy droplets detach from random points along
- *    the slab, fall, stretch, and disappear once they leave the viewport.
- *
- * Fully respects prefers-reduced-motion.
+ * - One continuous SVG slab with 7 asymmetric drips.
+ * - Waits for the `pecho:intro-complete` event (or renders already-settled
+ *   if the loader was skipped this session) then plays a short "settle".
+ * - On scroll, occasional glossy droplets detach from the drip tips and fall.
+ * - Fully respects prefers-reduced-motion.
  */
 
 type Droplet = {
   id: number;
-  x: number; // px from left
-  size: number; // px
-  duration: number; // ms
-  delay: number; // ms
-  startY: number; // px start below slab
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
 };
 
-const DROPLET_SPAWN_SCROLL_PX = 320; // spawn ~ every N px of scroll
-const DROPLET_MAX = 6;
+// Hand-tuned drip tip positions in the 1440x220 SVG viewBox.
+// x is horizontal position, y is drip tip Y (used for droplet spawn).
+const DRIP_TIPS: Array<{ x: number; y: number; size: number }> = [
+  { x: 90, y: 108, size: 10 },
+  { x: 265, y: 155, size: 13 },
+  { x: 485, y: 122, size: 11 },
+  { x: 720, y: 175, size: 16 },
+  { x: 925, y: 118, size: 10 },
+  { x: 1165, y: 160, size: 15 },
+  { x: 1360, y: 130, size: 12 },
+];
+
+const SESSION_KEY = "pecho.intro.seen";
+const DROPLET_SPAWN_SCROLL_PX = 380;
+const DROPLET_MAX = 5;
 
 export function DrippingPeanutButter() {
   const [droplets, setDroplets] = useState<Droplet[]>([]);
-  const reducedRef = useRef(false);
+  const [settled, setSettled] = useState(false);
   const nextIdRef = useRef(1);
   const lastSpawnScrollRef = useRef(0);
   const rafRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const reducedRef = useRef(false);
 
+  // Handoff from the loader (or immediate if already seen this session).
   useEffect(() => {
-    reducedRef.current =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedRef.current) return;
+    reducedRef.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const spawnDroplet = () => {
+    let already = false;
+    try {
+      already = sessionStorage.getItem(SESSION_KEY) === "1";
+    } catch {}
+
+    if (already) {
+      setSettled(true);
+      return;
+    }
+
+    const onComplete = () => setSettled(true);
+    window.addEventListener("pecho:intro-complete", onComplete);
+    // Safety net in case the event was missed.
+    const safety = setTimeout(() => setSettled(true), 4000);
+    return () => {
+      window.removeEventListener("pecho:intro-complete", onComplete);
+      clearTimeout(safety);
+    };
+  }, []);
+
+  // Scroll-driven droplet spawning.
+  useEffect(() => {
+    if (!settled || reducedRef.current) return;
+
+    const spawn = () => {
       setDroplets((prev) => {
         if (prev.length >= DROPLET_MAX) return prev;
-        const width = containerRef.current?.clientWidth ?? window.innerWidth;
-        const drop: Droplet = {
-          id: nextIdRef.current++,
-          x: 20 + Math.random() * (width - 40),
-          size: 8 + Math.random() * 14,
-          duration: 1400 + Math.random() * 900,
-          delay: Math.random() * 120,
-          startY: 40 + Math.random() * 30,
-        };
-        return [...prev, drop];
+        const container = containerRef.current;
+        const w = container?.clientWidth ?? window.innerWidth;
+        const h = container?.clientHeight ?? 120;
+        // Pick a random drip tip and translate to real pixel coordinates.
+        const tip = DRIP_TIPS[Math.floor(Math.random() * DRIP_TIPS.length)];
+        const x = (tip.x / 1440) * w;
+        const y = (tip.y / 220) * h - 4;
+        return [
+          ...prev,
+          {
+            id: nextIdRef.current++,
+            x,
+            y,
+            size: tip.size + Math.random() * 4 - 2,
+            duration: 1500 + Math.random() * 900,
+          },
+        ];
       });
     };
 
@@ -60,8 +101,7 @@ export function DrippingPeanutButter() {
         const y = window.scrollY;
         if (Math.abs(y - lastSpawnScrollRef.current) > DROPLET_SPAWN_SCROLL_PX) {
           lastSpawnScrollRef.current = y;
-          // 60% chance to actually drop something for randomness
-          if (Math.random() < 0.7) spawnDroplet();
+          if (Math.random() < 0.75) spawn();
         }
       });
     };
@@ -71,7 +111,7 @@ export function DrippingPeanutButter() {
       window.removeEventListener("scroll", onScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [settled]);
 
   const removeDroplet = (id: number) =>
     setDroplets((prev) => prev.filter((d) => d.id !== id));
@@ -79,73 +119,76 @@ export function DrippingPeanutButter() {
   return (
     <div
       ref={containerRef}
-      className="pecho-drip pointer-events-none fixed inset-x-0 top-0 z-40 select-none"
+      className={`pecho-drip pointer-events-none fixed inset-x-0 top-0 z-40 select-none ${
+        settled ? "pecho-drip-settled" : "pecho-drip-hidden"
+      }`}
       aria-hidden="true"
     >
-      {/* Main slab — animates in via clip-path */}
       <svg
         viewBox="0 0 1440 220"
         preserveAspectRatio="none"
-        className="pecho-slab block w-full h-[90px] sm:h-[110px] md:h-[130px]"
+        className="block w-full h-[clamp(72px,10vh,140px)]"
       >
         <defs>
           <linearGradient id="pb-body" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#c96410" />
             <stop offset="45%" stopColor="#f3820a" />
-            <stop offset="100%" stopColor="#8a3d06" />
+            <stop offset="100%" stopColor="#7a3608" />
           </linearGradient>
           <linearGradient id="pb-gloss" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#ffe0b3" stopOpacity="0.95" />
             <stop offset="100%" stopColor="#ffe0b3" stopOpacity="0" />
           </linearGradient>
-          <filter id="pb-soft" x="-2%" y="-2%" width="104%" height="110%">
-            <feGaussianBlur stdDeviation="0.5" />
+          <filter id="pb-soft" x="-2%" y="-2%" width="104%" height="115%">
+            <feGaussianBlur stdDeviation="0.6" />
           </filter>
         </defs>
 
-        {/* Body: top slab with irregular hanging drips */}
+        {/* Main organic slab. Asymmetric drips of varied length and width. */}
         <path
           filter="url(#pb-soft)"
           fill="url(#pb-body)"
           d="
-            M 0 0 L 1440 0 L 1440 70
-            C 1400 82, 1380 130, 1360 130 C 1340 130, 1320 82, 1300 70
-            L 1220 70
-            C 1200 82, 1185 160, 1165 160 C 1145 160, 1130 82, 1110 70
-            L 980 70
-            C 960 82, 945 118, 925 118 C 905 118, 890 82, 870 70
-            L 780 70
-            C 760 82, 740 175, 720 175 C 700 175, 680 82, 660 70
-            L 540 70
-            C 520 82, 505 122, 485 122 C 465 122, 450 82, 430 70
-            L 320 70
-            C 300 82, 285 155, 265 155 C 245 155, 230 82, 210 70
-            L 110 70
-            C 90 82, 75 108, 55 108 C 35 108, 20 82, 0 70
+            M 0 0 L 1440 0 L 1440 68
+            C 1410 78, 1385 128, 1360 128 C 1338 128, 1320 82, 1300 68
+            L 1225 68
+            C 1205 82, 1188 158, 1165 158 C 1143 158, 1130 82, 1108 68
+            L 985 68
+            C 962 82, 946 116, 925 116 C 906 116, 890 82, 870 68
+            L 782 68
+            C 760 82, 742 173, 720 173 C 698 173, 682 82, 660 68
+            L 545 68
+            C 522 82, 507 120, 485 120 C 464 120, 450 82, 430 68
+            L 322 68
+            C 302 82, 286 153, 265 153 C 244 153, 230 82, 210 68
+            L 112 68
+            C 92 82, 78 106, 55 106 C 34 106, 20 82, 0 68
             Z
           "
         />
 
-        {/* Rounded droplet tips for realism */}
+        {/* Rounded tip caps for realism */}
         <g fill="url(#pb-body)" filter="url(#pb-soft)">
-          <circle cx="1360" cy="128" r="12" />
-          <circle cx="1165" cy="158" r="15" />
-          <circle cx="925" cy="116" r="10" />
-          <circle cx="720" cy="173" r="17" />
-          <circle cx="485" cy="120" r="10" />
-          <circle cx="265" cy="153" r="13" />
-          <circle cx="55" cy="106" r="9" />
+          {DRIP_TIPS.map((t) => (
+            <circle key={t.x} cx={t.x} cy={t.y - 4} r={t.size} />
+          ))}
         </g>
 
-        {/* Glossy specular highlight strip */}
-        <rect x="0" y="8" width="1440" height="10" rx="5" fill="url(#pb-gloss)" opacity="0.7" />
-        <rect x="0" y="4" width="1440" height="4" rx="2" fill="#fff2dc" opacity="0.35" />
-      </svg>
+        {/* Soft inner shadow on tip lower edges */}
+        <g fill="rgba(60, 25, 5, 0.35)" filter="url(#pb-soft)">
+          {DRIP_TIPS.map((t) => (
+            <ellipse key={`s-${t.x}`} cx={t.x} cy={t.y + 2} rx={t.size - 2} ry={2.5} />
+          ))}
+        </g>
 
-      {/* Sweeping gloss highlight */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[60px] overflow-hidden">
-        <div className="animate-gloss absolute top-1 -left-40 h-6 w-40 bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full blur-md" />
-      </div>
+        {/* Glossy specular highlight */}
+        <path
+          d="M 0 6 Q 720 22 1440 6 L 1440 16 Q 720 32 0 16 Z"
+          fill="url(#pb-gloss)"
+          opacity="0.7"
+        />
+        <rect x="0" y="3" width="1440" height="3" rx="1.5" fill="#fff2dc" opacity="0.35" />
+      </svg>
 
       {/* Falling droplets on scroll */}
       {droplets.map((d) => (
@@ -154,11 +197,10 @@ export function DrippingPeanutButter() {
           className="pecho-droplet"
           style={{
             left: `${d.x}px`,
-            top: `${d.startY}px`,
+            top: `${d.y}px`,
             width: `${d.size}px`,
-            height: `${d.size * 1.35}px`,
+            height: `${d.size * 1.4}px`,
             animationDuration: `${d.duration}ms`,
-            animationDelay: `${d.delay}ms`,
           }}
           onAnimationEnd={() => removeDroplet(d.id)}
         />
