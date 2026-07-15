@@ -36,11 +36,11 @@ function Success() {
   }, []);
 
   const thanks = lang === "ka"
-    ? "გმადლობთ! თქვენი შეკვეთა მიღებულია."
-    : t("success.title");
+    ? "მადლობა, თქვენი შეკვეთა მიღებულია!"
+    : "Thank you! Your order has been received.";
   const subline = lang === "ka"
-    ? "მალე დაგიკავშირდებით შეკვეთის დასადასტურებლად."
-    : "We'll contact you shortly to confirm your order.";
+    ? "მალე დაგიკავშირდებით შეკვეთის დასადასტურებლად. მიწოდება 2–3 სამუშაო დღეშია."
+    : "We'll contact you shortly to confirm your order. Delivery in 2–3 business days.";
 
   return (
     <section className="relative px-4 sm:px-6 py-24 md:py-32 min-h-[70vh] overflow-hidden">

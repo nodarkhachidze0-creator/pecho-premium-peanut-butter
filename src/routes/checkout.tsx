@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { useT } from "@/lib/i18n";
 import { useCart, formatGEL, DELIVERY_FEE } from "@/lib/cart";
+import { saveOrder } from "@/lib/orders";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({
@@ -81,6 +82,17 @@ function Checkout() {
         }),
       });
       if (!res.ok) throw new Error("Order failed");
+      const data = (await res.json()) as { orderId: string };
+      saveOrder({
+        id: data.orderId,
+        createdAt: new Date().toISOString(),
+        customer: parsed.data,
+        items,
+        subtotal,
+        delivery: DELIVERY_FEE,
+        total,
+        status: "new",
+      });
       clear();
       nav({ to: "/checkout/success" });
     } catch (err) {
