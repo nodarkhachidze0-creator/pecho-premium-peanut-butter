@@ -82,6 +82,17 @@ function Checkout() {
         }),
       });
       if (!res.ok) throw new Error("Order failed");
+      const data = (await res.json()) as { orderId: string };
+      saveOrder({
+        id: data.orderId,
+        createdAt: new Date().toISOString(),
+        customer: parsed.data,
+        items,
+        subtotal,
+        delivery: DELIVERY_FEE,
+        total,
+        status: "new",
+      });
       clear();
       nav({ to: "/checkout/success" });
     } catch (err) {
