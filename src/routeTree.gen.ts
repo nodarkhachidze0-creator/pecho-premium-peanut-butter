@@ -27,6 +27,7 @@ import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
 import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as ApiPublicOrderRouteImport } from './routes/api/public/order'
 
 const TermsRoute = TermsRouteImport.update({
@@ -119,6 +120,11 @@ const AdminOrdersRoute = AdminOrdersRouteImport.update({
   path: '/orders',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AdminRoute,
+} as any)
 const ApiPublicOrderRoute = ApiPublicOrderRouteImport.update({
   id: '/api/public/order',
   path: '/api/public/order',
@@ -138,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRouteWithChildren
   '/recipes': typeof RecipesRoute
   '/terms': typeof TermsRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/recipes': typeof RecipesRoute
   '/terms': typeof TermsRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -179,6 +187,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRouteWithChildren
   '/recipes': typeof RecipesRoute
   '/terms': typeof TermsRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/recipes'
     | '/terms'
+    | '/admin/analytics'
     | '/admin/orders'
     | '/checkout/success'
     | '/news/$slug'
@@ -221,6 +231,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/recipes'
     | '/terms'
+    | '/admin/analytics'
     | '/admin/orders'
     | '/checkout/success'
     | '/news/$slug'
@@ -242,6 +253,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/recipes'
     | '/terms'
+    | '/admin/analytics'
     | '/admin/orders'
     | '/checkout/success'
     | '/news/$slug'
@@ -395,6 +407,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminOrdersRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/api/public/order': {
       id: '/api/public/order'
       path: '/api/public/order'
@@ -406,11 +425,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
   AdminOrdersRoute: typeof AdminOrdersRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
   AdminOrdersRoute: AdminOrdersRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
