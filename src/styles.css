@@ -393,3 +393,12 @@
   .btn-premium:hover { transform: none; }
   * { transition-duration: 0ms !important; }
 }
+
+@keyframes pecho-logo-pop {
+  0% { opacity: 0; transform: scale(0.6); }
+  60% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.pecho-logo-pop {
+  animation: pecho-logo-pop 900ms cubic-bezier(0.34,1.56,0.64,1) both;
+}

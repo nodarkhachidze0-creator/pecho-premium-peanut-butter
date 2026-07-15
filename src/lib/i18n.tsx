@@ -24,10 +24,14 @@ const en: Dict = {
   "cta.placeOrder": "Place Order",
   "cta.send": "Send Message",
 
-  "home.hero.eyebrow": "Premium Georgian Craft",
-  "home.hero.title": "Roasted by hand in the hills of Georgia.",
+  "home.hero.eyebrow": "2+1 Limited Time Offer",
+  "home.hero.title": "Buy 2, Get 1 Free — for a limited time.",
   "home.hero.subtitle":
     "Single-origin peanuts, double-roasted for a depth of flavor you won't find in a supermarket aisle. No palm oil, just the pure, glossy ribbon of nature.",
+  "nav.recipes": "Recipes",
+  "recipes.title": "Recipes",
+  "recipes.subtitle": "Ideas, snacks, and recipes made with Pecho peanut butter.",
+  "recipes.empty": "New recipes coming soon.",
 
   "home.featured.eyebrow": "The Collection",
   "home.featured.title": "Our Daily Roasts",
@@ -165,10 +169,14 @@ const ka: Dict = {
   "cta.placeOrder": "შეკვეთის დადასტურება",
   "cta.send": "შეტყობინების გაგზავნა",
 
-  "home.hero.eyebrow": "პრემიუმ ქართული ხელნაკეთი",
-  "home.hero.title": "ხელით მოხალული საქართველოს გორაკებზე.",
+  "home.hero.eyebrow": "2+1 აქცია ლიმიტირებული დროით",
+  "home.hero.title": "იყიდე 2, მიიღე 1 საჩუქრად — ლიმიტირებული დროით.",
   "home.hero.subtitle":
     "ერთი წარმოშობის მიწისთხილი, ორმაგად მოხალული ღრმა გემოსთვის, რომელსაც სუპერმარკეტში ვერ იპოვი. პალმის ზეთის გარეშე — მხოლოდ ბუნების პრიალა რიბონი.",
+  "nav.recipes": "რეცეპტები",
+  "recipes.title": "რეცეპტები",
+  "recipes.subtitle": "იდეები, სნეკები და რეცეპტები Pecho-ს მიწისთხილის კარაქით.",
+  "recipes.empty": "მალე დაემატება ახალი რეცეპტები.",
 
   "home.featured.eyebrow": "კოლექცია",
   "home.featured.title": "ჩვენი ყოველდღიური მოხალვები",

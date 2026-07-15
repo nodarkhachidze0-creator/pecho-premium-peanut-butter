@@ -7,7 +7,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { DeliveryPanel } from "@/components/DeliveryPanel";
 import { DrippingPeanutButter } from "@/components/DrippingPeanutButter";
 import { Reveal } from "@/components/Reveal";
-import heroJar from "@/assets/hero-jar.jpg";
+import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
 export const Route = createFileRoute("/")({
@@ -27,51 +27,50 @@ function Home() {
 
   return (
     <>
-      <DrippingPeanutButter />
-      {/* Hero */}
-      <section className="px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20 lg:pb-24">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div className="space-y-6 lg:space-y-8">
-            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-toast">
-              {t("home.hero.eyebrow")}
-            </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-medium leading-[1.05] text-balance">
-              {t("home.hero.title")}
-            </h1>
-            <p className="text-base md:text-lg text-brand-roast/70 max-w-xl text-pretty leading-relaxed">
-              {t("home.hero.subtitle")}
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Link
-                to="/products"
-                className="btn-premium inline-flex items-center gap-2 bg-brand-toast text-white px-7 py-4 rounded-full font-semibold ring-2 ring-brand-toast/20"
-              >
-                {t("cta.shop")}
-                <ArrowRight className="size-4" />
-              </Link>
-              <Link
-                to="/about"
-                className="inline-flex items-center px-7 py-4 rounded-full font-semibold border border-brand-roast/20 hover:bg-brand-paper transition-colors"
-              >
-                {t("cta.ourStory")}
-              </Link>
+      <div className="relative">
+        <DrippingPeanutButter />
+        {/* Hero */}
+        <section className="relative px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20 lg:pb-24">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="space-y-6 lg:space-y-8">
+              <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-toast">
+                {t("home.hero.eyebrow")}
+              </span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-medium leading-[1.05] text-balance">
+                {t("home.hero.title")}
+              </h1>
+              <p className="text-base md:text-lg text-brand-roast/70 max-w-xl text-pretty leading-relaxed">
+                {t("home.hero.subtitle")}
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <Link
+                  to="/products"
+                  className="btn-premium inline-flex items-center gap-2 bg-brand-toast text-white px-7 py-4 rounded-full font-semibold ring-2 ring-brand-toast/20"
+                >
+                  {t("cta.shop")}
+                  <ArrowRight className="size-4" />
+                </Link>
+                <Link
+                  to="/about"
+                  className="inline-flex items-center px-7 py-4 rounded-full font-semibold border border-brand-roast/20 hover:bg-brand-paper transition-colors"
+                >
+                  {t("cta.ourStory")}
+                </Link>
+              </div>
+            </div>
+            <div className="relative hero-float">
+              <img
+                src={promoImg.url}
+                alt="Pecho 2+1 promotional offer"
+                width={1200}
+                height={1200}
+                className="w-full aspect-square object-contain drop-shadow-2xl"
+              />
             </div>
           </div>
-          <div className="relative hero-float">
-            <img
-              src={heroJar}
-              alt="Pecho signature peanut butter jar"
-              width={1200}
-              height={1500}
-              className="w-full aspect-[4/5] object-cover rounded-3xl ring-1 ring-black/5 shadow-2xl shadow-brand-toast/20"
-            />
-            <div className="absolute -bottom-4 -left-4 hidden md:block bg-brand-roast text-brand-cream rounded-2xl px-5 py-4 shadow-xl">
-              <div className="text-[10px] uppercase tracking-widest opacity-60">Since</div>
-              <div className="text-2xl font-display">2024</div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
+
 
       {/* Featured Products */}
       <section className="px-4 sm:px-6 py-20 md:py-24 bg-brand-beige">

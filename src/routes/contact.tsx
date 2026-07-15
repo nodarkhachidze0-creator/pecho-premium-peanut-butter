@@ -57,22 +57,26 @@ function ContactPage() {
             <p className="text-brand-roast/70 mt-4 text-lg">{t("contact.subtitle")}</p>
 
             <div className="mt-10 space-y-5">
-              <InfoRow icon={Phone} label={t("contact.info.phone")} value="+995 555 123 456" href="tel:+995555123456" />
-              <InfoRow icon={Mail} label={t("contact.info.email")} value="hello@pecho.ge" href="mailto:hello@pecho.ge" />
-              <InfoRow icon={MapPin} label={t("contact.info.address")} value="Tbilisi, Georgia" />
+              <InfoRow icon={Phone} label={t("contact.info.phone")} value="+995 599 599 599" href="tel:+995599599599" />
+              <InfoRow icon={Mail} label={t("contact.info.email")} value="Pecho.official@gmail.com" href="mailto:Pecho.official@gmail.com" />
+              <InfoRow icon={MapPin} label={t("contact.info.address")} value="Gori, Georgia" />
               <InfoRow icon={Clock} label={t("contact.info.hours")} value={t("contact.info.hoursValue")} />
             </div>
 
             <div className="mt-8 flex gap-3">
               <a
-                href="#"
+                href="https://www.instagram.com/pecho.official"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="p-3 rounded-full border border-brand-roast/15 hover:bg-brand-paper transition-colors"
               >
                 <Instagram className="size-4" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/pecho.official"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="p-3 rounded-full border border-brand-roast/15 hover:bg-brand-paper transition-colors"
               >
@@ -80,6 +84,7 @@ function ContactPage() {
               </a>
             </div>
           </div>
+
 
           <form onSubmit={submit} className="bg-brand-paper rounded-3xl p-8 md:p-10 space-y-5">
             <Field label={t("contact.form.name")}>
@@ -124,7 +129,7 @@ function ContactPage() {
         <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden ring-1 ring-black/5">
           <iframe
             title="Pecho location"
-            src="https://www.google.com/maps?q=Tbilisi,+Georgia&output=embed"
+            src="https://www.google.com/maps?q=Gori,+Georgia&output=embed"
             className="w-full h-[400px] border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

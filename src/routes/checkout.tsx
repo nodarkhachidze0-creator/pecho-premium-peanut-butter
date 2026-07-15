@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { useT } from "@/lib/i18n";
 import { useCart, formatGEL, DELIVERY_FEE } from "@/lib/cart";
+import { saveOrder } from "@/lib/orders";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({

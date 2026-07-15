@@ -23,7 +23,7 @@ export const Route = createFileRoute("/products/")({
   component: ProductsPage,
 });
 
-const CATEGORIES: (Category | "all")[] = ["all", "classic", "crunchy", "flavored", "limited"];
+const CATEGORIES: (Category | "all")[] = ["all", "classic", "crunchy"];
 
 function ProductsPage() {
   const { t, lang } = useT();
