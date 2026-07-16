@@ -29,12 +29,14 @@ const en: Dict = {
   "home.hero.subtitle":
     "Single-origin peanuts, double-roasted for a depth of flavor you won't find in a supermarket aisle. No palm oil, just the pure, glossy ribbon of nature.",
   "nav.recipes": "Recipes",
+  "nav.partners": "Partners",
   "recipes.title": "Recipes",
   "recipes.subtitle": "Ideas, snacks, and recipes made with Pecho peanut butter.",
   "recipes.empty": "New recipes coming soon.",
 
-  "home.featured.eyebrow": "The Collection",
-  "home.featured.title": "Our Daily Roasts",
+  "home.featured.eyebrow": "Products",
+  "home.featured.title": "Pick your favorite Pecho",
+
 
   "home.why.title": "Why Choose Pecho",
   "home.why.1.title": "Purely Georgian",
