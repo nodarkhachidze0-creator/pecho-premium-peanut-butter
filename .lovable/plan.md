@@ -1,153 +1,74 @@
 
 ## Scope
 
-Only the changes listed. No redesign — existing colors, fonts, layout, and animations stay unless a section below replaces them.
+Only the 10 items below. No redesign — existing branding, colors, fonts, layout, and animations stay.
 
-## Prerequisites
+## 1. New "გახდი პარტნიორი" (Become a Partner) section
 
-- **Enable Lovable Cloud** — required only so Lovable Emails can send order notifications to `Pecho.official@gmail.com`. No database tables, no auth, no order storage in Cloud. Orders still live in the browser (localStorage) per your "no backend" choice.
-- After Cloud is on, scaffold Lovable Emails and prompt you to set up a verified sender subdomain (e.g. `notify.pecho.ge`) via DNS. Emails start delivering once that's verified — the rest of the site works immediately.
+- New route `src/routes/partners.tsx` (bilingual, KA default) with:
+  - Hero heading `🤝 გახდი პარტნიორი` + intro paragraph explaining Pecho welcomes long-term wholesale partnerships with premium quality and reliable delivery.
+  - Premium card grid of partner types (7 cards, each with a Lucide icon + label): Grocery stores, Supermarkets, Cafés, Restaurants, Fitness clubs, Health food stores, Other retail businesses.
+  - Contact block styled as a premium card: Phone `595 55 17 80` (tel:+995595551780), Email `Pecho.official@gmail.com`, Address `ქ. გორი, შინდისის გმირების 17ბ`, closing line `დაგვიკავშირდით ნებისმიერ დროს. ჩვენს გუნდს მაქსიმალურად სწრაფად გიპასუხებთ.`
+  - Uses existing `Reveal` animation, cream/orange palette, rounded-3xl cards, brand shadows.
+- Add nav entry `პარტნიორები / Partners` to `src/components/Header.tsx` and `src/components/Footer.tsx` (Quick Links). Final nav order: Home · Products · Recipes · Partners · About · News · FAQ · Contact · Cart.
+- Add i18n keys (`nav.partners`, `partners.*`) in `src/lib/i18n.tsx`.
 
-## 1. Catalog + photos + prices (`src/data/products.ts`)
+## 2. Phone number sitewide
 
-Replace all placeholder products with exactly 4 SKUs:
+Replace every occurrence of the placeholder `+995 599 599 599` (and any other phone strings) with `595 55 17 80` (display) / `tel:+995595551780` (link). Files: `Footer.tsx`, `contact.tsx`, any i18n string, the new Partners page. Search/replace confirms coverage.
 
-| SKU | Price | Photo |
-|---|---|---|
-| Classic Peanut Butter 450g | 9 ₾ | placeholder (you'll send later) |
-| Classic Peanut Butter 1kg | 19 ₾ | uploaded yellow jar |
-| Crunchy Peanut Butter 450g | 9 ₾ | placeholder (you'll send later) |
-| Crunchy Peanut Butter 1kg | 19 ₾ | uploaded orange jar |
+## 3. Hero promo image — rounded corners
 
-Bilingual (KA/EN) names, descriptions, ingredients, nutrition, weight. Delete every AI-generated product image asset. Upload the two real photos as CDN assets.
+In `src/routes/index.tsx`, add `rounded-3xl overflow-hidden shadow-2xl` (matching other premium cards) to the 2+1 promo image wrapper.
 
-## 2. Quantity input (`QuantityStepper.tsx`)
+## 4. Hero eyebrow copy
 
-Convert the number display into a typeable `<input type="number" inputMode="numeric">` between the `−` / `+` buttons. Clamp on blur (min 1, max stock/999). Used on PDP + cart.
+Confirm eyebrow reads `2+1 აქცია ლიმიტირებული დროით` in `src/lib/i18n.tsx` (already set — verify and align EN counterpart to `Limited-time 2+1 offer`).
 
-## 3. Product card alignment (`ProductCard.tsx` + grid)
+## 5. Hero paragraph
 
-Equal-height cards: flex column with `h-full`, image in fixed-aspect square, description clamped, button pinned to the bottom. Fix current stagger in Featured + Products grid.
+Replace hero paragraph with `იყიდე 2, მიიღე 1 საჩუქრად — ლიმიტირებული დროით.` (KA) and `Buy 2, get 1 free — for a limited time.` (EN) in `src/lib/i18n.tsx`.
 
-## 4. Hero copy + promo image (`src/routes/index.tsx` + i18n)
+## 6. Homepage section titles: კოლექცია → პროდუქტები
 
-- Eyebrow → `"2+1 აქცია ლიმიტირებული დროით"`
-- Paragraph → `"არ გამოგრჩეს 2+1 აქცია, შეიძინე 2 ქილა და მესამე მიიღე საჩუქრად სრულიად უფასოდ!"`
-- Add uploaded 2+1 promo image (three jars, 38 ₾ badge) as the hero visual, as-is per your choice.
+Sweep `src/lib/i18n.tsx` and any hardcoded strings in `src/routes/index.tsx`; replace every homepage occurrence of `კოლექცია` with `პროდუქტები` (EN equivalent stays `Products`).
 
-## 5. Dripping peanut butter (`DrippingPeanutButter.tsx` + `styles.css`)
+## 7. Featured products subtitle
 
-- Extend the drip layer from top of page down to roughly the News section (`~80vh` fixed layer sized to that region).
-- Render **behind** all content (`z-index: 0`, `pointer-events: none`; content sits on `z-10`).
-- Delete droplet system, scroll-triggered drips, and all post-scroll animation. Keep only the glossy static slab with gradient + gloss highlight.
+Replace `ჩვენი ყოველდღიური მოხალვები` with `აირჩიე შენი საყვარელი Pecho` in `src/lib/i18n.tsx`. Typography untouched.
 
-## 6. Loading screen (`LoadingScreen.tsx`)
+## 8. 2+1 banner on Products page
 
-Strip the jar, lid, pour, and handoff. New sequence: cream background → soft orange radial glow → logo pop-in (scale + fade, ~0.6s) → hold ~0.4s → fade out. Session-flag preserved.
+Add the same promo image (existing asset `pecho-promo-2plus1.png`) as a rounded-3xl banner at the top of `src/routes/products.index.tsx`, above the filter/sort bar, with the eyebrow + paragraph copy. No layout shift to the grid below. If the user's newly-uploaded banner arrives, we swap the asset pointer in place.
 
-## 7. Header logo (`Header.tsx` + `PechoLogo.tsx`)
+## 9. FAQ rewrite
 
-Swap to the newly-uploaded "logo without background" (higher-fidelity), increase size (`h-12 sm:h-14 md:h-16`), keep responsive.
+Replace the entire KA `items` array in `src/routes/faq.tsx` with the 7 new Q/A pairs verbatim (delivery, storage, additives, athletes, payment, returns, vegan). Provide matching EN translations of the same 7. Keep the current accordion (`<details>` group) styling untouched.
 
-## 8. Footer (`Footer.tsx`)
+## 10. Recipes page — first recipe with video
 
-- Centered full logo (same asset, larger).
-- Slogan → `"ჯანსაღი ცხოვრება იწყება ერთი კოვზიდან"`.
-- Contact block updated (see §10).
-- Privacy / Terms links point to new legal routes.
+- Upload the recipe video (user-provided) via `lovable-assets` and store the pointer at `src/assets/recipe-choco-tvorog-muffins.mp4.asset.json`. If the user hasn't attached the file yet, ship the recipe with the video slot present and a "video coming soon" placeholder, and swap in the pointer as soon as the file lands.
+- New data module `src/data/recipes.ts` with a typed `Recipe` entry (`slug: "choco-tvorog-muffins-pecho"`, title, description, ingredients[], steps[], plating, videoUrl, cover).
+- Update `src/routes/recipes.tsx` to render a grid of recipe cards (one entry for now) with cover thumbnail, title, short description, link to detail.
+- New dynamic route `src/routes/recipes.$slug.tsx` with premium layout:
+  - Hero: title `🍫 შოკოლადის ხაჭოს მაფინები Pecho-ს არაქისის კარაქით`, description, decorative peanut-butter drip accent reusing existing `DrippingPeanutButter` styling tokens.
+  - Embedded `<video controls playsInline>` from asset URL (poster from cover).
+  - Ingredients as a card grid (emoji + text): 🍌 1 მწიფე ბანანი, 🥚 1 კვერცხი, 🧀 150 გ ხაჭო, 🍫 2 სუფრის კოვზი კაკაო, 🥜 Pecho Classic არაქისის კარაქი.
+  - Preparation steps as a numbered vertical timeline (4 steps, verbatim).
+  - Plating (მორთვა) card: Pecho Classic + fresh strawberries note.
+  - Closing flourish `✨ გემრიელად მიირთვით!`.
+  - `head()` with unique title/description + og tags; og:image = cover.
+- Update `src/lib/i18n.tsx` recipes section keys as needed.
 
-## 9. Recipes page (`src/routes/recipes.tsx`)
+## Files touched
 
-New route + nav entry (KA/EN). Grid of recipe cards, each with cover thumbnail, title, short description, and an embedded-video slot (YouTube/Vimeo iframe or `<video>`). Ships with 3 empty placeholder cards labeled "მალე / Coming soon" until you send videos.
+**New**: `src/routes/partners.tsx`, `src/routes/recipes.$slug.tsx`, `src/data/recipes.ts`, `src/assets/recipe-choco-tvorog-muffins.mp4.asset.json` (once video arrives).
 
-## 10. Contact info (single source in `src/lib/contact.ts`)
+**Edited**: `src/components/Header.tsx`, `src/components/Footer.tsx`, `src/lib/i18n.tsx`, `src/routes/index.tsx`, `src/routes/products.index.tsx`, `src/routes/faq.tsx`, `src/routes/recipes.tsx`, `src/routes/contact.tsx`.
 
-Wire everywhere (Footer, Contact page, Order emails, SEO):
+**Not touched**: cart/checkout, admin panel, drip animation, product catalog, other pages.
 
-- Address: `ქ. გორი, შინდისის გმირების 17ბ`
-- Phone: `595 55 17 80` (tel:`+995595551780`)
-- Email: `Pecho.official@gmail.com`
-- Instagram: `https://www.instagram.com/pecho_geo/`
-- Facebook: `https://www.facebook.com/profile.php?id=61576638057402`
-- Update Google Maps embed on Contact page to the Gori address.
+## What I need from you
 
-## 11. Legal pages
-
-- `src/routes/privacy.tsx` — bilingual privacy policy tailored to a Georgian online food store (data collected on checkout, cookies, usage, retention, contact).
-- `src/routes/terms.tsx` — bilingual T&Cs (orders, prices in GEL, cash/card on delivery, 2–3 day delivery in Georgia, returns for damaged goods, contact).
-- Linked from footer.
-
-## 12. Order success screen (`checkout.success.tsx`)
-
-Replace copy with:
-
-> მადლობას გიხდით შენაძენისთვის!
-> თქვენი შეკვეთა მიღებულია.
-> დავამზადებთ და გამოგიგზავნით.
-
-Keep the falling-peanuts celebration + checkmark + fade-ins (already premium).
-
-## 13. Order flow → email notification
-
-- `src/routes/api/public/order.ts` already exists — replace its body with a call to `sendTemplateEmail("new-order", "Pecho.official@gmail.com", { templateData: {...} })`.
-- New React Email template `src/lib/email-templates/new-order.tsx`: customer name, phone, address, apt/notes, itemized products (name + qty + line total), order total, order timestamp — brand-styled (orange accents, cream body).
-- Checkout POSTs the order payload; on success, also stores it in `localStorage` under `pecho.orders` (see §14).
-
-## 14. Admin panel — hardcoded gate, localStorage data
-
-Per your choice, no backend for orders. Structure:
-
-```
-/admin/login          → email/password form
-/admin (layout)       → gated; child pages below
-/admin/dashboard      → KPIs (today's orders, revenue, pending)
-/admin/analytics      → date-range analytics
-/admin/orders         → order list + detail drawer + status update
-```
-
-### Auth (`src/lib/admin-auth.ts`)
-- Hardcoded credentials compared client-side (SHA-256 hash of `Pecho5991@` stored as a constant; email compared case-insensitively).
-- On success, set `sessionStorage.pecho.admin = "1"` and redirect to `/admin/dashboard`.
-- `/admin/*` layout `beforeLoad` redirects to `/admin/login` when the flag is missing.
-- **Explicit caveat:** this is a client-side gate — anyone who reads the JS bundle can bypass it. It matches your "hardcoded admin only" choice; if you later want a real lock, we switch to Lovable Cloud auth.
-
-### Orders store (`src/lib/orders-store.ts`)
-- Read/write `pecho.orders` array in localStorage. Each order: `{ id, createdAt, status, customer, items[], total }`.
-- Checkout append-writes here in the same tick it POSTs the email.
-- Admin actions: change status (`new` → `confirmed` → `shipped` → `delivered` → `cancelled`).
-- **Caveat:** orders are only visible on the browser where the admin logs in and where the order was placed — localStorage is per-device. This is inherent to "no backend"; the email to `Pecho.official@gmail.com` is your durable copy.
-
-### Analytics (`/admin/analytics`)
-Ranges: Today / 7d / 30d / All time / Custom (shadcn `Calendar` in a `Popover`, range mode).
-KPIs:
-- Total orders, total revenue (GEL)
-- Best-selling products (table sorted by qty)
-- Qty sold per product (bar chart via `recharts`)
-- Revenue per product (bar chart)
-- Orders over time (line chart)
-
-### Dashboard (`/admin/dashboard`)
-Today's KPIs + latest 5 orders + shortcut cards to Analytics / Orders.
-
-### Orders page (`/admin/orders`)
-Sortable table: Date · Customer · Phone · Address · Items summary · Total · Status. Row click opens detail drawer with full item breakdown and status dropdown.
-
-Admin routes are **not** linked from public navigation.
-
-## 15. Nav updates
-
-Add `Recipes` link. Order: Home · Products · Recipes · About · News · FAQ · Contact · Cart.
-
-## Files added / edited
-
-**New**: `src/routes/recipes.tsx`, `src/routes/privacy.tsx`, `src/routes/terms.tsx`, `src/routes/admin.login.tsx`, `src/routes/admin.tsx` (layout), `src/routes/admin.dashboard.tsx`, `src/routes/admin.analytics.tsx`, `src/routes/admin.orders.tsx`, `src/lib/admin-auth.ts`, `src/lib/orders-store.ts`, `src/lib/contact.ts`, `src/lib/email-templates/new-order.tsx`, two real product photo asset pointers.
-
-**Edited**: `src/data/products.ts`, `src/components/QuantityStepper.tsx`, `src/components/ProductCard.tsx`, `src/components/Header.tsx`, `src/components/Footer.tsx`, `src/components/DrippingPeanutButter.tsx`, `src/components/LoadingScreen.tsx`, `src/components/PechoLogo.tsx`, `src/lib/i18n.tsx`, `src/routes/__root.tsx`, `src/routes/index.tsx`, `src/routes/products.index.tsx`, `src/routes/products.$slug.tsx`, `src/routes/cart.tsx`, `src/routes/checkout.tsx`, `src/routes/checkout.success.tsx`, `src/routes/contact.tsx`, `src/routes/api/public/order.ts`, `src/styles.css`.
-
-**Deleted**: all AI-generated `src/assets/product-*.jpg` asset pointers.
-
-## What I need from you after implementation
-
-1. Complete the Lovable Emails DNS setup dialog so order emails start delivering.
-2. Send the 450g Classic and 450g Crunchy photos when ready — I'll swap them in.
-3. Send recipe videos when ready — Recipes cards are prepped for them.
+- The recipe video file — I'll upload it to the CDN and wire it into the recipe. Until then, the recipe page ships with a placeholder video slot.
+- The new 2+1 banner image (if different from the current hero promo). Otherwise I'll reuse the existing promo asset on the Products page.
