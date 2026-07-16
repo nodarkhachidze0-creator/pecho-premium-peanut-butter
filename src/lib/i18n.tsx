@@ -149,7 +149,23 @@ const en: Dict = {
   "form.required": "Required",
   "form.sent": "Message sent — we'll be in touch.",
   "form.error": "Something went wrong. Please try again.",
+
+  "partners.title": "Become a Partner",
+  "partners.intro":
+    "Pecho welcomes long-term wholesale partnerships. We deliver premium, small-batch peanut butter to businesses across Georgia with reliable, on-time service and transparent pricing.",
+  "partners.who": "Who we work with",
+  "partners.type.grocery": "Grocery stores",
+  "partners.type.supermarket": "Supermarkets",
+  "partners.type.cafe": "Cafés",
+  "partners.type.restaurant": "Restaurants",
+  "partners.type.fitness": "Fitness clubs",
+  "partners.type.health": "Health food stores",
+  "partners.type.retail": "Other retail businesses",
+  "partners.contactTitle": "Contact us",
+  "partners.contactNote":
+    "Reach out any time. Our team will get back to you as quickly as possible.",
 };
+
 
 const ka: Dict = {
   "nav.home": "მთავარი",
