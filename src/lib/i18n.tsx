@@ -24,10 +24,11 @@ const en: Dict = {
   "cta.placeOrder": "Place Order",
   "cta.send": "Send Message",
 
-  "home.hero.eyebrow": "2+1 Limited Time Offer",
+  "home.hero.eyebrow": "Limited-time 2+1 offer",
   "home.hero.title": "Buy 2, Get 1 Free — for a limited time.",
   "home.hero.subtitle":
-    "Single-origin peanuts, double-roasted for a depth of flavor you won't find in a supermarket aisle. No palm oil, just the pure, glossy ribbon of nature.",
+    "Buy 2 jars and get the third one free — while the promotion lasts.",
+
   "nav.recipes": "Recipes",
   "nav.partners": "Partners",
   "recipes.title": "Recipes",
@@ -190,7 +191,8 @@ const ka: Dict = {
   "home.hero.eyebrow": "2+1 აქცია ლიმიტირებული დროით",
   "home.hero.title": "იყიდე 2, მიიღე 1 საჩუქრად — ლიმიტირებული დროით.",
   "home.hero.subtitle":
-    "ერთი წარმოშობის მიწისთხილი, ორმაგად მოხალული ღრმა გემოსთვის, რომელსაც სუპერმარკეტში ვერ იპოვი. პალმის ზეთის გარეშე — მხოლოდ ბუნების პრიალა რიბონი.",
+    "იყიდე 2, მიიღე 1 საჩუქრად — ლიმიტირებული დროით.",
+
   "nav.recipes": "რეცეპტები",
   "nav.partners": "პარტნიორები",
   "recipes.title": "რეცეპტები",
@@ -312,7 +314,23 @@ const ka: Dict = {
   "form.required": "სავალდებულო",
   "form.sent": "შეტყობინება გაიგზავნა — მალე დაგიკავშირდებით.",
   "form.error": "დაფიქსირდა შეცდომა. სცადე ხელახლა.",
+
+  "partners.title": "გახდი პარტნიორი",
+  "partners.intro":
+    "Pecho ღიაა გრძელვადიანი საბითუმო თანამშრომლობისთვის. ჩვენ ვთავაზობთ პრემიუმ ხარისხის მიწისთხილის კარაქს, საიმედო მიწოდებას და გამჭვირვალე პირობებს ბიზნეს პარტნიორებისთვის.",
+  "partners.who": "ვისთან ვმუშაობთ",
+  "partners.type.grocery": "სასურსათო მაღაზიები",
+  "partners.type.supermarket": "სუპერმარკეტები",
+  "partners.type.cafe": "კაფეები",
+  "partners.type.restaurant": "რესტორნები",
+  "partners.type.fitness": "ფიტნეს კლუბები",
+  "partners.type.health": "ჯანსაღი კვების მაღაზიები",
+  "partners.type.retail": "სხვა საცალო ბიზნესები",
+  "partners.contactTitle": "დაგვიკავშირდი",
+  "partners.contactNote":
+    "დაგვიკავშირდით ნებისმიერ დროს. ჩვენს გუნდს მაქსიმალურად სწრაფად გიპასუხებთ.",
 };
+
 
 const dicts: Record<Lang, Dict> = { en, ka };
 

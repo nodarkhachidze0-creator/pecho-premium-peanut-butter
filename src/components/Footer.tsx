@@ -48,20 +48,23 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-brand-cream/60">
             <li><Link to="/products" className="hover:text-brand-cream transition-colors">{t("nav.products")}</Link></li>
             <li><Link to="/recipes" className="hover:text-brand-cream transition-colors">{t("nav.recipes")}</Link></li>
+            <li><Link to="/partners" className="hover:text-brand-cream transition-colors">{t("nav.partners")}</Link></li>
             <li><Link to="/about" className="hover:text-brand-cream transition-colors">{t("nav.about")}</Link></li>
             <li><Link to="/news" className="hover:text-brand-cream transition-colors">{t("nav.news")}</Link></li>
             <li><Link to="/faq" className="hover:text-brand-cream transition-colors">{t("nav.faq")}</Link></li>
             <li><Link to="/contact" className="hover:text-brand-cream transition-colors">{t("nav.contact")}</Link></li>
           </ul>
+
         </div>
 
         <div className="space-y-5">
           <h4 className="text-xs font-bold uppercase tracking-widest">{t("footer.contact")}</h4>
           <ul className="space-y-3 text-sm text-brand-cream/60">
             <li>Pecho.official@gmail.com</li>
-            <li>+995 599 599 599</li>
-            <li>Gori, Georgia</li>
+            <li><a href="tel:+995595551780" className="hover:text-brand-cream transition-colors">595 55 17 80</a></li>
+            <li>ქ. გორი, შინდისის გმირების 17ბ</li>
           </ul>
+
 
           <div className="pt-4">
             <h4 className="text-xs font-bold uppercase tracking-widest mb-3">{t("footer.delivery")}</h4>
