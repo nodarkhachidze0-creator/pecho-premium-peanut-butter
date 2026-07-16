@@ -21,59 +21,66 @@ function FAQPage() {
   const items =
     lang === "ka"
       ? [
-          { q: "რამდენ ხანში მიწოდება?", a: "2–3 სამუშაო დღე მთელ საქართველოში." },
           {
-            q: "როგორ ვინახოთ მიწისთხილის კარაქი?",
-            a: "მშრალ, გრილ ადგილას. გახსნის შემდეგ — მაცივარში 1 თვემდე.",
+            q: "🚚 რამდენ ხანში ხდება მიწოდება?",
+            a: "თბილისში მიწოდება ხდება 2–3 სამუშაო დღეში, ხოლო საქართველოს სხვა რეგიონებში — 3–4 სამუშაო დღეში. შეკვეთის დადასტურების შემდეგ დავამზადებთ და კურიერი მოგაწვდით პროდუქტს ადგილზე.",
           },
           {
-            q: "აქვს დამატებული შაქარი?",
-            a: "კლასიკური და ხრაშუნა ვერსია — არა. თაფლის და შოკოლადის ვერსიები ბუნებრივ დამატებებს შეიცავს.",
+            q: "🥜 როგორ შევინახო მიწისთხილის კარაქი?",
+            a: "ჩვენი ნატურალური მიწისთხილის კარაქის შენახვა შესაძლებელია როგორც ოთახის ტემპერატურაზე, ასევე მაცივარში. საუკეთესო ხარისხის შესანარჩუნებლად გირჩევთ, მოარიდოთ პირდაპირ მზის სხივებს და შეინახოთ მშრალ, გრილ ადგილას.",
           },
           {
-            q: "სპორტსმენებისთვის გამოსადეგია?",
-            a: "დიახ — 26გ ცილა 100 გრამზე, ბუნებრივი ცხიმები.",
+            q: "🌿 შეიცავს თუ არა დანამატებს ან შაქარს?",
+            a: "არა. Pecho-ის მიწისთხილის კარაქი მზადდება 100% ნატურალური მიწისთხილისგან. არ შეიცავს დამატებულ შაქარს, პალმის ზეთს, კონსერვანტებს, ხელოვნურ არომატიზატორებსა და სხვა დანამატებს.",
           },
           {
-            q: "გადახდის მეთოდი?",
-            a: "მხოლოდ ადგილზე გადახდა — ნაღდი ან ბარათი. ონლაინ გადახდა არ არის.",
+            q: "💪 სპორტსმენებისთვის თუ არის რეკომენდებული?",
+            a: "დიახ. ჩვენი პროდუქტი შეიცავს 25 გრამ ცილას 100 გრამზე, ასევე ბუნებრივ ცხიმებსა და ენერგიის წყაროს, რაც მას შესანიშნავ არჩევანს ხდის სპორტსმენებისა და ჯანსაღი ცხოვრების წესის მიმდევრებისთვის.",
           },
           {
-            q: "შემიძლია დავაბრუნო შეკვეთა?",
-            a: "თუ პროდუქტთან რაიმე პრობლემაა, დაგვიკავშირდი 24 საათში — გაცვლას ან თანხის დაბრუნებას მოვახდენთ.",
+            q: "💳 გადახდის რა მეთოდებია ხელმისაწვდომი?",
+            a: "ამ ეტაპზე გადახდა შესაძლებელია მხოლოდ მიწოდებისას — ნაღდი ანგარიშსწორებით ან საბანკო ბარათით კურიერთან. ონლაინ გადახდა ამ ეტაპზე არ არის ხელმისაწვდომი.",
           },
           {
-            q: "ვეგანური?",
-            a: "დიახ — გარდა თაფლის ვერსიისა, ყველა ჩვენი პროდუქტი მცენარეულია.",
+            q: "📦 შესაძლებელია თუ არა შეკვეთის დაბრუნება?",
+            a: "დიახ. თუ პროდუქტი არ არის გახსნილი, მისი დაბრუნება ან გაცვლა შესაძლებელია მიღებიდან 24 საათის განმავლობაში. ასეთ შემთხვევაში დაგიბრუნებთ თანხას ან შეგიცვლით პროდუქტს.",
+          },
+          {
+            q: "🌱 ვეგანურია?",
+            a: "დიახ. ჩვენი მიწისთხილის კარაქი მზადდება მხოლოდ 100% ნატურალური მიწისთხილისგან და არ შეიცავს ცხოველური წარმოშობის ინგრედიენტებს, ამიტომ იგი სრულად ვეგანური პროდუქტია.",
           },
         ]
       : [
-          { q: "How long does delivery take?", a: "2–3 business days anywhere in Georgia." },
           {
-            q: "How should peanut butter be stored?",
-            a: "In a cool, dry place. After opening, refrigerate for up to a month.",
+            q: "🚚 How long does delivery take?",
+            a: "Delivery in Tbilisi takes 2–3 business days; other regions of Georgia — 3–4 business days. Once your order is confirmed, we prepare it and a courier delivers it to you.",
           },
           {
-            q: "Does it contain added sugar?",
-            a: "No — Classic and Crunchy are just peanuts and salt. Flavored lines contain honey or dark chocolate.",
+            q: "🥜 How should I store the peanut butter?",
+            a: "Our natural peanut butter can be stored at room temperature or in the fridge. To preserve the best quality, keep it away from direct sunlight in a cool, dry place.",
           },
           {
-            q: "Is it suitable for athletes?",
-            a: "Yes — 26g of protein per 100g, natural fats, no added oils or fillers.",
+            q: "🌿 Does it contain any additives or sugar?",
+            a: "No. Pecho peanut butter is made from 100% natural peanuts. No added sugar, palm oil, preservatives, artificial flavors, or other additives.",
           },
           {
-            q: "What payment methods are available?",
-            a: "Cash or Card on Delivery only. We do not accept online payments at this time.",
+            q: "💪 Is it recommended for athletes?",
+            a: "Yes. Our product contains 25g of protein per 100g, plus natural fats and clean energy — an excellent choice for athletes and anyone following a healthy lifestyle.",
           },
           {
-            q: "Can I return an order?",
-            a: "If anything is wrong with your order, contact us within 24 hours for an exchange or refund.",
+            q: "💳 What payment methods are available?",
+            a: "For now, payment is available only on delivery — cash or bank card with the courier. Online payments are not available at this time.",
           },
           {
-            q: "Is it vegan?",
-            a: "Yes — all products except the Honey Blend are 100% plant-based.",
+            q: "📦 Can I return an order?",
+            a: "Yes. If the product is unopened, it can be returned or exchanged within 24 hours of delivery. We will refund or replace the product.",
+          },
+          {
+            q: "🌱 Is it vegan?",
+            a: "Yes. Our peanut butter is made from 100% natural peanuts and contains no animal-derived ingredients, so it is fully vegan.",
           },
         ];
+
 
   return (
     <section className="px-4 sm:px-6 py-16 md:py-24">

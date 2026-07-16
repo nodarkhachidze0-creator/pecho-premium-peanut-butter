@@ -4,6 +4,8 @@ import { Search } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { products, type Category } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
+
 
 export const Route = createFileRoute("/products/")({
   head: () => ({
@@ -63,6 +65,16 @@ function ProductsPage() {
           <h1 className="text-4xl md:text-5xl font-display font-medium">{t("products.title")}</h1>
           <p className="text-brand-roast/70 mt-3 text-lg">{t("products.subtitle")}</p>
         </header>
+
+        <div className="mb-12 rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-paper">
+          <img
+            src={promoImg.url}
+            alt={t("home.hero.eyebrow")}
+            className="w-full h-auto object-cover"
+            loading="lazy"
+          />
+        </div>
+
 
         <div className="grid gap-4 mb-10 md:flex md:items-center md:justify-between">
           <div className="relative w-full md:max-w-sm">
