@@ -59,9 +59,10 @@ export function Footer() {
           <h4 className="text-xs font-bold uppercase tracking-widest">{t("footer.contact")}</h4>
           <ul className="space-y-3 text-sm text-brand-cream/60">
             <li>Pecho.official@gmail.com</li>
-            <li>+995 599 599 599</li>
-            <li>Gori, Georgia</li>
+            <li><a href="tel:+995595551780" className="hover:text-brand-cream transition-colors">595 55 17 80</a></li>
+            <li>ქ. გორი, შინდისის გმირების 17ბ</li>
           </ul>
+
 
           <div className="pt-4">
             <h4 className="text-xs font-bold uppercase tracking-widest mb-3">{t("footer.delivery")}</h4>

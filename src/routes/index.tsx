@@ -59,14 +59,17 @@ function Home() {
               </div>
             </div>
             <div className="relative hero-float">
-              <img
-                src={promoImg.url}
-                alt="Pecho 2+1 promotional offer"
-                width={1200}
-                height={1200}
-                className="w-full aspect-square object-contain drop-shadow-2xl"
-              />
+              <div className="rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl">
+                <img
+                  src={promoImg.url}
+                  alt="Pecho 2+1 promotional offer"
+                  width={1200}
+                  height={1200}
+                  className="w-full aspect-square object-cover"
+                />
+              </div>
             </div>
+
           </div>
         </section>
       </div>

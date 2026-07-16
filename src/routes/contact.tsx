@@ -57,10 +57,11 @@ function ContactPage() {
             <p className="text-brand-roast/70 mt-4 text-lg">{t("contact.subtitle")}</p>
 
             <div className="mt-10 space-y-5">
-              <InfoRow icon={Phone} label={t("contact.info.phone")} value="+995 599 599 599" href="tel:+995599599599" />
+              <InfoRow icon={Phone} label={t("contact.info.phone")} value="595 55 17 80" href="tel:+995595551780" />
               <InfoRow icon={Mail} label={t("contact.info.email")} value="Pecho.official@gmail.com" href="mailto:Pecho.official@gmail.com" />
-              <InfoRow icon={MapPin} label={t("contact.info.address")} value="Gori, Georgia" />
+              <InfoRow icon={MapPin} label={t("contact.info.address")} value="ქ. გორი, შინდისის გმირების 17ბ" />
               <InfoRow icon={Clock} label={t("contact.info.hours")} value={t("contact.info.hoursValue")} />
+
             </div>
 
             <div className="mt-8 flex gap-3">
@@ -129,7 +130,8 @@ function ContactPage() {
         <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden ring-1 ring-black/5">
           <iframe
             title="Pecho location"
-            src="https://www.google.com/maps?q=Gori,+Georgia&output=embed"
+            src="https://www.google.com/maps?q=%E1%83%A5.+%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98,+%E1%83%A8%E1%83%98%E1%83%9C%E1%83%93%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1+%E1%83%92%E1%83%9B%E1%83%98%E1%83%A0%E1%83%94%E1%83%91%E1%83%98%E1%83%A1+17%E1%83%91&output=embed"
+
             className="w-full h-[400px] border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
