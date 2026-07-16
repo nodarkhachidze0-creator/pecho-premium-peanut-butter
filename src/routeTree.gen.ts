@@ -13,6 +13,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as RecipesRouteImport } from './routes/recipes'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -23,6 +24,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as RecipesSlugRouteImport } from './routes/recipes.$slug'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
@@ -48,6 +50,11 @@ const ProductsRoute = ProductsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsRoute = NewsRouteImport.update({
@@ -100,6 +107,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const RecipesSlugRoute = RecipesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => RecipesRoute,
+} as any)
 const ProductsSlugRoute = ProductsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -140,15 +152,17 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/news': typeof NewsRouteWithChildren
+  '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRouteWithChildren
-  '/recipes': typeof RecipesRoute
+  '/recipes': typeof RecipesRouteWithChildren
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/news/$slug': typeof NewsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/recipes/$slug': typeof RecipesSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/products/': typeof ProductsIndexRoute
   '/api/public/order': typeof ApiPublicOrderRoute
@@ -161,14 +175,16 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/news': typeof NewsRouteWithChildren
+  '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
-  '/recipes': typeof RecipesRoute
+  '/recipes': typeof RecipesRouteWithChildren
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/news/$slug': typeof NewsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/recipes/$slug': typeof RecipesSlugRoute
   '/admin': typeof AdminIndexRoute
   '/products': typeof ProductsIndexRoute
   '/api/public/order': typeof ApiPublicOrderRoute
@@ -183,15 +199,17 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/news': typeof NewsRouteWithChildren
+  '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRouteWithChildren
-  '/recipes': typeof RecipesRoute
+  '/recipes': typeof RecipesRouteWithChildren
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/news/$slug': typeof NewsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/recipes/$slug': typeof RecipesSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/products/': typeof ProductsIndexRoute
   '/api/public/order': typeof ApiPublicOrderRoute
@@ -207,6 +225,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/news'
+    | '/partners'
     | '/privacy'
     | '/products'
     | '/recipes'
@@ -216,6 +235,7 @@ export interface FileRouteTypes {
     | '/checkout/success'
     | '/news/$slug'
     | '/products/$slug'
+    | '/recipes/$slug'
     | '/admin/'
     | '/products/'
     | '/api/public/order'
@@ -228,6 +248,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/news'
+    | '/partners'
     | '/privacy'
     | '/recipes'
     | '/terms'
@@ -236,6 +257,7 @@ export interface FileRouteTypes {
     | '/checkout/success'
     | '/news/$slug'
     | '/products/$slug'
+    | '/recipes/$slug'
     | '/admin'
     | '/products'
     | '/api/public/order'
@@ -249,6 +271,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/news'
+    | '/partners'
     | '/privacy'
     | '/products'
     | '/recipes'
@@ -258,6 +281,7 @@ export interface FileRouteTypes {
     | '/checkout/success'
     | '/news/$slug'
     | '/products/$slug'
+    | '/recipes/$slug'
     | '/admin/'
     | '/products/'
     | '/api/public/order'
@@ -272,9 +296,10 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   NewsRoute: typeof NewsRouteWithChildren
+  PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRouteWithChildren
-  RecipesRoute: typeof RecipesRoute
+  RecipesRoute: typeof RecipesRouteWithChildren
   TermsRoute: typeof TermsRoute
   ApiPublicOrderRoute: typeof ApiPublicOrderRoute
 }
@@ -307,6 +332,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -378,6 +410,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
+    }
+    '/recipes/$slug': {
+      id: '/recipes/$slug'
+      path: '/$slug'
+      fullPath: '/recipes/$slug'
+      preLoaderRoute: typeof RecipesSlugRouteImport
+      parentRoute: typeof RecipesRoute
     }
     '/products/$slug': {
       id: '/products/$slug'
@@ -474,6 +513,17 @@ const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
   ProductsRouteChildren,
 )
 
+interface RecipesRouteChildren {
+  RecipesSlugRoute: typeof RecipesSlugRoute
+}
+
+const RecipesRouteChildren: RecipesRouteChildren = {
+  RecipesSlugRoute: RecipesSlugRoute,
+}
+
+const RecipesRouteWithChildren =
+  RecipesRoute._addFileChildren(RecipesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -483,9 +533,10 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   NewsRoute: NewsRouteWithChildren,
+  PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRouteWithChildren,
-  RecipesRoute: RecipesRoute,
+  RecipesRoute: RecipesRouteWithChildren,
   TermsRoute: TermsRoute,
   ApiPublicOrderRoute: ApiPublicOrderRoute,
 }

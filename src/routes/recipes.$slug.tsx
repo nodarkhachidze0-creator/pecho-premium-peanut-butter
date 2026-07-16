@@ -76,7 +76,7 @@ function RecipeDetail() {
               🥣 {lang === "ka" ? "ინგრედიენტები" : "Ingredients"}
             </h2>
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
-              {recipe.ingredients.map((ing, i) => (
+              {recipe.ingredients.map((ing: { emoji: string; text: string }, i: number) => (
                 <div
                   key={i}
                   className="bg-brand-paper rounded-2xl p-5 ring-1 ring-black/5 flex flex-col items-center text-center gap-3 hover:ring-brand-toast/40 transition-all"
@@ -100,7 +100,7 @@ function RecipeDetail() {
               👨‍🍳 {lang === "ka" ? "მომზადების წესი" : "Preparation"}
             </h2>
             <ol className="mt-6 space-y-4">
-              {recipe.steps.map((step, i) => (
+              {recipe.steps.map((step: string, i: number) => (
                 <li
                   key={i}
                   className="flex gap-5 bg-brand-cream rounded-2xl p-5 md:p-6 ring-1 ring-brand-roast/5"
