@@ -176,12 +176,14 @@ const ka: Dict = {
   "home.hero.subtitle":
     "ერთი წარმოშობის მიწისთხილი, ორმაგად მოხალული ღრმა გემოსთვის, რომელსაც სუპერმარკეტში ვერ იპოვი. პალმის ზეთის გარეშე — მხოლოდ ბუნების პრიალა რიბონი.",
   "nav.recipes": "რეცეპტები",
+  "nav.partners": "პარტნიორები",
   "recipes.title": "რეცეპტები",
   "recipes.subtitle": "იდეები, სნეკები და რეცეპტები Pecho-ს მიწისთხილის კარაქით.",
   "recipes.empty": "მალე დაემატება ახალი რეცეპტები.",
 
-  "home.featured.eyebrow": "კოლექცია",
-  "home.featured.title": "ჩვენი ყოველდღიური მოხალვები",
+  "home.featured.eyebrow": "პროდუქტები",
+  "home.featured.title": "აირჩიე შენი საყვარელი Pecho",
+
 
   "home.why.title": "რატომ Pecho",
   "home.why.1.title": "წმინდა ქართული",
