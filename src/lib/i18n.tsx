@@ -29,12 +29,14 @@ const en: Dict = {
   "home.hero.subtitle":
     "Single-origin peanuts, double-roasted for a depth of flavor you won't find in a supermarket aisle. No palm oil, just the pure, glossy ribbon of nature.",
   "nav.recipes": "Recipes",
+  "nav.partners": "Partners",
   "recipes.title": "Recipes",
   "recipes.subtitle": "Ideas, snacks, and recipes made with Pecho peanut butter.",
   "recipes.empty": "New recipes coming soon.",
 
-  "home.featured.eyebrow": "The Collection",
-  "home.featured.title": "Our Daily Roasts",
+  "home.featured.eyebrow": "Products",
+  "home.featured.title": "Pick your favorite Pecho",
+
 
   "home.why.title": "Why Choose Pecho",
   "home.why.1.title": "Purely Georgian",
@@ -147,7 +149,23 @@ const en: Dict = {
   "form.required": "Required",
   "form.sent": "Message sent — we'll be in touch.",
   "form.error": "Something went wrong. Please try again.",
+
+  "partners.title": "Become a Partner",
+  "partners.intro":
+    "Pecho welcomes long-term wholesale partnerships. We deliver premium, small-batch peanut butter to businesses across Georgia with reliable, on-time service and transparent pricing.",
+  "partners.who": "Who we work with",
+  "partners.type.grocery": "Grocery stores",
+  "partners.type.supermarket": "Supermarkets",
+  "partners.type.cafe": "Cafés",
+  "partners.type.restaurant": "Restaurants",
+  "partners.type.fitness": "Fitness clubs",
+  "partners.type.health": "Health food stores",
+  "partners.type.retail": "Other retail businesses",
+  "partners.contactTitle": "Contact us",
+  "partners.contactNote":
+    "Reach out any time. Our team will get back to you as quickly as possible.",
 };
+
 
 const ka: Dict = {
   "nav.home": "მთავარი",
@@ -174,12 +192,14 @@ const ka: Dict = {
   "home.hero.subtitle":
     "ერთი წარმოშობის მიწისთხილი, ორმაგად მოხალული ღრმა გემოსთვის, რომელსაც სუპერმარკეტში ვერ იპოვი. პალმის ზეთის გარეშე — მხოლოდ ბუნების პრიალა რიბონი.",
   "nav.recipes": "რეცეპტები",
+  "nav.partners": "პარტნიორები",
   "recipes.title": "რეცეპტები",
   "recipes.subtitle": "იდეები, სნეკები და რეცეპტები Pecho-ს მიწისთხილის კარაქით.",
   "recipes.empty": "მალე დაემატება ახალი რეცეპტები.",
 
-  "home.featured.eyebrow": "კოლექცია",
-  "home.featured.title": "ჩვენი ყოველდღიური მოხალვები",
+  "home.featured.eyebrow": "პროდუქტები",
+  "home.featured.title": "აირჩიე შენი საყვარელი Pecho",
+
 
   "home.why.title": "რატომ Pecho",
   "home.why.1.title": "წმინდა ქართული",
