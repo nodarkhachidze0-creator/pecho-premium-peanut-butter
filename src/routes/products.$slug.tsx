@@ -140,10 +140,15 @@ function ProductDetail() {
                 <p className="text-brand-roast/70 mt-3 text-lg">{product.short[lang]}</p>
               </div>
 
-              <div className="flex items-baseline gap-3">
+              <div className="flex items-baseline gap-3 flex-wrap">
                 <span className="text-3xl font-display text-brand-toast">
                   {formatGEL(product.price)}
                 </span>
+                {product.originalPrice && (
+                  <span className="text-lg text-brand-roast/40 line-through">
+                    {formatGEL(product.originalPrice)}
+                  </span>
+                )}
                 <span className="text-sm text-brand-roast/50">/ {product.weight}</span>
               </div>
 

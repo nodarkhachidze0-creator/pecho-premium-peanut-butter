@@ -41,9 +41,11 @@ function RecipesPage() {
                     muted
                     playsInline
                     preload="metadata"
-                    className="w-full h-full object-cover"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    className="pointer-events-none w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-brand-roast/30 group-hover:bg-brand-roast/10 transition-colors">
+                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-brand-roast/30 group-hover:bg-brand-roast/10 transition-colors">
                     <PlayCircle className="size-14 text-white drop-shadow-lg" strokeWidth={1.4} />
                   </div>
                 </div>
