@@ -7,6 +7,7 @@ import {
   Dumbbell,
   Leaf,
   Building2,
+  Hotel,
   Phone,
   Mail,
   MapPin,
@@ -46,6 +47,7 @@ function PartnersPage() {
     { icon: UtensilsCrossed, label: t("partners.type.restaurant") },
     { icon: Dumbbell, label: t("partners.type.fitness") },
     { icon: Leaf, label: t("partners.type.health") },
+    { icon: Hotel, label: t("partners.type.hotel") },
     { icon: Building2, label: t("partners.type.retail") },
   ];
 

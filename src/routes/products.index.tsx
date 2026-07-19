@@ -66,14 +66,19 @@ function ProductsPage() {
           <p className="text-brand-roast/70 mt-3 text-lg">{t("products.subtitle")}</p>
         </header>
 
-        <div className="mb-12 rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-paper">
+        <a
+          href="/products/bundle-2plus1"
+          className="block mb-12 rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-paper"
+        >
           <img
             src={promoImg.url}
             alt={t("home.hero.eyebrow")}
-            className="w-full h-auto object-cover"
+            className="block w-full h-auto object-contain"
             loading="lazy"
           />
-        </div>
+        </a>
+
+
 
 
         <div className="grid gap-4 mb-10 md:flex md:items-center md:justify-between">

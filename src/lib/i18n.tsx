@@ -75,6 +75,7 @@ const en: Dict = {
   "products.cat.all": "All",
   "products.cat.classic": "Classic",
   "products.cat.crunchy": "Crunchy",
+  "products.cat.bundle": "Bundle",
   "products.cat.flavored": "Flavored",
   "products.cat.limited": "Limited",
   "products.empty": "No products match your search.",
@@ -162,9 +163,36 @@ const en: Dict = {
   "partners.type.fitness": "Fitness clubs",
   "partners.type.health": "Health food stores",
   "partners.type.retail": "Other retail businesses",
+  "partners.type.hotel": "Hotels & Guesthouses",
   "partners.contactTitle": "Contact us",
   "partners.contactNote":
     "Reach out any time. Our team will get back to you as quickly as possible.",
+
+  "about.hero.eyebrow": "About Pecho",
+  "about.hero.title": "Healthy living starts with one spoonful.",
+  "about.hero.body":
+    "Pecho was born from a single idea — to create a product that makes every day a little healthier and a lot more delicious.",
+  "about.story.p1":
+    "We believe real quality starts with simple ingredients. That is why our peanut butter is made from only 100% peanuts and a touch of salt.",
+  "about.story.p2":
+    "No artificial additives. No preservatives. No unnecessary ingredients — just clean, natural flavor.",
+  "about.story.p3":
+    "But Pecho is more than peanut butter. It's energy, positivity and a lifestyle where caring for your health becomes an everyday habit.",
+  "about.story.p4":
+    "We want every jar to remind you that healthy living isn't complicated. It starts with one small choice.",
+  "about.why.title": "Why Pecho?",
+  "about.why.1.title": "100% natural ingredients",
+  "about.why.1.body": "Only peanuts and a small amount of salt.",
+  "about.why.2.title": "Zero harmful additives",
+  "about.why.2.body": "No preservatives, palm oil or artificial ingredients.",
+  "about.why.3.title": "Premium quality",
+  "about.why.3.body": "For those who value taste and quality equally.",
+  "about.why.4.title": "Everyday energy",
+  "about.why.4.body": "For breakfast, before training, or any time of day.",
+  "about.mission.eyebrow": "Our Mission",
+  "about.mission.title": "Caring for your health shouldn't be boring.",
+  "about.mission.body":
+    "That's why we created Pecho — a brand that unites natural ingredients, premium quality and positive energy.",
 };
 
 
@@ -239,6 +267,7 @@ const ka: Dict = {
   "products.cat.all": "ყველა",
   "products.cat.classic": "კლასიკური",
   "products.cat.crunchy": "ხრაშუნა",
+  "products.cat.bundle": "შეთავაზება",
   "products.cat.flavored": "არომატიზირებული",
   "products.cat.limited": "ლიმიტირებული",
   "products.empty": "შედეგი ვერ მოიძებნა.",
@@ -326,9 +355,37 @@ const ka: Dict = {
   "partners.type.fitness": "ფიტნეს კლუბები",
   "partners.type.health": "ჯანსაღი კვების მაღაზიები",
   "partners.type.retail": "სხვა საცალო ბიზნესები",
+  "partners.type.hotel": "სასტუმროები და გესთჰაუსები",
   "partners.contactTitle": "დაგვიკავშირდი",
   "partners.contactNote":
     "დაგვიკავშირდით ნებისმიერ დროს. ჩვენს გუნდს მაქსიმალურად სწრაფად გიპასუხებთ.",
+
+  "about.hero.eyebrow": "Pecho-ს შესახებ",
+  "about.hero.title": "ჯანსაღი ცხოვრება იწყება ერთი კოვზიდან.",
+  "about.hero.body":
+    "Pecho შეიქმნა ერთი იდეით — შეგვექმნა პროდუქტი, რომელიც ყოველდღიურ არჩევანს უფრო ჯანსაღს და სასიამოვნოს გახდიდა.",
+  "about.story.p1":
+    "ჩვენ გვჯერა, რომ ნამდვილი ხარისხი იწყება უბრალო ინგრედიენტებით. ამიტომ ჩვენი მიწისთხილის კარაქი მზადდება მხოლოდ 100% მიწისთხილისა და მცირე რაოდენობით მარილისგან.",
+  "about.story.p2":
+    "არანაირი ხელოვნური დანამატი, კონსერვანტი ან ზედმეტი ინგრედიენტი — მხოლოდ სუფთა, ბუნებრივი გემო.",
+  "about.story.p3":
+    "მაგრამ Pecho მხოლოდ მიწისთხილის კარაქი არ არის. ეს არის ენერგია, პოზიტივი და ცხოვრების ისეთი სტილი, სადაც ჯანმრთელობაზე ზრუნვა ყოველდღიური ჩვევაა.",
+  "about.story.p4":
+    "ჩვენ გვინდა, რომ თითოეული ქილა ადამიანებს ახსენებდეს — ჯანსაღი ცხოვრება რთული არ არის. ის იწყება ერთი პატარა არჩევანით.",
+  "about.why.title": "რატომ Pecho?",
+  "about.why.1.title": "100% ბუნებრივი ინგრედიენტები",
+  "about.why.1.body": "მხოლოდ მიწისთხილი და მცირე რაოდენობით მარილი.",
+  "about.why.2.title": "არანაირი მავნე დანამატი",
+  "about.why.2.body":
+    "კონსერვანტების, პალმის ზეთისა და ხელოვნური ინგრედიენტების გარეშე.",
+  "about.why.3.title": "პრემიუმ ხარისხი",
+  "about.why.3.body": "შექმნილია მათთვის, ვინც ხარისხს და გემოს ერთნაირად აფასებს.",
+  "about.why.4.title": "ყოველდღიური ენერგია",
+  "about.why.4.body": "საუზმეზე, ვარჯიშამდე თუ დღის ნებისმიერ მონაკვეთში.",
+  "about.mission.eyebrow": "ჩვენი მისია",
+  "about.mission.title": "ჯანმრთელობაზე ზრუნვა მოსაწყენი არ უნდა იყოს.",
+  "about.mission.body":
+    "ამიტომ შევქმენით Pecho — ბრენდი, რომელიც აერთიანებს ბუნებრივ ინგრედიენტებს, პრემიუმ ხარისხსა და პოზიტიურ ენერგიას.",
 };
 
 
