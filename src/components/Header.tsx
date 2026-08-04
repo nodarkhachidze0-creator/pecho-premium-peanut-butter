@@ -49,9 +49,10 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 backdrop-blur-md border-b border-brand-roast/5 transition-all duration-300 ${
+      className={`backdrop-blur-md border-b border-brand-roast/5 transition-all duration-300 ${
         scrolled ? "header-scrolled" : "bg-brand-cream/70"
       }`}
+
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 md:flex md:justify-between">
         <div className="flex items-center gap-8 min-w-0">
