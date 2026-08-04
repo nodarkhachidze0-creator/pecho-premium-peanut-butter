@@ -83,7 +83,7 @@ function RecipeDetail() {
             <h2 className="text-2xl md:text-3xl font-display font-medium flex items-center gap-3">
               🥣 {lang === "ka" ? "ინგრედიენტები" : "Ingredients"}
             </h2>
-            <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
               {recipe.ingredients.map((ing: { emoji: string; text: string }, i: number) => (
                 <div
                   key={i}
