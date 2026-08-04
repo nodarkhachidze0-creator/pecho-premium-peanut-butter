@@ -35,7 +35,7 @@ function RecipeDetail() {
 
   return (
     <article className="px-4 sm:px-6 py-12 md:py-20">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <Link
           to="/recipes"
           className="inline-flex items-center gap-2 text-sm font-medium text-brand-roast/60 hover:text-brand-toast transition-colors"
@@ -44,7 +44,24 @@ function RecipeDetail() {
           {lang === "ka" ? "ყველა რეცეპტი" : "All recipes"}
         </Link>
 
-        <header className="mt-8 text-center">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-14 items-start">
+          {/* Video — sticky on desktop */}
+          <div className="lg:sticky lg:top-[120px] lg:self-start">
+            <div className="rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-roast mx-auto w-full max-w-[420px]">
+              <video
+                src={recipe.videoUrl}
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full max-h-[760px] object-contain bg-brand-roast"
+                style={{ aspectRatio: "9 / 16" }}
+              />
+            </div>
+          </div>
+
+          {/* Recipe content */}
+          <div className="min-w-0">
+        <header className="text-center lg:text-left">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-toast">
             <ChefHat className="size-4" />
             {lang === "ka" ? "რეცეპტი" : "Recipe"}
@@ -52,22 +69,13 @@ function RecipeDetail() {
           <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-display font-medium leading-tight text-balance">
             {recipe.title[lang]}
           </h1>
-          <p className="mt-6 text-brand-roast/70 text-lg leading-relaxed max-w-2xl mx-auto text-pretty">
+          <p className="mt-6 text-brand-roast/70 text-lg leading-relaxed text-pretty">
             {recipe.description[lang]}
           </p>
         </header>
 
-        <Reveal>
-          <div className="mt-10 rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-roast">
-            <video
-              src={recipe.videoUrl}
-              controls
-              playsInline
-              preload="metadata"
-              className="w-full aspect-video object-cover"
-            />
-          </div>
-        </Reveal>
+
+
 
         {/* Ingredients */}
         <Reveal>
@@ -75,7 +83,7 @@ function RecipeDetail() {
             <h2 className="text-2xl md:text-3xl font-display font-medium flex items-center gap-3">
               🥣 {lang === "ka" ? "ინგრედიენტები" : "Ingredients"}
             </h2>
-            <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
               {recipe.ingredients.map((ing: { emoji: string; text: string }, i: number) => (
                 <div
                   key={i}
@@ -135,8 +143,11 @@ function RecipeDetail() {
             </p>
           </div>
         </Reveal>
+          </div>
+        </div>
       </div>
     </article>
+
   );
 }
 

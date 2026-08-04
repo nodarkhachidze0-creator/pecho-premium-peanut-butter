@@ -15,6 +15,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { I18nProvider } from "../lib/i18n";
 import { CartProvider } from "../lib/cart";
 import { Header } from "../components/Header";
+import { AnnouncementBar } from "../components/AnnouncementBar";
+
 import { Footer } from "../components/Footer";
 import { LoadingScreen } from "../components/LoadingScreen";
 
@@ -161,7 +163,11 @@ function RootComponent() {
         <CartProvider>
           <LoadingScreen />
           <div className="min-h-screen flex flex-col">
-            <Header />
+            <div className="sticky top-0 z-50">
+              <AnnouncementBar />
+              <Header />
+            </div>
+
             <main className="flex-1">
               <Outlet />
             </main>

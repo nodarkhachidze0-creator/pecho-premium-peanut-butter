@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Heart, Sparkles, Clock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { formatDate } from "@/lib/format-date";
 import { getFeatured } from "@/data/products";
 import { news } from "@/data/news";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
+import { StoreMap } from "@/components/StoreMap";
 import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
@@ -18,11 +19,6 @@ function Home() {
   const featured = getFeatured();
   const latest = news.slice(0, 3);
 
-  const whyItems = [
-    { icon: Heart, title: t("home.why.1.title"), body: t("home.why.1.body") },
-    { icon: Sparkles, title: t("home.why.2.title"), body: t("home.why.2.body") },
-    { icon: Clock, title: t("home.why.3.title"), body: t("home.why.3.body") },
-  ];
 
   return (
     <>
@@ -103,23 +99,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Why Choose */}
-      <section className="px-4 sm:px-6 py-20 md:py-28">
-        <div className="max-w-7xl mx-auto">
-          <div className="border-t border-brand-roast/10 pt-16 md:pt-20">
-            <h2 className="sr-only">{t("home.why.title")}</h2>
-            <div className="grid md:grid-cols-3 gap-12 md:gap-16">
-              {whyItems.map((it, i) => (
-                <div key={i} className="space-y-4">
-                  <it.icon className="size-7 text-brand-toast" strokeWidth={1.5} />
-                  <h3 className="font-display text-2xl font-medium">{it.title}</h3>
-                  <p className="text-brand-roast/70 text-pretty leading-relaxed">{it.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* About preview */}
       <section className="px-4 sm:px-6 py-20 md:py-24 bg-brand-paper">
@@ -240,7 +220,25 @@ function Home() {
         </div>
       </section>
 
+      {/* Where to buy */}
+      <section className="px-4 sm:px-6 py-16 md:py-20">
+        <div className="max-w-7xl mx-auto">
+          <header className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="text-3xl md:text-4xl font-display font-medium text-balance">
+              სად შეგიძლიათ ჩვენი პროდუქტის შეძენა
+            </h2>
+            <p className="mt-4 text-brand-roast/70">
+              იპოვეთ თქვენთან ყველაზე ახლოს არსებული მაღაზია.
+            </p>
+          </header>
+          <Reveal>
+            <StoreMap />
+          </Reveal>
+        </div>
+      </section>
+
       {/* Contact strip */}
+
       <section className="px-4 sm:px-6 pb-20">
         <div className="max-w-7xl mx-auto bg-brand-roast text-brand-cream rounded-3xl p-8 md:p-14 grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-3">
