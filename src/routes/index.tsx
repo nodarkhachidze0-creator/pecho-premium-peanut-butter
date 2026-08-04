@@ -99,23 +99,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Why Choose */}
-      <section className="px-4 sm:px-6 py-20 md:py-28">
-        <div className="max-w-7xl mx-auto">
-          <div className="border-t border-brand-roast/10 pt-16 md:pt-20">
-            <h2 className="sr-only">{t("home.why.title")}</h2>
-            <div className="grid md:grid-cols-3 gap-12 md:gap-16">
-              {whyItems.map((it, i) => (
-                <div key={i} className="space-y-4">
-                  <it.icon className="size-7 text-brand-toast" strokeWidth={1.5} />
-                  <h3 className="font-display text-2xl font-medium">{it.title}</h3>
-                  <p className="text-brand-roast/70 text-pretty leading-relaxed">{it.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* About preview */}
       <section className="px-4 sm:px-6 py-20 md:py-24 bg-brand-paper">
