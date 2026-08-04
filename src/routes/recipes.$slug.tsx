@@ -62,6 +62,19 @@ function RecipeDetail() {
           {/* Recipe content */}
           <div className="min-w-0">
         <header className="text-center lg:text-left">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-toast">
+            <ChefHat className="size-4" />
+            {lang === "ka" ? "რეცეპტი" : "Recipe"}
+          </span>
+          <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-display font-medium leading-tight text-balance">
+            {recipe.title[lang]}
+          </h1>
+          <p className="mt-6 text-brand-roast/70 text-lg leading-relaxed text-pretty">
+            {recipe.description[lang]}
+          </p>
+        </header>
+
+
 
 
         {/* Ingredients */}
