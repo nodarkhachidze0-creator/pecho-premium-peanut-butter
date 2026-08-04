@@ -22,6 +22,7 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RecipesIndexRouteImport } from './routes/recipes.index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as RecipesSlugRouteImport } from './routes/recipes.$slug'
@@ -97,6 +98,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecipesIndexRoute = RecipesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => RecipesRoute,
+} as any)
 const ProductsIndexRoute = ProductsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/recipes/$slug': typeof RecipesSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/recipes/': typeof RecipesIndexRoute
   '/api/public/order': typeof ApiPublicOrderRoute
 }
 export interface FileRoutesByTo {
@@ -177,7 +184,6 @@ export interface FileRoutesByTo {
   '/news': typeof NewsRouteWithChildren
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
-  '/recipes': typeof RecipesRouteWithChildren
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/orders': typeof AdminOrdersRoute
@@ -187,6 +193,7 @@ export interface FileRoutesByTo {
   '/recipes/$slug': typeof RecipesSlugRoute
   '/admin': typeof AdminIndexRoute
   '/products': typeof ProductsIndexRoute
+  '/recipes': typeof RecipesIndexRoute
   '/api/public/order': typeof ApiPublicOrderRoute
 }
 export interface FileRoutesById {
@@ -212,6 +219,7 @@ export interface FileRoutesById {
   '/recipes/$slug': typeof RecipesSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/recipes/': typeof RecipesIndexRoute
   '/api/public/order': typeof ApiPublicOrderRoute
 }
 export interface FileRouteTypes {
@@ -238,6 +246,7 @@ export interface FileRouteTypes {
     | '/recipes/$slug'
     | '/admin/'
     | '/products/'
+    | '/recipes/'
     | '/api/public/order'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -250,7 +259,6 @@ export interface FileRouteTypes {
     | '/news'
     | '/partners'
     | '/privacy'
-    | '/recipes'
     | '/terms'
     | '/admin/analytics'
     | '/admin/orders'
@@ -260,6 +268,7 @@ export interface FileRouteTypes {
     | '/recipes/$slug'
     | '/admin'
     | '/products'
+    | '/recipes'
     | '/api/public/order'
   id:
     | '__root__'
@@ -284,6 +293,7 @@ export interface FileRouteTypes {
     | '/recipes/$slug'
     | '/admin/'
     | '/products/'
+    | '/recipes/'
     | '/api/public/order'
   fileRoutesById: FileRoutesById
 }
@@ -396,6 +406,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/recipes/': {
+      id: '/recipes/'
+      path: '/'
+      fullPath: '/recipes/'
+      preLoaderRoute: typeof RecipesIndexRouteImport
+      parentRoute: typeof RecipesRoute
     }
     '/products/': {
       id: '/products/'
@@ -515,10 +532,12 @@ const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
 
 interface RecipesRouteChildren {
   RecipesSlugRoute: typeof RecipesSlugRoute
+  RecipesIndexRoute: typeof RecipesIndexRoute
 }
 
 const RecipesRouteChildren: RecipesRouteChildren = {
   RecipesSlugRoute: RecipesSlugRoute,
+  RecipesIndexRoute: RecipesIndexRoute,
 }
 
 const RecipesRouteWithChildren =
@@ -543,13 +562,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

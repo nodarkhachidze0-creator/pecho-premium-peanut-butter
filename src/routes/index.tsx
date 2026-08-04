@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Heart, Sparkles, Clock } from "lucide-react";
 import { useT } from "@/lib/i18n";
+import { formatDate } from "@/lib/format-date";
 import { getFeatured } from "@/data/products";
 import { news } from "@/data/news";
 import { ProductCard } from "@/components/ProductCard";
-import { DeliveryPanel } from "@/components/DeliveryPanel";
 import { Reveal } from "@/components/Reveal";
 import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
@@ -169,11 +169,7 @@ function Home() {
                 className="group block bg-brand-beige rounded-2xl p-8 ring-1 ring-black/5 hover:ring-brand-toast/40 transition-all"
               >
                 <span className="text-[10px] font-mono uppercase tracking-widest text-brand-roast/50">
-                  {new Date(post.date).toLocaleDateString(lang === "ka" ? "ka-GE" : "en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {formatDate(post.date, lang)}
                 </span>
                 <h3 className="text-xl font-display mt-3 group-hover:text-brand-toast transition-colors">
                   {post.title[lang]}
@@ -186,9 +182,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Delivery */}
-      <DeliveryPanel />
 
       {/* FAQ preview */}
       <section className="px-4 sm:px-6 py-20 md:py-24">

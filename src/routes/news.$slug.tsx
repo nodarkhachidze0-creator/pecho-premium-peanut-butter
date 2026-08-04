@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { getPost } from "@/data/news";
 import { useT } from "@/lib/i18n";
+import { formatDate } from "@/lib/format-date";
 
 export const Route = createFileRoute("/news/$slug")({
   loader: ({ params }) => {
@@ -50,11 +51,7 @@ function NewsPost() {
           <ArrowLeft className="size-4" /> {t("nav.news")}
         </Link>
         <span className="text-[10px] font-mono uppercase tracking-widest text-brand-roast/50">
-          {new Date(post.date).toLocaleDateString(lang === "ka" ? "ka-GE" : "en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          {formatDate(post.date, lang)}
         </span>
         <h1 className="text-3xl md:text-5xl font-display font-medium mt-3 text-balance">
           {post.title[lang]}
