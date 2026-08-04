@@ -15,6 +15,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { I18nProvider } from "../lib/i18n";
 import { CartProvider } from "../lib/cart";
 import { Header } from "../components/Header";
+import { AnnouncementBar } from "../components/AnnouncementBar";
+
 import { Footer } from "../components/Footer";
 import { LoadingScreen } from "../components/LoadingScreen";
 
