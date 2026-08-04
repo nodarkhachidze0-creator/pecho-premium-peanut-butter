@@ -143,8 +143,11 @@ function RecipeDetail() {
             </p>
           </div>
         </Reveal>
+          </div>
+        </div>
       </div>
     </article>
+
   );
 }
 
