@@ -163,7 +163,11 @@ function RootComponent() {
         <CartProvider>
           <LoadingScreen />
           <div className="min-h-screen flex flex-col">
-            <Header />
+            <div className="sticky top-0 z-50">
+              <AnnouncementBar />
+              <Header />
+            </div>
+
             <main className="flex-1">
               <Outlet />
             </main>
