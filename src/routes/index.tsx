@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Heart, Sparkles, Clock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { formatDate } from "@/lib/format-date";
 import { getFeatured } from "@/data/products";
 import { news } from "@/data/news";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
+import { StoreMap } from "@/components/StoreMap";
 import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
@@ -18,11 +19,6 @@ function Home() {
   const featured = getFeatured();
   const latest = news.slice(0, 3);
 
-  const whyItems = [
-    { icon: Heart, title: t("home.why.1.title"), body: t("home.why.1.body") },
-    { icon: Sparkles, title: t("home.why.2.title"), body: t("home.why.2.body") },
-    { icon: Clock, title: t("home.why.3.title"), body: t("home.why.3.body") },
-  ];
 
   return (
     <>
