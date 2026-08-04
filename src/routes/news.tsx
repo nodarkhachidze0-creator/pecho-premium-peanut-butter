@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
+import { formatDate } from "@/lib/format-date";
 import { news } from "@/data/news";
 
 export const Route = createFileRoute("/news")({
@@ -35,11 +36,7 @@ function NewsIndex() {
               className="group block bg-brand-beige rounded-3xl p-8 md:p-10 ring-1 ring-black/5 hover:ring-brand-toast/40 transition-all"
             >
               <span className="text-[10px] font-mono uppercase tracking-widest text-brand-roast/50">
-                {new Date(post.date).toLocaleDateString(lang === "ka" ? "ka-GE" : "en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                {formatDate(post.date, lang)}
               </span>
               <h2 className="text-2xl md:text-3xl font-display mt-3 group-hover:text-brand-toast transition-colors">
                 {post.title[lang]}

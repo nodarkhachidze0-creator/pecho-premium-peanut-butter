@@ -57,7 +57,7 @@ function ContactPage() {
             <p className="text-brand-roast/70 mt-4 text-lg">{t("contact.subtitle")}</p>
 
             <div className="mt-10 space-y-5">
-              <InfoRow icon={Phone} label={t("contact.info.phone")} value="595 55 17 80" href="tel:+995595551780" />
+              <InfoRow icon={Phone} label={t("contact.info.phone")} value="598 52 22 40" href="tel:+995598522240" />
               <InfoRow icon={Mail} label={t("contact.info.email")} value="Pecho.official@gmail.com" href="mailto:Pecho.official@gmail.com" />
               <InfoRow icon={MapPin} label={t("contact.info.address")} value="ქ. გორი, შინდისის გმირების 17ბ" />
               <InfoRow icon={Clock} label={t("contact.info.hours")} value={t("contact.info.hoursValue")} />

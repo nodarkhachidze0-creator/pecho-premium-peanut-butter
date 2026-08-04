@@ -40,7 +40,7 @@ function TermsPage() {
               : "If a product arrives damaged, please contact us within 24 hours for a replacement."}
           </p>
           <h2 className="text-xl font-display mt-8">{ka ? "კონტაქტი" : "Contact"}</h2>
-          <p>Pecho.official@gmail.com · 595 55 17 80 · ქ. გორი, შინდისის გმირების 17ბ</p>
+          <p>Pecho.official@gmail.com · 598 52 22 40 · ქ. გორი, შინდისის გმირების 17ბ</p>
         </div>
       </div>
     </article>
