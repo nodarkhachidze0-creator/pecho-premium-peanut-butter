@@ -220,7 +220,25 @@ function Home() {
         </div>
       </section>
 
+      {/* Where to buy */}
+      <section className="px-4 sm:px-6 py-16 md:py-20">
+        <div className="max-w-7xl mx-auto">
+          <header className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="text-3xl md:text-4xl font-display font-medium text-balance">
+              სად შეგიძლიათ ჩვენი პროდუქტის შეძენა
+            </h2>
+            <p className="mt-4 text-brand-roast/70">
+              იპოვეთ თქვენთან ყველაზე ახლოს არსებული მაღაზია.
+            </p>
+          </header>
+          <Reveal>
+            <StoreMap />
+          </Reveal>
+        </div>
+      </section>
+
       {/* Contact strip */}
+
       <section className="px-4 sm:px-6 pb-20">
         <div className="max-w-7xl mx-auto bg-brand-roast text-brand-cream rounded-3xl p-8 md:p-14 grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-3">
