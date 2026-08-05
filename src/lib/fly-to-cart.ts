@@ -14,6 +14,19 @@ export function flyToCart(imageSrc: string, fromRect: DOMRect) {
   }
   const toRect = target.getBoundingClientRect();
 
+  for (let index = 0; index < 6; index += 1) {
+    const particle = document.createElement("span");
+    particle.className = "peanut-particle";
+    particle.textContent = "🥜";
+    particle.style.left = `${fromRect.left + fromRect.width / 2}px`;
+    particle.style.top = `${fromRect.top + fromRect.height * 0.62}px`;
+    particle.style.setProperty("--particle-x", `${(index - 2.5) * 18}px`);
+    particle.style.setProperty("--particle-y", `${-24 - (index % 3) * 14}px`);
+    particle.style.animationDelay = `${index * 28}ms`;
+    document.body.appendChild(particle);
+    setTimeout(() => particle.remove(), 800);
+  }
+
   const el = document.createElement("img");
   el.src = imageSrc;
   el.alt = "";
@@ -28,8 +41,8 @@ export function flyToCart(imageSrc: string, fromRect: DOMRect) {
     object-fit:cover;
     pointer-events:none;
     z-index:9999;
-    box-shadow:0 20px 40px -12px rgba(243,130,10,0.55);
-    transition: transform 780ms cubic-bezier(0.65,0,0.35,1), opacity 780ms ease-out, border-radius 780ms ease-out;
+    box-shadow:0 20px 40px -12px color-mix(in srgb, var(--brand-toast) 55%, transparent);
+    transition: transform 720ms cubic-bezier(0.22,1,0.36,1), opacity 720ms ease-out, border-radius 720ms ease-out;
     will-change: transform, opacity;
   `;
   document.body.appendChild(el);
@@ -38,8 +51,8 @@ export function flyToCart(imageSrc: string, fromRect: DOMRect) {
   const dy = toRect.top + toRect.height / 2 - (fromRect.top + fromRect.height / 2);
 
   requestAnimationFrame(() => {
-    el.style.transform = `translate(${dx}px, ${dy}px) scale(0.08) rotate(20deg)`;
-    el.style.opacity = "0.2";
+    el.style.transform = `translate(${dx}px, ${dy}px) scale(0.06) rotate(8deg)`;
+    el.style.opacity = "0.12";
     el.style.borderRadius = "999px";
   });
 
@@ -48,5 +61,5 @@ export function flyToCart(imageSrc: string, fromRect: DOMRect) {
     window.dispatchEvent(new CustomEvent("pecho:cart-bump"));
   };
   el.addEventListener("transitionend", cleanup, { once: true });
-  setTimeout(cleanup, 1000);
+  setTimeout(cleanup, 900);
 }
