@@ -6,6 +6,7 @@ type Props = {
   as?: ElementType;
   className?: string;
   y?: number;
+  scale?: number;
 };
 
 /**
@@ -13,7 +14,7 @@ type Props = {
  * Uses a single IntersectionObserver per instance; cheap and 60fps.
  * Respects prefers-reduced-motion by immediately marking as visible.
  */
-export function Reveal({ children, delay = 0, as: Tag = "div", className = "", y = 24 }: Props) {
+export function Reveal({ children, delay = 0, as: Tag = "div", className = "", y = 24, scale = 0.98 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -43,10 +44,11 @@ export function Reveal({ children, delay = 0, as: Tag = "div", className = "", y
   }, []);
 
   const style: React.CSSProperties = {
-    transform: visible ? "translate3d(0,0,0)" : `translate3d(0, ${y}px, 0)`,
+    transform: visible ? "translate3d(0,0,0) scale(1)" : `translate3d(0, ${y}px, 0) scale(${scale})`,
     opacity: visible ? 1 : 0,
-    transition: `opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 800ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
-    willChange: visible ? "auto" : "opacity, transform",
+    filter: visible ? "blur(0)" : "blur(6px)",
+    transition: `opacity 650ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 800ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, filter 650ms ease-out ${delay}ms`,
+    willChange: visible ? "auto" : "opacity, transform, filter",
   };
 
   return createElement(

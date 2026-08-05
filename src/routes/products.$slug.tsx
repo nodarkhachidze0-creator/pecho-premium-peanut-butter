@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import { ArrowLeft } from "lucide-react";
 import { getProduct, getRelated } from "@/data/products";
@@ -7,6 +8,10 @@ import { useT } from "@/lib/i18n";
 import { useCart, formatGEL } from "@/lib/cart";
 import { QuantityStepper } from "@/components/QuantityStepper";
 import { ProductCard } from "@/components/ProductCard";
+import { InteractiveProductImage } from "@/components/InteractiveProductImage";
+import { CountUp } from "@/components/CountUp";
+import { Reveal } from "@/components/Reveal";
+import { flyToCart } from "@/lib/fly-to-cart";
 
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => {
@@ -76,9 +81,25 @@ function ProductDetail() {
   const { add } = useCart();
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<Tab>("description");
+  const [hydrated, setHydrated] = useState(false);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const related = getRelated(product.slug);
 
-  const handleAdd = () => {
+  useEffect(() => setHydrated(true), []);
+
+  const handleAdd = (event?: React.MouseEvent<HTMLButtonElement>) => {
+    if (event && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.width = ripple.style.height = "22px";
+      ripple.style.left = `${event.clientX - rect.left - 11}px`;
+      ripple.style.top = `${event.clientY - rect.top - 11}px`;
+      buttonRef.current.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    }
+    if (imageRef.current) flyToCart(product.image, imageRef.current.getBoundingClientRect());
     add(
       {
         id: product.slug,
@@ -106,27 +127,22 @@ function ProductDetail() {
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
             <div className="space-y-4">
               <div className="bg-brand-paper rounded-3xl ring-1 ring-black/5 overflow-hidden">
-                <img
+                <InteractiveProductImage
+                  ref={imageRef}
                   src={product.image}
                   alt={product.name[lang]}
-                  className="w-full aspect-square object-cover"
+                  variant={product.category}
+                  priority
+                  className="w-full aspect-square object-contain"
                 />
               </div>
-              <div className="grid grid-cols-4 gap-3">
-                {[0, 1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="aspect-square bg-brand-paper rounded-xl ring-1 ring-black/5 overflow-hidden"
-                  >
-                    <img
-                      src={product.image}
-                      alt=""
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
+              <button
+                type="button"
+                aria-label={`${product.name[lang]} — ${lang === "ka" ? "არჩეული ფოტო" : "selected image"}`}
+                className="block size-20 bg-brand-paper rounded-xl ring-2 ring-brand-toast overflow-hidden"
+              >
+                <img src={product.image} alt="" className="w-full h-full object-contain" />
+              </button>
             </div>
 
             <div className="space-y-6">
@@ -160,8 +176,9 @@ function ProductDetail() {
                   <QuantityStepper value={qty} onChange={setQty} />
                 </div>
                 <button
+                  ref={buttonRef}
                   onClick={handleAdd}
-                  className="mt-6 flex-1 min-w-[200px] bg-brand-roast text-brand-cream px-7 py-4 rounded-full font-semibold hover:bg-brand-toast transition-colors"
+                  className="btn-premium mt-6 flex-1 min-w-[200px] bg-brand-roast text-brand-cream px-7 py-4 rounded-full font-semibold hover:bg-brand-toast transition-colors"
                 >
                   {t("cta.addToCart")} · {formatGEL(product.price * qty)}
                 </button>
@@ -192,7 +209,7 @@ function ProductDetail() {
                         {product.nutrition.map((n: { label: { en: string; ka: string }; value: string }) => (
                           <tr key={n.value} className="border-b border-brand-roast/5">
                             <td className="py-2 text-brand-roast/60">{n.label[lang]}</td>
-                            <td className="py-2 text-right font-medium">{n.value}</td>
+                            <td className="py-2 text-right font-medium"><CountUp value={n.value} /></td>
                           </tr>
                         ))}
                       </tbody>
@@ -216,12 +233,26 @@ function ProductDetail() {
             {t("pdp.related")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {related.map((p) => (
-              <ProductCard key={p.slug} product={p} />
+            {related.map((p, index) => (
+              <Reveal key={p.slug} delay={index * 80} scale={0.96}>
+                <ProductCard product={p} />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
+      {hydrated && createPortal(
+        <div className="mobile-sticky-cta md:hidden">
+          <div className="min-w-0">
+            <div className="truncate text-xs text-brand-roast/60">{product.name[lang]} · {qty}</div>
+            <div className="font-semibold text-brand-toast">{formatGEL(product.price * qty)}</div>
+          </div>
+          <button onClick={() => handleAdd()} className="btn-premium shrink-0 bg-brand-roast text-brand-cream px-5 py-3 rounded-full text-sm font-semibold">
+            {t("cta.addToCart")}
+          </button>
+        </div>,
+        document.body,
+      )}
     </>
   );
 }

@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { products, type Category } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { Reveal } from "@/components/Reveal";
 
 
 export const Route = createFileRoute("/products/")({
@@ -103,8 +104,10 @@ function ProductsPage() {
           <p className="text-brand-roast/60 py-20 text-center">{t("products.empty")}</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {filtered.map((p) => (
-              <ProductCard key={p.slug} product={p} />
+            {filtered.map((p, index) => (
+              <Reveal key={p.slug} delay={index * 80} scale={0.96}>
+                <ProductCard product={p} />
+              </Reveal>
             ))}
           </div>
         )}

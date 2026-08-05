@@ -4,6 +4,7 @@ import type { Product } from "@/data/products";
 import { useCart, formatGEL } from "@/lib/cart";
 import { useT } from "@/lib/i18n";
 import { flyToCart } from "@/lib/fly-to-cart";
+import { InteractiveProductImage } from "@/components/InteractiveProductImage";
 
 export function ProductCard({ product }: { product: Product }) {
   const { lang, t } = useT();
@@ -43,12 +44,12 @@ export function ProductCard({ product }: { product: Product }) {
     <Link to="/products/$slug" params={{ slug: product.slug }} className="group flex flex-col tilt-card">
       <div className="tilt-card-inner relative overflow-hidden rounded-2xl ring-1 ring-black/5 bg-brand-paper">
         <div className="jar-float">
-          <img
+          <InteractiveProductImage
             ref={imgRef}
             src={product.image}
             alt={product.name[lang]}
-            loading="lazy"
-            className="tilt-image w-full aspect-[4/5] object-cover"
+            variant={product.category}
+            className="tilt-image w-full aspect-[4/5] object-contain"
           />
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useT } from "@/lib/i18n";
 import { useCart, formatGEL, DELIVERY_FEE } from "@/lib/cart";
 import { QuantityStepper } from "@/components/QuantityStepper";
 import { PeanutMascot } from "@/components/PeanutMascot";
+import { InteractiveProductImage } from "@/components/InteractiveProductImage";
 
 export const Route = createFileRoute("/cart")({
   head: () => ({
@@ -47,7 +48,14 @@ function CartPage() {
             <ul className="divide-y divide-brand-roast/10 border-y border-brand-roast/10">
               {items.map((item) => (
                 <li key={item.id} className="py-6 grid grid-cols-[80px_1fr_auto] gap-4 items-center animate-in fade-in slide-in-from-left-2 duration-300">
-                  <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-lg bg-brand-paper" />
+                   <div className="w-20 h-20 overflow-hidden rounded-lg bg-brand-paper">
+                     <InteractiveProductImage
+                       src={item.image}
+                       alt={item.name}
+                       variant={item.id.includes("bundle") ? "bundle" : item.id.includes("crunchy") ? "crunchy" : "classic"}
+                       className="w-20 h-20 object-contain"
+                     />
+                   </div>
                   <div className="min-w-0">
                     <h3 className="font-display text-lg truncate">{item.name}</h3>
                     <div className="text-sm text-brand-roast/60 mt-1">{item.weight} · {formatGEL(item.price)}</div>

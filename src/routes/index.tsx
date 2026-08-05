@@ -7,10 +7,22 @@ import { news } from "@/data/news";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { StoreMap } from "@/components/StoreMap";
+import { InteractiveProductImage } from "@/components/InteractiveProductImage";
+import { DripDivider } from "@/components/DripDivider";
 import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Pecho — პრემიუმ მიწისთხილის კარაქი" },
+      { name: "description", content: "100% ნატურალური Pecho მიწისთხილის კარაქი. მიწოდება მთელ საქართველოში 2–3 სამუშაო დღეში." },
+      { property: "og:title", content: "Pecho — პრემიუმ მიწისთხილის კარაქი" },
+      { property: "og:description", content: "100% ნატურალური მიწისთხილის კარაქი, დამზადებული საქართველოში." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Home,
 });
 
@@ -23,7 +35,7 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20 lg:pb-24">
+      <section id="promo-2plus1" className="relative px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20 lg:pb-24 scroll-mt-28">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="space-y-6 lg:space-y-8">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-toast">
@@ -51,21 +63,26 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative hero-float">
+          <div className="relative hero-product-float">
             <Link
               to="/products/$slug"
               params={{ slug: "bundle-2plus1" }}
               className="block rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-paper"
             >
-              <img
+              <InteractiveProductImage
                 src={promoImg.url}
                 alt="Pecho 2+1 promotional offer"
+                variant="bundle"
+                hero
+                priority
                 className="block w-full h-auto object-contain"
               />
             </Link>
           </div>
         </div>
       </section>
+
+      <DripDivider className="text-brand-beige" />
 
 
 
@@ -104,12 +121,14 @@ function Home() {
       {/* About preview */}
       <section className="px-4 sm:px-6 py-20 md:py-24 bg-brand-paper">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <img
-            src={aboutTexture}
-            alt="Peanut butter texture on wooden spoon"
-            loading="lazy"
-            className="w-full aspect-square object-cover rounded-3xl ring-1 ring-black/5"
-          />
+          <Reveal>
+            <img
+              src={aboutTexture}
+              alt="Peanut butter texture on wooden spoon"
+              loading="lazy"
+              className="w-full aspect-square object-cover rounded-3xl ring-1 ring-black/5"
+            />
+          </Reveal>
           <div className="space-y-6">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
               {t("home.about.eyebrow")}
@@ -141,23 +160,24 @@ function Home() {
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            {latest.map((post) => (
-              <Link
-                key={post.slug}
-                to="/news/$slug"
-                params={{ slug: post.slug }}
-                className="group block bg-brand-beige rounded-2xl p-8 ring-1 ring-black/5 hover:ring-brand-toast/40 transition-all"
-              >
-                <span className="text-[10px] font-mono uppercase tracking-widest text-brand-roast/50">
-                  {formatDate(post.date, lang)}
-                </span>
-                <h3 className="text-xl font-display mt-3 group-hover:text-brand-toast transition-colors">
-                  {post.title[lang]}
-                </h3>
-                <p className="text-sm text-brand-roast/60 mt-3 leading-relaxed">
-                  {post.excerpt[lang]}
-                </p>
-              </Link>
+            {latest.map((post, index) => (
+              <Reveal key={post.slug} delay={index * 80}>
+                <Link
+                  to="/news/$slug"
+                  params={{ slug: post.slug }}
+                  className="group block bg-brand-beige rounded-2xl p-8 ring-1 ring-black/5 hover:ring-brand-toast/40 transition-all"
+                >
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-brand-roast/50">
+                    {formatDate(post.date, lang)}
+                  </span>
+                  <h3 className="text-xl font-display mt-3 group-hover:text-brand-toast transition-colors">
+                    {post.title[lang]}
+                  </h3>
+                  <p className="text-sm text-brand-roast/60 mt-3 leading-relaxed">
+                    {post.excerpt[lang]}
+                  </p>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
