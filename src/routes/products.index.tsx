@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { products, type Category } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { Reveal } from "@/components/Reveal";
 
 
 export const Route = createFileRoute("/products/")({
