@@ -56,7 +56,10 @@ export function flyToCart(imageSrc: string, fromRect: DOMRect) {
     el.style.borderRadius = "999px";
   });
 
+  let cleaned = false;
   const cleanup = () => {
+    if (cleaned) return;
+    cleaned = true;
     el.remove();
     window.dispatchEvent(new CustomEvent("pecho:cart-bump"));
   };

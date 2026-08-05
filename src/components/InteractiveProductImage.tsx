@@ -30,7 +30,7 @@ export const InteractiveProductImage = forwardRef<HTMLImageElement, Props>(funct
   const targetRef = useRef({ x: 0, y: 0 });
   const currentRef = useRef({ x: 0, y: 0 });
 
-  useImperativeHandle(forwardedRef, () => imageRef.current as HTMLImageElement, []);
+  useImperativeHandle(forwardedRef, () => imageRef.current as HTMLImageElement);
 
   useEffect(() => {
     const root = rootRef.current;

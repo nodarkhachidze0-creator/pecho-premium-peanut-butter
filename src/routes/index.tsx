@@ -13,6 +13,16 @@ import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Pecho — პრემიუმ მიწისთხილის კარაქი" },
+      { name: "description", content: "100% ნატურალური Pecho მიწისთხილის კარაქი. მიწოდება მთელ საქართველოში 2–3 სამუშაო დღეში." },
+      { property: "og:title", content: "Pecho — პრემიუმ მიწისთხილის კარაქი" },
+      { property: "og:description", content: "100% ნატურალური მიწისთხილის კარაქი, დამზადებული საქართველოში." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Home,
 });
 
