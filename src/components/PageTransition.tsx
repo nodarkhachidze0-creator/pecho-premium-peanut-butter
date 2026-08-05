@@ -12,5 +12,5 @@ function TransitionFrame({ children }: { children: ReactNode }) {
     const timer = window.setTimeout(() => setEntering(false), 280);
     return () => window.clearTimeout(timer);
   }, []);
-  return <div className={entering ? "page-transition" : ""}>{children}</div>;
+  return <div className={entering ? "page-fade" : ""}>{children}</div>;
 }
