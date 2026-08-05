@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import { ArrowLeft } from "lucide-react";
 import { getProduct, getRelated } from "@/data/products";
@@ -80,9 +81,12 @@ function ProductDetail() {
   const { add } = useCart();
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<Tab>("description");
+  const [hydrated, setHydrated] = useState(false);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const related = getRelated(product.slug);
+
+  useEffect(() => setHydrated(true), []);
 
   const handleAdd = (event?: React.MouseEvent<HTMLButtonElement>) => {
     if (event && buttonRef.current) {
@@ -237,15 +241,18 @@ function ProductDetail() {
           </div>
         </div>
       </section>
-      <div className="mobile-sticky-cta md:hidden">
-        <div className="min-w-0">
-          <div className="truncate text-xs text-brand-roast/60">{product.name[lang]} · {qty}</div>
-          <div className="font-semibold text-brand-toast">{formatGEL(product.price * qty)}</div>
-        </div>
-        <button onClick={() => handleAdd()} className="btn-premium shrink-0 bg-brand-roast text-brand-cream px-5 py-3 rounded-full text-sm font-semibold">
-          {t("cta.addToCart")}
-        </button>
-      </div>
+      {hydrated && createPortal(
+        <div className="mobile-sticky-cta md:hidden">
+          <div className="min-w-0">
+            <div className="truncate text-xs text-brand-roast/60">{product.name[lang]} · {qty}</div>
+            <div className="font-semibold text-brand-toast">{formatGEL(product.price * qty)}</div>
+          </div>
+          <button onClick={() => handleAdd()} className="btn-premium shrink-0 bg-brand-roast text-brand-cream px-5 py-3 rounded-full text-sm font-semibold">
+            {t("cta.addToCart")}
+          </button>
+        </div>,
+        document.body,
+      )}
     </>
   );
 }
