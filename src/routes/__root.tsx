@@ -19,7 +19,6 @@ import { AnnouncementBar } from "../components/AnnouncementBar";
 
 import { Footer } from "../components/Footer";
 import { LoadingScreen } from "../components/LoadingScreen";
-import { PageTransition } from "../components/PageTransition";
 
 function NotFoundComponent() {
   return (
@@ -169,10 +168,8 @@ function RootComponent() {
               <Header />
             </div>
 
-            <main className="flex-1 overflow-clip">
-              <PageTransition>
-                <Outlet />
-              </PageTransition>
+            <main className="flex-1">
+              <Outlet />
             </main>
             <Footer />
           </div>

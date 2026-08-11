@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import classicJar from "@/assets/pecho-classic-1kg.png.asset.json";
+import { PechoLogo } from "./PechoLogo";
 
 /**
  * Simple logo pop-in loader on cream background.
@@ -49,10 +49,8 @@ export function LoadingScreen() {
       }`}
       aria-hidden="true"
     >
-      <div className="premium-loader-scene">
-        <span className="premium-loader-lid" aria-hidden="true" />
-        <img src={classicJar.url} alt="" className="premium-loader-jar" />
-        <span className="premium-loader-peanut" aria-hidden="true">🥜</span>
+      <div className="pecho-logo-pop">
+        <PechoLogo className="h-24 sm:h-32 w-auto" />
       </div>
     </div>
   );

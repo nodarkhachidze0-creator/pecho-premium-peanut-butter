@@ -22,16 +22,16 @@ function Success() {
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
-    const items: Peanut[] = Array.from({ length: 10 }).map((_, i) => ({
+    const items: Peanut[] = Array.from({ length: 34 }).map((_, i) => ({
       id: i,
       left: Math.random() * 100,
-      delay: Math.random() * 450,
-      duration: 1900 + Math.random() * 900,
-      size: 14 + Math.random() * 12,
+      delay: Math.random() * 2500,
+      duration: 3500 + Math.random() * 2500,
+      size: 18 + Math.random() * 20,
       rotate: Math.random() * 360,
     }));
     setPeanuts(items);
-    const t = setTimeout(() => setPeanuts([]), 3600);
+    const t = setTimeout(() => setPeanuts([]), 8000);
     return () => clearTimeout(t);
   }, []);
 

@@ -4,7 +4,6 @@ import aboutTexture from "@/assets/about-texture.jpg";
 import classicJar from "@/assets/pecho-classic-1kg.png.asset.json";
 import { Leaf, Ban, Star, Zap, Sparkles, Utensils } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { InteractiveProductImage } from "@/components/InteractiveProductImage";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -106,10 +105,10 @@ function About() {
         <div className="max-w-6xl mx-auto pt-20 md:pt-28 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <Reveal delay={120} className="md:order-2">
             <div className="relative">
-              <InteractiveProductImage
+              <img
                 src={classicJar.url}
                 alt="Pecho classic jar"
-                variant="classic"
+                loading="lazy"
                 className="w-full aspect-square object-contain rounded-3xl"
               />
             </div>
