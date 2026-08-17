@@ -8,8 +8,12 @@ export type Recipe = {
   steps: string[];
   plating: string;
   closing: string;
-  videoUrl: string;
+  /** Ordered video sources — WebM first, MP4 fallback for Safari. */
+  sources: { src: string; type: string }[];
+  /** Poster frame used by cards and before playback. */
+  poster?: string;
 };
+
 
 export const recipes: Recipe[] = [
   {
