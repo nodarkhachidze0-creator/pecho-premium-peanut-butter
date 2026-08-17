@@ -8,8 +8,12 @@ export type Recipe = {
   steps: string[];
   plating: string;
   closing: string;
-  videoUrl: string;
+  /** Ordered video sources — WebM first, MP4 fallback for Safari. */
+  sources: { src: string; type: string }[];
+  /** Poster frame used by cards and before playback. */
+  poster?: string;
 };
+
 
 export const recipes: Recipe[] = [
   {
@@ -38,6 +42,6 @@ export const recipes: Recipe[] = [
     plating:
       "მზად დესერტს გადაასხით Pecho Classic არაქისის კარაქი და დაამატეთ ახალი მარწყვი. სურვილის შემთხვევაში შეგიძლიათ სხვა საყვარელი ტოპინგებიც გამოიყენოთ.",
     closing: "✨ გემრიელად მიირთვით!",
-    videoUrl: videoAsset.url,
+    sources: [{ src: videoAsset.url, type: "video/mp4" }],
   },
 ];
