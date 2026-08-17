@@ -3,6 +3,8 @@ import { ArrowLeft, ChefHat, Sparkles } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { recipes } from "@/data/recipes";
 import { Reveal } from "@/components/Reveal";
+import { RecipeVideo } from "@/components/RecipeVideo";
+
 
 export const Route = createFileRoute("/recipes/$slug")({
   loader: ({ params }) => {
