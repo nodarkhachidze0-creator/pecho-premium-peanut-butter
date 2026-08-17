@@ -35,20 +35,30 @@ function RecipesPage() {
                 params={{ slug: r.slug }}
                 className="group block bg-brand-paper rounded-3xl overflow-hidden ring-1 ring-black/5 hover:ring-brand-toast/40 hover:-translate-y-1 transition-all h-full"
               >
-                <div className="relative aspect-video bg-brand-roast/90 overflow-hidden">
-                  <video
-                    src={r.videoUrl}
-                    muted
-                    playsInline
-                    preload="metadata"
-                    tabIndex={-1}
-                    aria-hidden="true"
-                    className="pointer-events-none w-full h-full object-cover"
-                  />
+                <div className="relative aspect-[4/5] bg-brand-roast/90 overflow-hidden">
+                  {r.poster ? (
+                    <img
+                      src={r.poster}
+                      alt=""
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <video
+                      src={r.sources[0]?.src}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      tabIndex={-1}
+                      aria-hidden="true"
+                      className="pointer-events-none w-full h-full object-cover"
+                    />
+                  )}
                   <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-brand-roast/30 group-hover:bg-brand-roast/10 transition-colors">
                     <PlayCircle className="size-14 text-white drop-shadow-lg" strokeWidth={1.4} />
                   </div>
                 </div>
+
                 <div className="p-6">
                   <h2 className="text-xl font-display leading-snug group-hover:text-brand-toast transition-colors">
                     {r.title[lang]}

@@ -47,17 +47,13 @@ function RecipeDetail() {
         <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-14 items-start">
           {/* Video — sticky on desktop */}
           <div className="lg:sticky lg:top-[120px] lg:self-start">
-            <div className="rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-roast mx-auto w-full max-w-[420px]">
-              <video
-                src={recipe.videoUrl}
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full max-h-[760px] object-contain bg-brand-roast"
-                style={{ aspectRatio: "9 / 16" }}
-              />
-            </div>
+            <RecipeVideo
+              sources={recipe.sources}
+              poster={recipe.poster}
+              title={recipe.title[lang]}
+            />
           </div>
+
 
           {/* Recipe content */}
           <div className="min-w-0">

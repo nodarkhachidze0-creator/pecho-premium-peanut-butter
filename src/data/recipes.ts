@@ -42,6 +42,6 @@ export const recipes: Recipe[] = [
     plating:
       "მზად დესერტს გადაასხით Pecho Classic არაქისის კარაქი და დაამატეთ ახალი მარწყვი. სურვილის შემთხვევაში შეგიძლიათ სხვა საყვარელი ტოპინგებიც გამოიყენოთ.",
     closing: "✨ გემრიელად მიირთვით!",
-    videoUrl: videoAsset.url,
+    sources: [{ src: videoAsset.url, type: "video/mp4" }],
   },
 ];
