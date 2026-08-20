@@ -106,7 +106,7 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
       </div>
 
-      <div className="mt-5 flex items-start justify-between gap-4">
+      <div className="mt-5 flex items-start justify-between gap-4 md:mb-auto">
         <h3 className="min-w-0 font-heading text-lg leading-tight text-brand-roast">
           {product.name[lang]}
         </h3>
@@ -116,7 +116,7 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Mobile / touch info */}
-      <dl className="mt-3 space-y-1 md:hidden">
+      <dl className="mt-3 space-y-1 md:hidden mb-auto">
         {rows.slice(0, 3).map((r) => (
           <div key={r.label.en} className="flex justify-between gap-3 text-[13px]">
             <dt className="font-label text-[10px] uppercase tracking-widest text-brand-roast/50 pt-[3px]">
@@ -130,8 +130,7 @@ export function ProductCard({ product }: { product: Product }) {
       <button
         ref={btnRef}
         onClick={handleAdd}
-        className="btn-premium mt-auto w-full rounded-xl bg-brand-roast px-4 py-3 pt-4 text-xs font-semibold uppercase tracking-widest text-brand-cream hover:bg-brand-toast"
-        style={{ marginTop: "1.25rem" }}
+        className="btn-premium mt-5 w-full rounded-xl bg-brand-roast px-4 py-3 text-xs font-semibold uppercase tracking-widest text-brand-cream hover:bg-brand-toast"
       >
         {t("cta.addToCart")}
       </button>
