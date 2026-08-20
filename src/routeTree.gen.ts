@@ -30,7 +30,6 @@ import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
 import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
-import { Route as AdminLocationsRouteImport } from './routes/admin.locations'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as ApiPublicOrderRouteImport } from './routes/api/public/order'
 
@@ -139,11 +138,6 @@ const AdminOrdersRoute = AdminOrdersRouteImport.update({
   path: '/orders',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminLocationsRoute = AdminLocationsRouteImport.update({
-  id: '/locations',
-  path: '/locations',
-  getParentRoute: () => AdminRoute,
-} as any)
 const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
@@ -170,7 +164,6 @@ export interface FileRoutesByFullPath {
   '/recipes': typeof RecipesRouteWithChildren
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
-  '/admin/locations': typeof AdminLocationsRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -193,7 +186,6 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
-  '/admin/locations': typeof AdminLocationsRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -220,7 +212,6 @@ export interface FileRoutesById {
   '/recipes': typeof RecipesRouteWithChildren
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
-  '/admin/locations': typeof AdminLocationsRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -248,7 +239,6 @@ export interface FileRouteTypes {
     | '/recipes'
     | '/terms'
     | '/admin/analytics'
-    | '/admin/locations'
     | '/admin/orders'
     | '/checkout/success'
     | '/news/$slug'
@@ -271,7 +261,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/admin/analytics'
-    | '/admin/locations'
     | '/admin/orders'
     | '/checkout/success'
     | '/news/$slug'
@@ -297,7 +286,6 @@ export interface FileRouteTypes {
     | '/recipes'
     | '/terms'
     | '/admin/analytics'
-    | '/admin/locations'
     | '/admin/orders'
     | '/checkout/success'
     | '/news/$slug'
@@ -475,13 +463,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminOrdersRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/locations': {
-      id: '/admin/locations'
-      path: '/locations'
-      fullPath: '/admin/locations'
-      preLoaderRoute: typeof AdminLocationsRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/admin/analytics': {
       id: '/admin/analytics'
       path: '/analytics'
@@ -501,14 +482,12 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
-  AdminLocationsRoute: typeof AdminLocationsRoute
   AdminOrdersRoute: typeof AdminOrdersRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminAnalyticsRoute: AdminAnalyticsRoute,
-  AdminLocationsRoute: AdminLocationsRoute,
   AdminOrdersRoute: AdminOrdersRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
@@ -583,13 +562,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

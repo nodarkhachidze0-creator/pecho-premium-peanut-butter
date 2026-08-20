@@ -30,8 +30,6 @@ function AdminLayout() {
               <Link to="/admin" activeOptions={{ exact: true }} activeProps={{ className: "text-brand-toast" }} className="hover:text-brand-toast">Dashboard</Link>
               <Link to="/admin/orders" activeProps={{ className: "text-brand-toast" }} className="hover:text-brand-toast">Orders</Link>
               <Link to="/admin/analytics" activeProps={{ className: "text-brand-toast" }} className="hover:text-brand-toast">Analytics</Link>
-              <Link to="/admin/locations" activeProps={{ className: "text-brand-toast" }} className="hover:text-brand-toast">Locations</Link>
-
             </nav>
           </div>
           <button

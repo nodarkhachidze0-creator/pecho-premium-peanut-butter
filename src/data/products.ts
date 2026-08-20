@@ -1,19 +1,8 @@
-import classic1kgCutout from "@/assets/classic-1kg-cutout.webp.asset.json";
-import classic1kgFront from "@/assets/classic-1kg-front.jpg.asset.json";
-import classic450Cutout from "@/assets/classic-450g-cutout.webp.asset.json";
-import classic450Front from "@/assets/classic-450g-front.jpg.asset.json";
-import classicDessert from "@/assets/classic-dessert.jpg.asset.json";
-import classicBread from "@/assets/classic-bread.webp.asset.json";
-import crunchy450Cutout from "@/assets/crunchy-450g-cutout.webp.asset.json";
-import crunchy450Front from "@/assets/crunchy-450g-front.jpg.asset.json";
-import crunchyDessert from "@/assets/crunchy-dessert.jpg.asset.json";
-import crunchyBread from "@/assets/crunchy-bread.webp.asset.json";
-import crunchy1kgJar from "@/assets/pecho-crunchy-1kg.png.asset.json";
+import classicJar from "@/assets/pecho-classic-1kg.png.asset.json";
+import crunchyJar from "@/assets/pecho-crunchy-1kg.png.asset.json";
 import bundleImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 
 export type Category = "classic" | "crunchy" | "bundle";
-/** Flavour family — weight switching may only happen inside one family. */
-export type Family = "classic" | "crunchy" | "bundle";
 
 export type Product = {
   slug: string;
@@ -23,16 +12,8 @@ export type Product = {
   price: number;
   originalPrice?: number;
   weight: string;
-  /** Short label used by the weight selector, e.g. "450g". */
-  weightLabel: string;
   category: Category;
-  family: Family;
-  /** Primary product shot (packshot on background). */
   image: string;
-  /** Transparent cutout used for hero / floating treatments. */
-  cutout: string;
-  /** Editorial gallery shots for the product page. */
-  gallery: string[];
   ingredients: { en: string; ka: string };
   nutrition: { label: { en: string; ka: string }; value: string }[];
   featured?: boolean;
@@ -65,8 +46,8 @@ const crunchyShort = {
 };
 
 const classicDesc = {
-  en: "Our flagship: peanuts roasted for depth, ground into a silky ribbon, finished with a whisper of sea salt. Nothing else.",
-  ka: "ჩვენი მთავარი პროდუქტი: ღრმა გემოსთვის მოხალული მიწისთხილი, აბრეშუმისებრ მასად დაფქვილი, ზღვის მარილის ერთი ჩურჩულით.",
+  en: "Our flagship: Kakheti-grown peanuts roasted for depth, ground into a silky ribbon, finished with a whisper of sea salt. Nothing else.",
+  ka: "ჩვენი მთავარი პროდუქტი: კახეთის მიწისთხილი ღრმა გემოსთვის მოხალული, აბრეშუმის რიბონად დაფქვილი, ზღვის მარილის ერთი ჩურჩულით.",
 };
 const crunchyDesc = {
   en: "For crunch lovers. Deep-roasted peanuts blended with large peanut pieces for a jar that fights back.",
@@ -95,12 +76,8 @@ export const products: Product[] = [
     price: 38,
     originalPrice: 57,
     weight: "3 × 1kg",
-    weightLabel: "3 × 1kg",
     category: "bundle",
-    family: "bundle",
     image: bundleImg.url,
-    cutout: bundleImg.url,
-    gallery: [bundleImg.url, classicDessert.url, crunchyDessert.url],
     ingredients,
     nutrition: classicNutrition,
     featured: true,
@@ -112,12 +89,8 @@ export const products: Product[] = [
     description: classicDesc,
     price: 9,
     weight: "450g",
-    weightLabel: "450g",
     category: "classic",
-    family: "classic",
-    image: classic450Front.url,
-    cutout: classic450Cutout.url,
-    gallery: [classic450Front.url, classicBread.url, classicDessert.url],
+    image: classicJar.url,
     ingredients,
     nutrition: classicNutrition,
     featured: true,
@@ -129,12 +102,8 @@ export const products: Product[] = [
     description: classicDesc,
     price: 19,
     weight: "1kg",
-    weightLabel: "1kg",
     category: "classic",
-    family: "classic",
-    image: classic1kgFront.url,
-    cutout: classic1kgCutout.url,
-    gallery: [classic1kgFront.url, classicBread.url, classicDessert.url],
+    image: classicJar.url,
     ingredients,
     nutrition: classicNutrition,
     featured: true,
@@ -146,12 +115,8 @@ export const products: Product[] = [
     description: crunchyDesc,
     price: 9,
     weight: "450g",
-    weightLabel: "450g",
     category: "crunchy",
-    family: "crunchy",
-    image: crunchy450Front.url,
-    cutout: crunchy450Cutout.url,
-    gallery: [crunchy450Front.url, crunchyBread.url, crunchyDessert.url],
+    image: crunchyJar.url,
     ingredients,
     nutrition: classicNutrition,
     featured: true,
@@ -163,12 +128,8 @@ export const products: Product[] = [
     description: crunchyDesc,
     price: 19,
     weight: "1kg",
-    weightLabel: "1kg",
     category: "crunchy",
-    family: "crunchy",
-    image: crunchy1kgJar.url,
-    cutout: crunchy1kgJar.url,
-    gallery: [crunchy1kgJar.url, crunchyBread.url, crunchyDessert.url],
+    image: crunchyJar.url,
     ingredients,
     nutrition: classicNutrition,
     featured: true,
@@ -183,20 +144,6 @@ export function getFeatured() {
   return products;
 }
 
-/**
- * Sibling sizes of the SAME flavour family, ordered by price.
- * Classic can never resolve to Crunchy and vice versa.
- */
-export function getFamilyVariants(product: Product) {
-  return products
-    .filter((p) => p.family === product.family)
-    .sort((a, b) => a.price - b.price);
-}
-
 export function getRelated(slug: string, limit = 3) {
-  const current = getProduct(slug);
-  if (!current) return products.slice(0, limit);
-  const others = products.filter((p) => p.slug !== slug && p.family !== current.family);
-  const sameFamily = products.filter((p) => p.slug !== slug && p.family === current.family);
-  return [...others, ...sameFamily].slice(0, limit);
+  return products.filter((p) => p.slug !== slug).slice(0, limit);
 }
