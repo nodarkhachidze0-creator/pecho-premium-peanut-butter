@@ -32,6 +32,13 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "SS Geo Bro";
+  src: url("/fonts/SSGeoBro.otf") format("opentype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
