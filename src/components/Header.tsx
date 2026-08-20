@@ -54,27 +54,28 @@ export function Header() {
       }`}
 
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 md:flex md:justify-between">
-        <div className="flex items-center gap-8 min-w-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 md:grid-cols-[1fr_auto_1fr]">
+        <div className="flex items-center min-w-0">
           <Link to="/" aria-label="Pecho — home" className="shrink-0 flex items-center transition-transform hover:scale-105">
             <PechoLogo className="h-10 sm:h-11 w-auto" />
           </Link>
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-brand-roast/70">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                activeOptions={{ exact: l.to === "/" }}
-                activeProps={{ className: "text-brand-roast is-active" }}
-                className="nav-underline hover:text-brand-roast transition-colors whitespace-nowrap"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
         </div>
 
-        <div className="flex items-center gap-3 sm:gap-5 shrink-0">
+        <nav className="hidden md:flex items-center justify-center gap-5 lg:gap-7 text-sm font-medium text-brand-roast/70">
+          {links.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              activeOptions={{ exact: l.to === "/" }}
+              activeProps={{ className: "text-brand-roast is-active" }}
+              className="nav-underline hover:text-brand-roast transition-colors whitespace-nowrap"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center justify-end gap-3 sm:gap-5 shrink-0">
           <div className="hidden sm:flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
             <button
               onClick={() => setLang("en")}

@@ -1,5 +1,7 @@
-import classicJar from "@/assets/pecho-classic-1kg.png.asset.json";
-import crunchyJar from "@/assets/pecho-crunchy-1kg.png.asset.json";
+import classic450 from "@/assets/jar-classic-450g.webp.asset.json";
+import classic1kg from "@/assets/jar-classic-1kg.png.asset.json";
+import crunchy450 from "@/assets/jar-crunchy-450g.png.asset.json";
+import crunchy1kg from "@/assets/jar-crunchy-1kg.png.asset.json";
 import bundleImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 
 export type Category = "classic" | "crunchy" | "bundle";
@@ -16,6 +18,8 @@ export type Product = {
   image: string;
   ingredients: { en: string; ka: string };
   nutrition: { label: { en: string; ka: string }; value: string }[];
+  texture?: { en: string; ka: string };
+  protein?: string;
   featured?: boolean;
 };
 
@@ -80,6 +84,7 @@ export const products: Product[] = [
     image: bundleImg.url,
     ingredients,
     nutrition: classicNutrition,
+    protein: "25",
     featured: true,
   },
   {
@@ -90,9 +95,10 @@ export const products: Product[] = [
     price: 9,
     weight: "450g",
     category: "classic",
-    image: classicJar.url,
+    image: classic450.url,
     ingredients,
     nutrition: classicNutrition,
+    protein: "25",
     featured: true,
   },
   {
@@ -103,9 +109,10 @@ export const products: Product[] = [
     price: 19,
     weight: "1kg",
     category: "classic",
-    image: classicJar.url,
+    image: classic1kg.url,
     ingredients,
     nutrition: classicNutrition,
+    protein: "25",
     featured: true,
   },
   {
@@ -116,9 +123,10 @@ export const products: Product[] = [
     price: 9,
     weight: "450g",
     category: "crunchy",
-    image: crunchyJar.url,
+    image: crunchy450.url,
     ingredients,
     nutrition: classicNutrition,
+    protein: "25",
     featured: true,
   },
   {
@@ -129,9 +137,10 @@ export const products: Product[] = [
     price: 19,
     weight: "1kg",
     category: "crunchy",
-    image: crunchyJar.url,
+    image: crunchy1kg.url,
     ingredients,
     nutrition: classicNutrition,
+    protein: "25",
     featured: true,
   },
 ];

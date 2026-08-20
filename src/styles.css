@@ -32,6 +32,13 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "SS Geo Bro";
+  src: url("/fonts/SSGeoBro.otf") format("opentype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -71,7 +78,7 @@
 
   --font-display: "Brain Melt", "BPG Mtavruli", serif;
   --font-heading: "Hakuna", "BPG Mtavruli", sans-serif;
-  --font-body: "BPG Square", "Inter", sans-serif;
+  --font-body: "SS Geo Bro", "BPG Square", "Inter", sans-serif;
   --font-label: "BPG Mtavruli", "Hakuna", sans-serif;
 }
 
@@ -401,4 +408,42 @@
 }
 .pecho-logo-pop {
   animation: pecho-logo-pop 900ms cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+/* ============ Partner marquee ============ */
+@keyframes pecho-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: pecho-marquee 38s linear infinite;
+  will-change: transform;
+}
+.marquee-mask:hover .marquee-track { animation-duration: 90s; }
+
+/* ============ Product card info panel ============ */
+.pc-panel {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pc-card:hover .pc-panel,
+  .pc-card:focus-within .pc-panel {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; }
+  .pc-panel { transition: none !important; }
 }
