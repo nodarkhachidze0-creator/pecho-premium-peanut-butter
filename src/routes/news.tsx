@@ -23,7 +23,7 @@ function NewsIndex() {
     <section className="px-4 sm:px-6 py-16 md:py-24">
       <div className="max-w-6xl mx-auto">
         <header className="mb-12 md:mb-16 max-w-2xl">
-          <h1 className="text-4xl md:text-5xl font-display font-medium">{t("news.title")}</h1>
+          <h1 className="text-4xl md:text-5xl font-display font-extrabold">{t("news.title")}</h1>
           <p className="text-brand-roast/70 mt-4 text-lg">{t("news.subtitle")}</p>
         </header>
 

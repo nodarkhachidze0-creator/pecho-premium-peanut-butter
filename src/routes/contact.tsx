@@ -53,7 +53,7 @@ function ContactPage() {
       <section className="px-4 sm:px-6 py-16 md:py-24">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20">
           <div>
-            <h1 className="text-4xl md:text-5xl font-display font-medium">{t("contact.title")}</h1>
+            <h1 className="text-4xl md:text-5xl font-display font-extrabold">{t("contact.title")}</h1>
             <p className="text-brand-roast/70 mt-4 text-lg">{t("contact.subtitle")}</p>
 
             <div className="mt-10 space-y-5">

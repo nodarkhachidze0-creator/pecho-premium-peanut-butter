@@ -12,7 +12,7 @@ function OrdersPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-display font-medium">Orders</h1>
+      <h1 className="text-3xl font-display font-extrabold">Orders</h1>
       {orders.length === 0 ? (
         <p className="text-brand-roast/60">No orders yet.</p>
       ) : (

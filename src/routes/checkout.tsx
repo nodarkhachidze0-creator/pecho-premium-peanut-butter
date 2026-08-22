@@ -107,7 +107,7 @@ function Checkout() {
     <section className="px-4 sm:px-6 py-16 md:py-20">
       <div className="max-w-6xl mx-auto">
         <header className="mb-10 md:mb-14 max-w-2xl">
-          <h1 className="text-4xl md:text-5xl font-display font-medium">{t("checkout.title")}</h1>
+          <h1 className="text-4xl md:text-5xl font-display font-extrabold">{t("checkout.title")}</h1>
           <p className="text-brand-roast/70 mt-3 text-lg">{t("checkout.subtitle")}</p>
         </header>
 

@@ -86,7 +86,7 @@ function FAQPage() {
     <section className="px-4 sm:px-6 py-16 md:py-24">
       <div className="max-w-3xl mx-auto">
         <header className="mb-12 md:mb-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-display font-medium">{t("faq.title")}</h1>
+          <h1 className="text-4xl md:text-5xl font-display font-extrabold">{t("faq.title")}</h1>
           <p className="text-brand-roast/70 mt-4 text-lg">{t("faq.subtitle")}</p>
         </header>
 

@@ -80,7 +80,7 @@ function Success() {
         <div className="size-24 mx-auto rounded-full bg-brand-toast/15 flex items-center justify-center ring-8 ring-brand-toast/10">
           <Check className="size-14 text-brand-toast" strokeWidth={2.5} />
         </div>
-        <h1 className="text-3xl md:text-5xl font-display font-medium mt-8 text-balance">{thanks}</h1>
+        <h1 className="text-3xl md:text-5xl font-display font-extrabold mt-8 text-balance">{thanks}</h1>
         <p className="text-brand-roast/70 mt-4 leading-relaxed">{subline}</p>
         <div className="mt-10">
           <Link

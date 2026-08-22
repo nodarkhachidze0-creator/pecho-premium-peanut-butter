@@ -61,7 +61,7 @@ function PartnersPage() {
                 <Handshake className="size-4" />
                 B2B
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium mt-4 text-balance">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold mt-4 text-balance">
                 🤝 {t("partners.title")}
               </h1>
               <p className="text-brand-roast/70 mt-6 text-lg leading-relaxed text-pretty">
@@ -97,7 +97,7 @@ function PartnersPage() {
           <Reveal>
             <div className="bg-brand-roast text-brand-cream rounded-3xl p-8 md:p-14 shadow-2xl">
               <div className="max-w-2xl">
-                <h2 className="text-3xl md:text-4xl font-display font-medium">
+                <h2 className="text-3xl md:text-4xl font-display font-extrabold">
                   {t("partners.contactTitle")}
                 </h2>
                 <p className="text-brand-cream/70 mt-4 leading-relaxed">

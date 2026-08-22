@@ -18,7 +18,7 @@ function PrivacyPage() {
   return (
     <article className="px-4 sm:px-6 py-16 md:py-24">
       <div className="max-w-3xl mx-auto prose prose-neutral">
-        <h1 className="text-4xl md:text-5xl font-display font-medium mb-8">
+        <h1 className="text-4xl md:text-5xl font-display font-extrabold mb-8">
           {ka ? "კონფიდენციალურობის პოლიტიკა" : "Privacy Policy"}
         </h1>
         <div className="space-y-6 text-brand-roast/80 leading-relaxed">

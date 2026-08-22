@@ -22,7 +22,7 @@ function AnalyticsPage() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-display font-medium">Analytics</h1>
+      <h1 className="text-3xl font-display font-extrabold">Analytics</h1>
       <div className="grid sm:grid-cols-3 gap-4">
         <Stat label="Total Orders" value={orders.length.toString()} />
         <Stat label="Revenue" value={formatGEL(revenue)} />

@@ -134,7 +134,7 @@ function ProductDetail() {
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
                   {t(`products.cat.${product.category}`)}
                 </span>
-                <h1 className="text-3xl md:text-5xl font-display font-medium mt-2 leading-tight">
+                <h1 className="text-3xl md:text-5xl font-display font-extrabold mt-2 leading-tight">
                   {product.name[lang]}
                 </h1>
                 <p className="text-brand-roast/70 mt-3 text-lg">{product.short[lang]}</p>
@@ -212,7 +212,7 @@ function ProductDetail() {
 
       <section className="px-4 sm:px-6 py-20 bg-brand-beige">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-display font-medium mb-10">
+          <h2 className="text-2xl md:text-3xl font-display font-extrabold mb-10">
             {t("pdp.related")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

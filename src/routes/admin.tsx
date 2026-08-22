@@ -62,7 +62,7 @@ function LoginForm({ onSuccess }: { onSuccess: () => void }) {
         }}
         className="w-full max-w-sm bg-white rounded-3xl p-8 shadow-lg space-y-4"
       >
-        <h1 className="text-2xl font-display font-medium">Admin Login</h1>
+        <h1 className="text-2xl font-display font-extrabold">Admin Login</h1>
         <input
           type="email"
           required

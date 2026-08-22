@@ -29,7 +29,7 @@ function CartPage() {
   return (
     <section className="px-4 sm:px-6 py-16 md:py-20 min-h-[60vh]">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-display font-medium mb-12">{t("cart.title")}</h1>
+        <h1 className="text-4xl md:text-5xl font-display font-extrabold mb-12">{t("cart.title")}</h1>
 
         {items.length === 0 ? (
           <div className="flex flex-col items-center text-center py-10 space-y-6 animate-in fade-in duration-500">
