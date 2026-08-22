@@ -163,17 +163,29 @@
 
   h1, h2 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    font-weight: 800;
+    letter-spacing: -0.015em;
   }
 
   h3, h4 {
     font-family: var(--font-heading);
+    font-weight: 700;
     letter-spacing: -0.005em;
   }
 
   button, .font-label {
     font-family: var(--font-label);
+    font-weight: 700;
   }
+
+  .font-script {
+    font-family: var(--font-script);
+  }
+
+  .text-accent-word {
+    color: var(--brand-toast);
+  }
+
 
   ::selection {
     background-color: var(--brand-toast);
