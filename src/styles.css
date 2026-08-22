@@ -105,10 +105,12 @@
   --color-brand-cherry: var(--brand-cherry);
   --color-brand-lime: var(--brand-lime);
 
-  --font-display: "Brain Melt", "BPG Mtavruli", serif;
-  --font-heading: "Hakuna", "BPG Mtavruli", sans-serif;
+  --font-display: "SS Geo Bro", "BPG Mtavruli", sans-serif;
+  --font-heading: "SS Geo Bro", "BPG Mtavruli", sans-serif;
   --font-body: "SS Geo Bro", "BPG Square", "Inter", sans-serif;
-  --font-label: "BPG Mtavruli", "Hakuna", sans-serif;
+  --font-label: "SS Geo Bro", "BPG Mtavruli", sans-serif;
+  --font-script: "Brain Melt", "BPG Mtavruli", serif;
+
 }
 
 :root {
