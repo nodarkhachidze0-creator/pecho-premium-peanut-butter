@@ -34,11 +34,40 @@
 }
 @font-face {
   font-family: "SS Geo Bro";
-  src: url("/fonts/SSGeoBro.otf") format("opentype");
-  font-weight: 400 900;
+  src: url("/fonts/SSGeoBro-Regular.otf") format("opentype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "SS Geo Bro";
+  src: url("/fonts/SSGeoBro-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SS Geo Bro";
+  src: url("/fonts/SSGeoBro-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SS Geo Bro";
+  src: url("/fonts/SSGeoBro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SS Geo Bro";
+  src: url("/fonts/SSGeoBro-ExtraBold.otf") format("opentype");
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -76,10 +105,12 @@
   --color-brand-cherry: var(--brand-cherry);
   --color-brand-lime: var(--brand-lime);
 
-  --font-display: "Brain Melt", "BPG Mtavruli", serif;
-  --font-heading: "Hakuna", "BPG Mtavruli", sans-serif;
+  --font-display: "SS Geo Bro", "BPG Mtavruli", sans-serif;
+  --font-heading: "SS Geo Bro", "BPG Mtavruli", sans-serif;
   --font-body: "SS Geo Bro", "BPG Square", "Inter", sans-serif;
-  --font-label: "BPG Mtavruli", "Hakuna", sans-serif;
+  --font-label: "SS Geo Bro", "BPG Mtavruli", sans-serif;
+  --font-script: "Brain Melt", "BPG Mtavruli", serif;
+
 }
 
 :root {
@@ -132,17 +163,29 @@
 
   h1, h2 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    font-weight: 800;
+    letter-spacing: -0.015em;
   }
 
   h3, h4 {
     font-family: var(--font-heading);
+    font-weight: 700;
     letter-spacing: -0.005em;
   }
 
   button, .font-label {
     font-family: var(--font-label);
+    font-weight: 700;
   }
+
+  .font-script {
+    font-family: var(--font-script);
+  }
+
+  .text-accent-word {
+    color: var(--brand-toast);
+  }
+
 
   ::selection {
     background-color: var(--brand-toast);
@@ -430,7 +473,7 @@
 /* ============ Product card info panel ============ */
 .pc-panel {
   opacity: 0;
-  transform: translate3d(0, 10px, 0);
+  transform: translate3d(12px, 0, 0) scale(0.97);
   transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
               transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
@@ -439,7 +482,7 @@
   .pc-card:hover .pc-panel,
   .pc-card:focus-within .pc-panel {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 

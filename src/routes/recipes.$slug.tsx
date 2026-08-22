@@ -66,7 +66,7 @@ function RecipeDetail() {
             <ChefHat className="size-4" />
             {lang === "ka" ? "რეცეპტი" : "Recipe"}
           </span>
-          <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-display font-medium leading-tight text-balance">
+          <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-display font-extrabold leading-tight text-balance">
             {recipe.title[lang]}
           </h1>
           <p className="mt-6 text-brand-roast/70 text-lg leading-relaxed text-pretty">
@@ -80,7 +80,7 @@ function RecipeDetail() {
         {/* Ingredients */}
         <Reveal>
           <section className="mt-16">
-            <h2 className="text-2xl md:text-3xl font-display font-medium flex items-center gap-3">
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold flex items-center gap-3">
               🥣 {lang === "ka" ? "ინგრედიენტები" : "Ingredients"}
             </h2>
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
@@ -104,7 +104,7 @@ function RecipeDetail() {
         {/* Steps */}
         <Reveal>
           <section className="mt-16">
-            <h2 className="text-2xl md:text-3xl font-display font-medium flex items-center gap-3">
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold flex items-center gap-3">
               👨‍🍳 {lang === "ka" ? "მომზადების წესი" : "Preparation"}
             </h2>
             <ol className="mt-6 space-y-4">
@@ -127,7 +127,7 @@ function RecipeDetail() {
         <Reveal>
           <section className="mt-16">
             <div className="bg-brand-beige rounded-3xl p-8 md:p-10 ring-1 ring-black/5">
-              <h2 className="text-2xl md:text-3xl font-display font-medium flex items-center gap-3">
+              <h2 className="text-2xl md:text-3xl font-display font-extrabold flex items-center gap-3">
                 🍓 {lang === "ka" ? "მორთვა" : "Plating"}
               </h2>
               <p className="mt-4 text-brand-roast/80 leading-relaxed">{recipe.plating}</p>

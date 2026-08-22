@@ -7,6 +7,8 @@ import { news } from "@/data/news";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { StoreMap } from "@/components/StoreMap";
+import { PartnerMarquee } from "@/components/PartnerMarquee";
+
 import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
@@ -29,7 +31,7 @@ function Home() {
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-toast">
               {t("home.hero.eyebrow")}
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-medium leading-[1.05] text-balance">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-[1.05] text-balance">
               {t("home.hero.title")}
             </h1>
             <p className="text-base md:text-lg text-brand-roast/70 max-w-xl text-pretty leading-relaxed">
@@ -51,7 +53,7 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative hero-float">
+          <div className="relative hero-float mx-auto w-full max-w-md lg:max-w-lg">
             <Link
               to="/products/$slug"
               params={{ slug: "bundle-2plus1" }}
@@ -64,6 +66,7 @@ function Home() {
               />
             </Link>
           </div>
+
         </div>
       </section>
 
@@ -77,7 +80,7 @@ function Home() {
               <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
                 {t("home.featured.eyebrow")}
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-medium">
+              <h2 className="text-3xl md:text-4xl font-display font-extrabold">
                 {t("home.featured.title")}
               </h2>
             </div>
@@ -99,6 +102,23 @@ function Home() {
         </div>
       </section>
 
+      {/* Where you'll find us — partner marquee */}
+      <section className="px-4 sm:px-6 py-14 md:py-16 bg-brand-cream">
+        <div className="max-w-7xl mx-auto">
+          <header className="text-center mb-8 md:mb-10">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
+              {lang === "ka" ? "პარტნიორები" : "Partners"}
+            </span>
+            <h2 className="mt-2 text-3xl md:text-4xl font-display font-extrabold">
+              {lang === "ka" ? "სად შეგხვდებით" : "Where to find us"}
+            </h2>
+          </header>
+          <PartnerMarquee />
+        </div>
+      </section>
+
+
+
 
 
       {/* About preview */}
@@ -114,7 +134,7 @@ function Home() {
             <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
               {t("home.about.eyebrow")}
             </span>
-            <h2 className="text-3xl md:text-4xl font-display font-medium leading-tight text-balance">
+            <h2 className="text-3xl md:text-4xl font-display font-extrabold leading-tight text-balance">
               {t("home.about.title")}
             </h2>
             <p className="text-brand-roast/70 leading-relaxed max-w-lg">{t("home.about.body")}</p>
@@ -132,7 +152,7 @@ function Home() {
       <section className="px-4 sm:px-6 py-20 md:py-24">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-end mb-10 md:mb-14 gap-6">
-            <h2 className="text-3xl md:text-4xl font-display font-medium">{t("home.news.title")}</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-extrabold">{t("home.news.title")}</h2>
             <Link
               to="/news"
               className="text-sm font-semibold border-b border-brand-roast pb-1 hover:border-brand-toast shrink-0"
@@ -166,7 +186,7 @@ function Home() {
       {/* FAQ preview */}
       <section className="px-4 sm:px-6 py-20 md:py-24">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-display font-medium text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-display font-extrabold text-center mb-12">
             {t("home.faq.title")}
           </h2>
           <div className="divide-y divide-brand-roast/10 border-y border-brand-roast/10">
@@ -224,7 +244,7 @@ function Home() {
       <section className="px-4 sm:px-6 py-16 md:py-20">
         <div className="max-w-7xl mx-auto">
           <header className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-3xl md:text-4xl font-display font-medium text-balance">
+            <h2 className="text-3xl md:text-4xl font-display font-extrabold text-balance">
               სად შეგიძლიათ ჩვენი პროდუქტის შეძენა
             </h2>
             <p className="mt-4 text-brand-roast/70">
@@ -242,7 +262,7 @@ function Home() {
       <section className="px-4 sm:px-6 pb-20">
         <div className="max-w-7xl mx-auto bg-brand-roast text-brand-cream rounded-3xl p-8 md:p-14 grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-3">
-            <h2 className="text-2xl md:text-3xl font-display font-medium">{t("home.contact.title")}</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold">{t("home.contact.title")}</h2>
             <p className="text-brand-cream/60 max-w-md">{t("home.contact.body")}</p>
           </div>
           <div className="md:justify-self-end">

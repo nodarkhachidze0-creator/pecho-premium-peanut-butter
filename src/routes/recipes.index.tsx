@@ -23,7 +23,7 @@ function RecipesPage() {
     <section className="px-4 sm:px-6 py-16 md:py-24">
       <div className="max-w-6xl mx-auto">
         <header className="text-center max-w-2xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-display font-medium">{t("recipes.title")}</h1>
+          <h1 className="text-4xl md:text-5xl font-display font-extrabold">{t("recipes.title")}</h1>
           <p className="text-brand-roast/70 mt-4 text-lg">{t("recipes.subtitle")}</p>
         </header>
 

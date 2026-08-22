@@ -51,7 +51,7 @@ function About() {
             </span>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-medium mt-6 leading-[1.05] text-balance">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold mt-6 leading-[1.05] text-balance">
               {t("about.hero.title")}
             </h1>
           </Reveal>
@@ -136,7 +136,7 @@ function About() {
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="text-center max-w-2xl mx-auto mb-14 md:mb-16">
-              <h2 className="text-3xl md:text-5xl font-display font-medium text-balance">
+              <h2 className="text-3xl md:text-5xl font-display font-extrabold text-balance">
                 {t("about.why.title")}
               </h2>
             </div>
@@ -172,7 +172,7 @@ function About() {
                 <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-toast">
                   {t("about.mission.eyebrow")}
                 </span>
-                <h2 className="mt-5 text-3xl md:text-5xl font-display font-medium leading-tight text-balance">
+                <h2 className="mt-5 text-3xl md:text-5xl font-display font-extrabold leading-tight text-balance">
                   {t("about.mission.title")}
                 </h2>
                 <p className="mt-6 text-brand-cream/80 text-lg leading-relaxed max-w-2xl">

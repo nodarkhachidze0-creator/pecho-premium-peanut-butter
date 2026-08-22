@@ -53,7 +53,7 @@ function NewsPost() {
         <span className="text-[10px] font-mono uppercase tracking-widest text-brand-roast/50">
           {formatDate(post.date, lang)}
         </span>
-        <h1 className="text-3xl md:text-5xl font-display font-medium mt-3 text-balance">
+        <h1 className="text-3xl md:text-5xl font-display font-extrabold mt-3 text-balance">
           {post.title[lang]}
         </h1>
         <p className="mt-6 text-xl text-brand-roast/70 leading-relaxed">{post.excerpt[lang]}</p>
