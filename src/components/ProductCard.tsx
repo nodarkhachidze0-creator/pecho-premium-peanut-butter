@@ -72,16 +72,16 @@ export function ProductCard({ product }: { product: Product }) {
     <Link
       to="/products/$slug"
       params={{ slug: product.slug }}
-      className="pc-card group flex h-full flex-col rounded-3xl bg-brand-cream p-4 ring-1 ring-brand-roast/5 transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(42,24,16,0.45)]"
+      className="pc-card group flex h-full flex-col rounded-[28px] bg-brand-cream p-4 ring-1 ring-brand-roast/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(42,24,16,0.45)]"
     >
-      <div className="relative overflow-hidden rounded-2xl bg-brand-paper/60">
-        <div className="flex aspect-square items-end justify-center p-6 sm:p-8">
+      <div className="relative overflow-hidden rounded-[22px] bg-[radial-gradient(120%_100%_at_50%_0%,var(--brand-paper),var(--brand-beige))]">
+        <div className="flex aspect-[4/3] items-center justify-center p-8 sm:p-10">
           <img
             ref={imgRef}
             src={product.image}
             alt={product.name[lang]}
             loading="lazy"
-            className="max-h-full w-auto max-w-[72%] object-contain object-bottom drop-shadow-[0_18px_22px_rgba(42,24,16,0.18)] transition-transform duration-500 group-hover:scale-[1.04]"
+            className="max-h-[78%] w-auto max-w-[52%] object-contain drop-shadow-[0_16px_20px_rgba(42,24,16,0.16)] transition-transform duration-500 group-hover:scale-[1.05]"
           />
         </div>
 
@@ -91,9 +91,9 @@ export function ProductCard({ product }: { product: Product }) {
           </span>
         )}
 
-        {/* Desktop hover info panel */}
-        <div className="pc-panel absolute inset-x-3 bottom-3 hidden rounded-2xl bg-brand-roast/95 p-4 text-brand-cream backdrop-blur-sm md:block">
-          <dl className="space-y-1.5">
+        {/* Desktop hover info panel — slides in beside the jar */}
+        <div className="pc-panel absolute inset-y-3 right-3 hidden w-[58%] rounded-[18px] bg-brand-roast/95 p-4 text-brand-cream backdrop-blur-sm md:flex md:items-center">
+          <dl className="w-full space-y-1.5">
             {rows.map((r) => (
               <div key={r.label.en} className="flex gap-3 text-[13px] leading-snug">
                 <dt className="shrink-0 font-label text-[10px] uppercase tracking-widest text-brand-toast pt-[3px]">
@@ -107,13 +107,14 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="mt-5 flex items-start justify-between gap-4 md:mb-auto">
-        <h3 className="min-w-0 font-heading text-lg leading-tight text-brand-roast">
+        <h3 className="min-w-0 font-display text-lg font-extrabold leading-tight text-brand-roast">
           {product.name[lang]}
         </h3>
-        <span className="shrink-0 whitespace-nowrap text-lg font-semibold text-brand-toast">
+        <span className="shrink-0 whitespace-nowrap text-lg font-bold text-brand-toast">
           {formatGEL(product.price)}
         </span>
       </div>
+
 
       {/* Mobile / touch info */}
       <dl className="mt-3 space-y-1 md:hidden mb-auto">
