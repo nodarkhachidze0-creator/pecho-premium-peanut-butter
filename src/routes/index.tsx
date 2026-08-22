@@ -7,6 +7,8 @@ import { news } from "@/data/news";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { StoreMap } from "@/components/StoreMap";
+import { PartnerMarquee } from "@/components/PartnerMarquee";
+
 import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
@@ -51,7 +53,7 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative hero-float">
+          <div className="relative hero-float mx-auto w-full max-w-md lg:max-w-lg">
             <Link
               to="/products/$slug"
               params={{ slug: "bundle-2plus1" }}
@@ -64,6 +66,7 @@ function Home() {
               />
             </Link>
           </div>
+
         </div>
       </section>
 
@@ -98,6 +101,23 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* Where you'll find us — partner marquee */}
+      <section className="px-4 sm:px-6 py-14 md:py-16 bg-brand-cream">
+        <div className="max-w-7xl mx-auto">
+          <header className="text-center mb-8 md:mb-10">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
+              {lang === "ka" ? "პარტნიორები" : "Partners"}
+            </span>
+            <h2 className="mt-2 text-3xl md:text-4xl font-display font-extrabold">
+              {lang === "ka" ? "სად შეგხვდებით" : "Where to find us"}
+            </h2>
+          </header>
+          <PartnerMarquee />
+        </div>
+      </section>
+
+
 
 
 
