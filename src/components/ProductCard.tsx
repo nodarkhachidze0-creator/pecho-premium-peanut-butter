@@ -81,7 +81,7 @@ export function ProductCard({ product }: { product: Product }) {
             src={product.image}
             alt={product.name[lang]}
             loading="lazy"
-            className="max-h-[78%] w-auto max-w-[52%] object-contain drop-shadow-[0_16px_20px_rgba(42,24,16,0.16)] transition-transform duration-500 group-hover:scale-[1.05]"
+            className="max-h-[78%] w-auto max-w-[52%] object-contain drop-shadow-[0_16px_20px_rgba(42,24,16,0.16)] transition-transform duration-500 md:group-hover:-translate-x-[26%] group-hover:scale-[1.03]"
           />
         </div>
 
@@ -92,7 +92,7 @@ export function ProductCard({ product }: { product: Product }) {
         )}
 
         {/* Desktop hover info panel — slides in beside the jar */}
-        <div className="pc-panel absolute inset-y-3 right-3 hidden w-[58%] rounded-[18px] bg-brand-roast/95 p-4 text-brand-cream backdrop-blur-sm md:flex md:items-center">
+        <div className="pc-panel absolute inset-y-3 right-3 hidden w-[54%] rounded-[18px] bg-brand-roast/95 p-4 text-brand-cream backdrop-blur-sm md:flex md:items-center">
           <dl className="w-full space-y-1.5">
             {rows.map((r) => (
               <div key={r.label.en} className="flex gap-3 text-[13px] leading-snug">
