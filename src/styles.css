@@ -68,6 +68,33 @@
   font-display: swap;
 }
 
+/* ===== New Georgian typography system ===== */
+/* Display: LGV Anastasia 2025 Geo Bold */
+@font-face {
+  font-family: "Anastasia Geo";
+  src: url("/fonts/LGVAnastasia2025Geo-Bold.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+/* Body + UI: BPG Ingiri Arial */
+@font-face {
+  font-family: "Ingiri";
+  src: url("/fonts/BPGIngiriArial.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Micro labels (mtavruli caps): Futura Book Mta */
+@font-face {
+  font-family: "Futura Mta";
+  src: url("/fonts/FuturaBookMta.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
