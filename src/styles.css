@@ -134,8 +134,8 @@
 
   --font-display: "Anastasia Geo", "Ingiri", sans-serif;
   --font-heading: "Anastasia Geo", "Ingiri", sans-serif;
-  --font-body: "Ingiri", "Inter", system-ui, sans-serif;
-  --font-ui: "Ingiri", "Inter", system-ui, sans-serif;
+  --font-body: "Ingiri", "Inter", system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+  --font-ui: "Ingiri", "Inter", system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
   --font-label: "Futura Mta", "Ingiri", sans-serif;
   --font-script: "Anastasia Geo", "Ingiri", serif;
 
