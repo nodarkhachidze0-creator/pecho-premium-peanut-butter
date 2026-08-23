@@ -187,29 +187,48 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2 {
     font-family: var(--font-display);
-    font-weight: 800;
-    letter-spacing: -0.015em;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.12;
   }
 
   h3, h4 {
     font-family: var(--font-heading);
     font-weight: 700;
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
+    line-height: 1.25;
   }
 
-  button, .font-label {
+  /* Small UI text: clean, readable body font (never the display face) */
+  button, input, select, textarea, label, th, td, small {
+    font-family: var(--font-ui);
+  }
+
+  button {
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .font-label {
     font-family: var(--font-label);
-    font-weight: 700;
+    font-weight: 400;
+  }
+
+  .font-ui {
+    font-family: var(--font-ui);
   }
 
   .font-script {
     font-family: var(--font-script);
   }
+
 
   .text-accent-word {
     color: var(--brand-toast);
