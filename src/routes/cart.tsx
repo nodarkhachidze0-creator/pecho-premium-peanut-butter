@@ -73,8 +73,8 @@ function CartPage() {
                 <p className="text-xs text-brand-roast/50 pt-1">{t("cart.deliveryNote")}</p>
               </div>
               <div className="flex justify-between items-baseline">
-                <span className="font-display text-lg">{t("cart.total")}</span>
-                <span className="font-display text-2xl text-brand-toast">{formatGEL(total)}</span>
+                <span className="font-ui font-semibold text-lg">{t("cart.total")}</span>
+                <span className="font-ui font-bold text-2xl text-brand-toast">{formatGEL(total)}</span>
               </div>
               <Link to="/checkout" className="btn-premium block text-center bg-brand-toast text-white py-4 rounded-full font-semibold">
                 {t("cta.checkout")}

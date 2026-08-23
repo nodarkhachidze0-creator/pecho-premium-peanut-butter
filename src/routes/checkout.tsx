@@ -195,8 +195,8 @@ function Checkout() {
               <Row label={t("cart.delivery")} value={formatGEL(DELIVERY_FEE)} />
             </div>
             <div className="flex justify-between items-baseline border-t border-brand-roast/10 pt-4">
-              <span className="font-display text-lg">{t("cart.total")}</span>
-              <span className="font-display text-2xl text-brand-toast">{formatGEL(total)}</span>
+              <span className="font-ui font-semibold text-lg">{t("cart.total")}</span>
+              <span className="font-ui font-bold text-2xl text-brand-toast">{formatGEL(total)}</span>
             </div>
             <button
               type="submit"
