@@ -50,6 +50,7 @@ function RecipeDetail() {
             <div className="rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-roast mx-auto w-full max-w-[420px]">
               <video
                 src={recipe.videoUrl}
+                poster={recipe.imageUrl}
                 controls
                 playsInline
                 preload="metadata"
@@ -124,16 +125,18 @@ function RecipeDetail() {
         </Reveal>
 
         {/* Plating */}
-        <Reveal>
-          <section className="mt-16">
-            <div className="bg-brand-beige rounded-3xl p-8 md:p-10 ring-1 ring-black/5">
-              <h2 className="text-2xl md:text-3xl font-display font-extrabold flex items-center gap-3">
-                🍓 {lang === "ka" ? "მორთვა" : "Plating"}
-              </h2>
-              <p className="mt-4 text-brand-roast/80 leading-relaxed">{recipe.plating}</p>
-            </div>
-          </section>
-        </Reveal>
+        {recipe.plating && (
+          <Reveal>
+            <section className="mt-16">
+              <div className="bg-brand-beige rounded-3xl p-8 md:p-10 ring-1 ring-black/5">
+                <h2 className="text-2xl md:text-3xl font-display font-extrabold flex items-center gap-3">
+                  {recipe.platingTitle ?? `🍓 ${lang === "ka" ? "მორთვა" : "Plating"}`}
+                </h2>
+                <p className="mt-4 text-brand-roast/80 leading-relaxed">{recipe.plating}</p>
+              </div>
+            </section>
+          </Reveal>
+        )}
 
         <Reveal>
           <div className="mt-16 text-center">
