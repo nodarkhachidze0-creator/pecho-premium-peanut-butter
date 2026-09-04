@@ -65,7 +65,9 @@ function Home() {
                 className="block w-full h-auto object-contain"
               />
             </Link>
+
           </div>
+
 
         </div>
       </section>

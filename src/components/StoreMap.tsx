@@ -114,8 +114,8 @@ export function StoreMap() {
   };
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,45%)_minmax(0,1fr)] lg:items-start">
-      <div className="relative h-[280px] w-full overflow-hidden rounded-3xl bg-brand-paper ring-1 ring-brand-roast/10 sm:h-[340px] lg:h-[420px]">
+    <div className="grid gap-8 lg:grid-cols-2 lg:items-stretch">
+      <div className="relative h-[300px] w-full overflow-hidden rounded-3xl bg-brand-paper ring-1 ring-brand-roast/10 sm:h-[360px] lg:h-full lg:min-h-[480px]">
         <div ref={ref} className="absolute inset-0" />
         {status !== "ready" && (
           <div className="absolute inset-0 flex items-center justify-center bg-brand-paper text-sm text-brand-roast/60">
@@ -124,7 +124,7 @@ export function StoreMap() {
         )}
       </div>
 
-      <div>
+      <div className="flex min-h-[480px] flex-col">
         <p className="font-label text-[11px] uppercase tracking-widest text-brand-toast">
           {stores.length} ლოკაცია
         </p>
@@ -132,13 +132,13 @@ export function StoreMap() {
           Pecho ხელმისაწვდომია ქვემოთ ჩამოთვლილ მაღაზიებში. აირჩიე მისამართი და რუკა
           ავტომატურად გადაინაცვლებს შესაბამის წერტილზე.
         </p>
-        <ul className="mt-6 divide-y divide-brand-roast/10 border-y border-brand-roast/10">
+        <ul className="mt-6 max-h-[340px] overflow-y-auto divide-y divide-brand-roast/10 border-y border-brand-roast/10">
           {stores.map((s, i) => (
             <li key={s.name}>
               <button
                 type="button"
                 onClick={() => focus(i)}
-                className={`flex w-full items-start gap-3 py-4 text-left transition-colors ${
+                className={`group flex w-full items-start gap-3 py-4 text-left transition-colors ${
                   active === i ? "text-brand-toast" : "hover:text-brand-toast"
                 }`}
               >
@@ -153,7 +153,7 @@ export function StoreMap() {
                   </span>
                   <span className="mt-1 block text-sm text-brand-roast/60">{s.address}</span>
                 </span>
-                <span className="font-label shrink-0 self-center text-[10px] uppercase tracking-widest text-brand-toast">
+                <span className="shrink-0 self-center rounded-full border border-brand-toast/40 px-3 py-1.5 text-[11px] font-semibold text-brand-toast transition-colors group-hover:bg-brand-toast group-hover:text-white">
                   იხილე რუკაზე
                 </span>
               </button>
