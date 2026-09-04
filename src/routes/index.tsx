@@ -66,24 +66,6 @@ function Home() {
               />
             </Link>
 
-            {/* Discount badge */}
-            <div
-              className="pointer-events-none absolute -top-4 -left-3 sm:-top-5 sm:-left-5 z-10 grid size-24 place-items-center sm:size-28 rotate-[-12deg] text-center bg-brand-cherry text-white shadow-xl"
-              style={{
-                clipPath:
-                  "polygon(50% 0%, 61% 10%, 76% 5%, 80% 21%, 95% 24%, 91% 40%, 100% 50%, 91% 60%, 95% 76%, 80% 79%, 76% 95%, 61% 90%, 50% 100%, 39% 90%, 24% 95%, 20% 79%, 5% 76%, 9% 60%, 0% 50%, 9% 40%, 5% 24%, 20% 21%, 24% 5%, 39% 10%)",
-              }}
-              aria-hidden
-            >
-              <span className="leading-none">
-                <span className="block text-[11px] font-semibold text-brand-cream/80 line-through sm:text-xs">
-                  57 ₾
-                </span>
-                <span className="mt-1 block font-display text-xl font-extrabold sm:text-2xl">
-                  38 ₾
-                </span>
-              </span>
-            </div>
           </div>
 
 
