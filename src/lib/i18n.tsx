@@ -24,8 +24,8 @@ const en: Dict = {
   "cta.placeOrder": "Place Order",
   "cta.send": "Send Message",
 
-  "home.hero.eyebrow": "Limited-time 2+1 offer",
-  "home.hero.title": "Buy 2, Get 1 Free — for a limited time.",
+  "home.hero.eyebrow": "Limited time only",
+  "home.hero.title": "Natural peanut butter",
   "home.hero.subtitle":
     "Buy 2 jars and get the third one free — while the promotion lasts.",
 
@@ -216,8 +216,8 @@ const ka: Dict = {
   "cta.placeOrder": "შეკვეთის დადასტურება",
   "cta.send": "შეტყობინების გაგზავნა",
 
-  "home.hero.eyebrow": "2+1 აქცია ლიმიტირებული დროით",
-  "home.hero.title": "იყიდე 2, მიიღე 1 საჩუქრად — ლიმიტირებული დროით.",
+  "home.hero.eyebrow": "ლიმიტირებული დროით",
+  "home.hero.title": "ნატურალური მიწისთხილის კარაქი",
   "home.hero.subtitle":
     "იყიდე 2, მიიღე 1 საჩუქრად — ლიმიტირებული დროით.",
 
