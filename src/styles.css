@@ -154,8 +154,8 @@
   --brand-cherry: #c2410c;
   --brand-lime: #84cc16;
   --brand-stage: #2b2b2b;
-  --brand-spotlight: rgba(243, 130, 10, 0.28);
-  --brand-spotlight-soft: rgba(249, 246, 240, 0.13);
+  --brand-spotlight: rgba(253, 230, 138, 0.55);
+  --brand-spotlight-soft: rgba(253, 230, 138, 0.85);
 
   --background: #fdf8f0;
   --foreground: #2a1810;
@@ -483,7 +483,7 @@
 }
 .coverflow-active img,
 .coverflow-side img {
-  filter: drop-shadow(0 32px 28px rgba(0, 0, 0, 0.34));
+  filter: drop-shadow(0 26px 26px rgba(43, 43, 43, 0.18));
 }
 .coverflow-active {
   animation: coverflow-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -493,13 +493,13 @@
   will-change: transform;
 }
 .coverflow-side {
-  opacity: 0.4;
+  opacity: 0.6;
   transform: scale(0.75);
   transition: opacity 350ms ease, transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .coverflow-side:hover,
 .coverflow-side:focus-visible {
-  opacity: 0.68;
+  opacity: 0.8;
   transform: scale(0.79);
 }
 @keyframes coverflow-enter {
