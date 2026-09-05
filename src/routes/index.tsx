@@ -2,12 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { formatDate } from "@/lib/format-date";
-import { getFeatured } from "@/data/products";
 import { news } from "@/data/news";
-import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { StoreMap } from "@/components/StoreMap";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
+import { ProductCoverFlow } from "@/components/ProductCoverFlow";
 
 import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
@@ -18,7 +17,6 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const { t, lang } = useT();
-  const featured = getFeatured();
   const latest = news.slice(0, 3);
 
 
@@ -75,34 +73,7 @@ function Home() {
 
 
       {/* Featured Products */}
-      <section className="px-4 sm:px-6 py-20 md:py-24 bg-brand-beige">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-10 md:mb-14 gap-6">
-            <div className="space-y-2 min-w-0">
-              <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
-                {t("home.featured.eyebrow")}
-              </span>
-              <h2 className="text-3xl md:text-4xl font-display font-extrabold">
-                {t("home.featured.title")}
-              </h2>
-            </div>
-            <Link
-              to="/products"
-              className="text-sm font-semibold border-b border-brand-roast pb-1 hover:border-brand-toast shrink-0"
-            >
-              {t("cta.viewAll")}
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {featured.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 90}>
-                <ProductCard product={p} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProductCoverFlow />
 
       {/* Where you'll find us — partner marquee */}
       <section className="px-4 sm:px-6 py-14 md:py-16 bg-brand-cream">
