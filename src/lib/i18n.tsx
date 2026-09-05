@@ -24,8 +24,8 @@ const en: Dict = {
   "cta.placeOrder": "Place Order",
   "cta.send": "Send Message",
 
-  "home.hero.eyebrow": "Limited-time 2+1 offer",
-  "home.hero.title": "Buy 2, Get 1 Free — for a limited time.",
+  "home.hero.eyebrow": "Limited time only",
+  "home.hero.title": "Natural peanut butter",
   "home.hero.subtitle":
     "Buy 2 jars and get the third one free — while the promotion lasts.",
 
