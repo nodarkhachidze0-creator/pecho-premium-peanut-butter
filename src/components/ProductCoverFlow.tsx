@@ -31,11 +31,19 @@ export function ProductCoverFlow() {
     [],
   );
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
   const touchStartX = useRef<number | null>(null);
 
   const goTo = useCallback(
     (index: number) => {
-      setActiveIndex((index + carouselProducts.length) % carouselProducts.length);
+      setActiveIndex((current) => {
+        const total = carouselProducts.length;
+        const target = ((index % total) + total) % total;
+        if (target === current) return current;
+        const forward = (target - current + total) % total;
+        setDirection(forward <= total / 2 ? "next" : "prev");
+        return target;
+      });
     },
     [carouselProducts.length],
   );
