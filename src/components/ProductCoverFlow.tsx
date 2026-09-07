@@ -133,6 +133,7 @@ export function ProductCoverFlow() {
             to="/products/$slug"
             params={{ slug: activeProduct.slug }}
             aria-label={`${activeProduct.name[lang]} — ${lang === "ka" ? "პროდუქტის ნახვა" : "view product"}`}
+            data-dir={direction}
             className="coverflow-active relative z-10 col-start-2 flex h-full items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-toast focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream"
           >
             <img
