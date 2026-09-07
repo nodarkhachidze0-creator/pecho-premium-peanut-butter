@@ -35,6 +35,20 @@ export function Header() {
     return () => window.removeEventListener("pecho:cart-bump", onBump as EventListener);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   const links = [
     { to: "/", label: t("nav.home") },
     { to: "/products", label: t("nav.products") },
@@ -46,54 +60,37 @@ export function Header() {
     { to: "/contact", label: t("nav.contact") },
   ] as const;
 
-
   return (
-    <header
-      className={`backdrop-blur-md border-b border-brand-roast/5 transition-all duration-300 ${
-        scrolled ? "header-scrolled" : "bg-brand-cream/70"
-      }`}
+    <>
+      <header
+        className={`backdrop-blur-md border-b border-brand-roast/5 transition-all duration-300 ${
+          scrolled ? "header-scrolled" : "bg-brand-cream/70"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 grid grid-cols-[auto_1fr_auto] items-center gap-4">
+          <button
+            onClick={() => setOpen(true)}
+            aria-label="Menu"
+            aria-expanded={open}
+            className="menu-shake size-11 rounded-md border border-brand-roast/40 bg-brand-toast text-white flex items-center justify-center shadow-sm"
+          >
+            <Menu className="size-5" strokeWidth={1.8} />
+          </button>
 
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 md:grid-cols-[1fr_auto_1fr]">
-        <div className="flex items-center min-w-0">
-          <Link to="/" aria-label="Pecho — home" className="shrink-0 flex items-center transition-transform hover:scale-105">
-            <PechoLogo className="h-10 sm:h-11 w-auto" />
-          </Link>
-        </div>
-
-        <nav className="hidden md:flex items-center justify-center gap-5 lg:gap-7 text-sm font-medium text-brand-roast/70">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              activeOptions={{ exact: l.to === "/" }}
-              activeProps={{ className: "text-brand-roast is-active" }}
-              className="nav-underline hover:text-brand-roast transition-colors whitespace-nowrap"
-            >
-              {l.label}
+          <div className="flex items-center justify-center min-w-0">
+            <Link to="/" aria-label="Pecho — home" className="shrink-0 flex items-center transition-transform hover:scale-105">
+              <PechoLogo className="h-10 sm:h-11 w-auto" />
             </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center justify-end gap-3 sm:gap-5 shrink-0">
-          <div className="hidden sm:flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
-            <button
-              onClick={() => setLang("en")}
-              className={lang === "en" ? "text-brand-roast" : "text-brand-roast/40 hover:text-brand-roast transition-colors"}
-            >
-              EN
-            </button>
-            <span className="text-brand-roast/20">/</span>
-            <button
-              onClick={() => setLang("ka")}
-              className={lang === "ka" ? "text-brand-roast" : "text-brand-roast/40 hover:text-brand-roast transition-colors"}
-            >
-              KA
-            </button>
           </div>
-          <Link to="/cart" className="flex items-center gap-2 group relative" data-cart-icon>
+
+          <Link
+            to="/cart"
+            aria-label={t("nav.cart")}
+            data-cart-icon
+            className="relative size-11 rounded-md border border-brand-roast/40 bg-brand-paper/70 text-brand-roast flex items-center justify-center transition-colors hover:bg-brand-paper"
+          >
             <div className={`relative ${bump ? "cart-bump" : ""}`}>
-              <ShoppingBag className="size-5 shrink-0 text-brand-roast" strokeWidth={1.6} />
+              <ShoppingBag className="size-5 shrink-0" strokeWidth={1.6} />
               {count > 0 && (
                 <span
                   key={badgeKey}
@@ -103,36 +100,53 @@ export function Header() {
                 </span>
               )}
             </div>
-            <span className="hidden sm:inline text-sm font-medium">{t("nav.cart")}</span>
           </Link>
-          <button className="md:hidden text-brand-roast" onClick={() => setOpen((v) => !v)} aria-label="Menu">
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
         </div>
-      </div>
+      </header>
 
       {open && (
-        <div className="md:hidden border-t border-brand-roast/5 bg-brand-cream animate-in fade-in slide-in-from-top-2 duration-200">
-          <nav className="px-6 py-4 flex flex-col gap-1">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                activeOptions={{ exact: l.to === "/" }}
-                activeProps={{ className: "bg-brand-paper" }}
-                className="px-3 py-3 rounded-md text-brand-roast text-sm font-medium hover:bg-brand-paper transition-colors"
+        <div className="nav-overlay fixed inset-0 z-[100] bg-brand-toast overflow-y-auto">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="h-16 flex items-center justify-end">
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="size-11 rounded-md border border-brand-roast/40 bg-brand-cream/90 text-brand-roast flex items-center justify-center"
               >
-                {l.label}
-              </Link>
-            ))}
-            <div className="flex items-center gap-3 px-3 pt-4 mt-2 border-t border-brand-roast/10 text-xs font-semibold tracking-widest uppercase">
-              <button onClick={() => setLang("en")} className={lang === "en" ? "text-brand-roast" : "text-brand-roast/40"}>EN</button>
-              <span className="text-brand-roast/20">/</span>
-              <button onClick={() => setLang("ka")} className={lang === "ka" ? "text-brand-roast" : "text-brand-roast/40"}>KA</button>
+                <X className="size-5" />
+              </button>
             </div>
-          </nav>
+
+            <nav className="pb-12">
+              <ul>
+                {links.map((l, i) => (
+                  <li key={l.to}>
+                    <Link
+                      to={l.to}
+                      activeOptions={{ exact: l.to === "/" }}
+                      onClick={() => setOpen(false)}
+                      className="nav-overlay-link group flex items-baseline justify-between gap-6 border-b border-white/20 px-3 sm:px-5 py-4 sm:py-5 text-white transition-colors"
+                    >
+                      <span className="font-display font-extrabold leading-none text-3xl sm:text-5xl lg:text-6xl">
+                        {l.label}
+                      </span>
+                      <span className="font-ui text-xs sm:text-sm opacity-70 tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex items-center gap-3 px-3 sm:px-5 pt-8 text-sm font-semibold tracking-widest uppercase text-white">
+                <button onClick={() => setLang("en")} className={lang === "en" ? "" : "opacity-60"}>EN</button>
+                <span className="opacity-40">/</span>
+                <button onClick={() => setLang("ka")} className={lang === "ka" ? "" : "opacity-60"}>KA</button>
+              </div>
+            </nav>
+          </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

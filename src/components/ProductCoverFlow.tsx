@@ -31,11 +31,19 @@ export function ProductCoverFlow() {
     [],
   );
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
   const touchStartX = useRef<number | null>(null);
 
   const goTo = useCallback(
     (index: number) => {
-      setActiveIndex((index + carouselProducts.length) % carouselProducts.length);
+      setActiveIndex((current) => {
+        const total = carouselProducts.length;
+        const target = ((index % total) + total) % total;
+        if (target === current) return current;
+        const forward = (target - current + total) % total;
+        setDirection(forward <= total / 2 ? "next" : "prev");
+        return target;
+      });
     },
     [carouselProducts.length],
   );
@@ -125,6 +133,7 @@ export function ProductCoverFlow() {
             to="/products/$slug"
             params={{ slug: activeProduct.slug }}
             aria-label={`${activeProduct.name[lang]} — ${lang === "ka" ? "პროდუქტის ნახვა" : "view product"}`}
+            data-dir={direction}
             className="coverflow-active relative z-10 col-start-2 flex h-full items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-toast focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream"
           >
             <img

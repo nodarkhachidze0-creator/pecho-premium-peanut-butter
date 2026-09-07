@@ -486,7 +486,10 @@
   filter: drop-shadow(0 26px 26px rgba(43, 43, 43, 0.18));
 }
 .coverflow-active {
-  animation: coverflow-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: coverflow-enter 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.coverflow-active[data-dir="prev"] {
+  animation-name: coverflow-enter-prev;
 }
 .coverflow-float {
   animation: coverflow-float 4.8s ease-in-out infinite;
@@ -503,8 +506,36 @@
   transform: scale(0.79);
 }
 @keyframes coverflow-enter {
-  from { opacity: 0.72; transform: scale(0.94); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: translateX(56px) scale(0.9); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes coverflow-enter-prev {
+  from { opacity: 0; transform: translateX(-56px) scale(0.9); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* ============ Header menu button shake + nav overlay ============ */
+@keyframes menu-shake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(-2px) rotate(-3deg); }
+  40% { transform: translateX(2px) rotate(3deg); }
+  60% { transform: translateX(-2px) rotate(-2deg); }
+  80% { transform: translateX(2px) rotate(2deg); }
+}
+.menu-shake:hover {
+  animation: menu-shake 400ms ease-in-out;
+}
+@keyframes nav-overlay-in {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nav-overlay {
+  animation: nav-overlay-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.nav-overlay-link:hover,
+.nav-overlay-link:focus-visible {
+  background-color: var(--brand-cream);
+  color: var(--brand-roast);
 }
 @media (max-width: 767px) {
   .coverflow-stage { min-height: 680px; }
@@ -527,6 +558,8 @@
   .hero-float,
     .coverflow-active,
     .coverflow-float,
+  .menu-shake:hover,
+  .nav-overlay,
   .peanut-fall,
   .pecho-intro-scene,
   .pecho-intro-lid,
