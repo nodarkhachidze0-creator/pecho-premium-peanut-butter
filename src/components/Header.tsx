@@ -70,7 +70,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 grid grid-cols-[auto_1fr_auto] items-center gap-4">
           <button
             onClick={() => setOpen(true)}
-            aria-label={t("nav.menu") ?? "Menu"}
+            aria-label="Menu"
             aria-expanded={open}
             className="menu-shake size-11 rounded-md border border-brand-roast/40 bg-brand-toast text-white flex items-center justify-center shadow-sm"
           >
