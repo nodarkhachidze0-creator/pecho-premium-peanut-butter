@@ -164,7 +164,7 @@ function RootComponent() {
           <LoadingScreen />
           <div className="min-h-screen flex flex-col">
             <div className="sticky top-0 z-50">
-              <AnnouncementBar />
+              
               <Header />
             </div>
 
