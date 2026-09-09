@@ -1,7 +1,11 @@
-import classic450 from "@/assets/jar-classic-450g.webp.asset.json";
-import classic1kg from "@/assets/jar-classic-1kg.png.asset.json";
-import crunchy450 from "@/assets/jar-crunchy-450g.png.asset.json";
-import crunchy1kg from "@/assets/jar-crunchy-1kg.png.asset.json";
+import classic450 from "@/assets/classic-450g-transparent.webp.asset.json";
+import classic450Detail from "@/assets/classic-450g-lifestyle.webp.asset.json";
+import classic1kg from "@/assets/classic-1kg-transparent.webp.asset.json";
+import classic1kgDetail from "@/assets/classic-1kg-lifestyle.webp.asset.json";
+import crunchy450 from "@/assets/crunchy-450g-transparent.webp.asset.json";
+import crunchy450Detail from "@/assets/crunchy-450g-lifestyle.webp.asset.json";
+import crunchy1kg from "@/assets/crunchy-1kg-transparent.webp.asset.json";
+import crunchy1kgDetail from "@/assets/crunchy-1kg-lifestyle.webp.asset.json";
 import bundleImg from "@/assets/pecho-promo-2plus1.png.asset.json";
 
 export type Category = "classic" | "crunchy" | "bundle";
@@ -16,6 +20,7 @@ export type Product = {
   weight: string;
   category: Category;
   image: string;
+  detailImage?: string;
   ingredients: { en: string; ka: string };
   nutrition: { label: { en: string; ka: string }; value: string }[];
   texture?: { en: string; ka: string };
@@ -96,6 +101,7 @@ export const products: Product[] = [
     weight: "450g",
     category: "classic",
     image: classic450.url,
+    detailImage: classic450Detail.url,
     ingredients,
     nutrition: classicNutrition,
     protein: "25",
@@ -110,6 +116,7 @@ export const products: Product[] = [
     weight: "1kg",
     category: "classic",
     image: classic1kg.url,
+    detailImage: classic1kgDetail.url,
     ingredients,
     nutrition: classicNutrition,
     protein: "25",
@@ -124,6 +131,7 @@ export const products: Product[] = [
     weight: "450g",
     category: "crunchy",
     image: crunchy450.url,
+    detailImage: crunchy450Detail.url,
     ingredients,
     nutrition: classicNutrition,
     protein: "25",
@@ -138,6 +146,7 @@ export const products: Product[] = [
     weight: "1kg",
     category: "crunchy",
     image: crunchy1kg.url,
+    detailImage: crunchy1kgDetail.url,
     ingredients,
     nutrition: classicNutrition,
     protein: "25",
