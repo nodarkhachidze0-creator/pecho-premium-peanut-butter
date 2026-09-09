@@ -104,28 +104,13 @@ function ProductDetail() {
           </Link>
 
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
-            <div className="space-y-4">
-              <div className="bg-brand-paper rounded-3xl ring-1 ring-black/5 overflow-hidden">
+              <div>
+              <div className="bg-brand-paper rounded-[20px] overflow-hidden">
                 <img
-                  src={product.image}
+                  src={product.detailImage ?? product.image}
                   alt={product.name[lang]}
-                  className="w-full aspect-square object-cover"
+                  className="w-full aspect-[4/5] object-cover"
                 />
-              </div>
-              <div className="grid grid-cols-4 gap-3">
-                {[0, 1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="aspect-square bg-brand-paper rounded-xl ring-1 ring-black/5 overflow-hidden"
-                  >
-                    <img
-                      src={product.image}
-                      alt=""
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
               </div>
             </div>
 

@@ -132,6 +132,7 @@
   --color-brand-cherry: var(--brand-cherry);
   --color-brand-lime: var(--brand-lime);
   --color-brand-stage: var(--brand-stage);
+  --color-brand-backdrop: var(--brand-backdrop);
 
   --font-display: "Hakuna", "Noto Sans Georgian", sans-serif;
   --font-heading: "Hakuna", "Noto Sans Georgian", sans-serif;
@@ -154,6 +155,7 @@
   --brand-cherry: #c2410c;
   --brand-lime: #84cc16;
   --brand-stage: #2b2b2b;
+  --brand-backdrop: rgb(0 0 0 / 0.6);
   --brand-spotlight: rgba(253, 230, 138, 0.55);
   --brand-spotlight-soft: rgba(253, 230, 138, 0.85);
 
@@ -514,7 +516,20 @@
   to { opacity: 1; transform: translateX(0) scale(1); }
 }
 
-/* ============ Header menu button shake + nav overlay ============ */
+/* ============ Smart header + drawers ============ */
+.smart-header {
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+  will-change: transform, opacity;
+}
+.smart-header-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.smart-header-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
 @keyframes menu-shake {
   0%, 100% { transform: translateX(0) rotate(0deg); }
   20% { transform: translateX(-2px) rotate(-3deg); }
@@ -525,12 +540,26 @@
 .menu-shake:hover {
   animation: menu-shake 400ms ease-in-out;
 }
-@keyframes nav-overlay-in {
-  from { opacity: 0; transform: translateY(-12px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes drawer-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-.nav-overlay {
-  animation: nav-overlay-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+@keyframes drawer-left-in {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+@keyframes drawer-right-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.drawer-backdrop {
+  animation: drawer-backdrop-in 300ms ease-out both;
+}
+.drawer-panel-left {
+  animation: drawer-left-in 350ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.drawer-panel-right {
+  animation: drawer-right-in 350ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .nav-overlay-link:hover,
 .nav-overlay-link:focus-visible {
@@ -540,12 +569,6 @@
 @media (max-width: 767px) {
   .coverflow-stage { min-height: 680px; }
   .coverflow-spotlight { width: min(118vw, 600px); }
-}
-
-/* ============ Sticky header blur intensifies on scroll ============ */
-.header-scrolled {
-  background-color: rgba(253, 248, 240, 0.92);
-  box-shadow: 0 4px 20px -12px rgba(42, 24, 16, 0.15);
 }
 
 /* ============ Reduced motion ============ */
@@ -559,7 +582,9 @@
     .coverflow-active,
     .coverflow-float,
   .menu-shake:hover,
-  .nav-overlay,
+  .drawer-backdrop,
+  .drawer-panel-left,
+  .drawer-panel-right,
   .peanut-fall,
   .pecho-intro-scene,
   .pecho-intro-lid,
@@ -573,6 +598,7 @@
   .pecho-drip-hidden { clip-path: inset(0 0 0 0); opacity: 1; transition: none; }
   .tilt-card:hover .tilt-card-inner { transform: none; }
   .btn-premium:hover { transform: none; }
+  .smart-header { transition: none; }
   * { transition-duration: 0ms !important; }
 }
 

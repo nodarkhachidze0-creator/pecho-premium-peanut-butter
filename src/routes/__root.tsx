@@ -105,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
@@ -163,10 +163,7 @@ function RootComponent() {
         <CartProvider>
           <LoadingScreen />
           <div className="min-h-screen flex flex-col">
-            <div className="sticky top-0 z-50">
-              
-              <Header />
-            </div>
+            <Header />
 
             <main className="flex-1">
               <Outlet />
