@@ -76,6 +76,23 @@ export function Header() {
     { to: "/contact", label: t("nav.contact") },
   ] as const;
 
+  const keepFocusInMenu = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key !== "Tab") return;
+    const focusable = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!first || !last) return;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
   return (
     <>
       <header className={`smart-header sticky top-0 z-50 bg-brand-cream/80 backdrop-blur-md ${headerVisible || drawer ? "smart-header-visible" : "smart-header-hidden"}`}>
@@ -88,7 +105,7 @@ export function Header() {
             onClick={() => setDrawer("menu")}
             aria-label="Menu"
             aria-expanded={drawer === "menu"}
-            className="menu-shake size-11 rounded-full bg-transparent text-brand-toast hover:bg-transparent hover:text-brand-roast"
+            className="menu-shake size-11 rounded-full border-0 bg-transparent text-brand-toast shadow-none hover:bg-transparent hover:text-brand-roast"
           >
             <Menu className="size-7" strokeWidth={1.8} />
           </Button>
@@ -108,7 +125,7 @@ export function Header() {
             aria-label={t("nav.cart")}
             aria-expanded={drawer === "cart"}
             data-cart-icon
-            className="relative size-11 rounded-full bg-transparent text-brand-roast hover:bg-transparent hover:text-brand-toast"
+            className="relative size-11 rounded-full border-0 bg-transparent text-brand-roast shadow-none hover:bg-transparent hover:text-brand-toast"
           >
             <div className={`relative ${bump ? "cart-bump" : ""}`}>
               <ShoppingBag className="size-6 shrink-0" strokeWidth={1.6} />
@@ -128,7 +145,7 @@ export function Header() {
       {drawer === "menu" && (
         <div className="drawer-layer fixed inset-0 z-[110]" role="dialog" aria-modal="true" aria-label="Navigation">
           <button type="button" className="drawer-backdrop absolute inset-0 bg-brand-backdrop" onClick={() => setDrawer(null)} aria-label="Close menu" />
-          <aside className="drawer-panel drawer-panel-left absolute inset-y-0 left-0 w-[85vw] overflow-y-auto bg-brand-toast md:w-1/2">
+          <aside className="drawer-panel drawer-panel-left absolute inset-y-0 left-0 w-[85vw] overflow-y-auto bg-brand-toast md:w-1/2" onKeyDown={keepFocusInMenu}>
             <div className="flex min-h-full flex-col px-4 sm:px-6">
               <div className="h-20 sm:h-24 flex items-center justify-end">
                 <Button
