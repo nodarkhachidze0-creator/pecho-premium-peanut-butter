@@ -23,6 +23,23 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
 
   if (!open) return null;
 
+  const keepFocusInDrawer = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key !== "Tab") return;
+    const focusable = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled])'),
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!first || !last) return;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
   return (
     <div className="drawer-layer fixed inset-0 z-[110]" role="dialog" aria-modal="true" aria-label={t("nav.cart")}>
       <button
@@ -31,7 +48,7 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
         onClick={onClose}
         aria-label={lang === "ka" ? "კალათის დახურვა" : "Close cart"}
       />
-      <aside className="drawer-panel drawer-panel-right absolute inset-y-0 right-0 flex w-[85vw] flex-col bg-brand-cream shadow-2xl md:w-1/2">
+      <aside className="drawer-panel drawer-panel-right absolute inset-y-0 right-0 flex w-[85vw] flex-col bg-brand-cream shadow-2xl md:w-1/2" onKeyDown={keepFocusInDrawer}>
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 sm:px-8">
           <div className="min-w-0">
             <p className="truncate font-display text-2xl font-extrabold text-brand-roast">{t("cart.title")}</p>
