@@ -41,6 +41,12 @@ export function ProductCard({ product }: { product: Product }) {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const rows = specs(product, lang);
+  const imageSize =
+    product.slug === "crunchy-450g"
+      ? "max-h-[70%] max-w-[47%]"
+      : product.weight === "1kg"
+        ? "max-h-[90%] max-w-[62%]"
+        : "max-h-[78%] max-w-[52%]";
 
   const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -81,7 +87,7 @@ export function ProductCard({ product }: { product: Product }) {
             src={product.image}
             alt={product.name[lang]}
             loading="lazy"
-            className="max-h-[78%] w-auto max-w-[52%] object-contain drop-shadow-[0_16px_20px_rgba(42,24,16,0.16)] transition-transform duration-500 md:group-hover:-translate-x-[26%] group-hover:scale-[1.03]"
+            className={`${imageSize} w-auto object-contain drop-shadow-[0_16px_20px_rgba(42,24,16,0.16)] transition-transform duration-500 group-hover:scale-[1.03]`}
           />
         </div>
 
@@ -91,19 +97,6 @@ export function ProductCard({ product }: { product: Product }) {
           </span>
         )}
 
-        {/* Desktop hover info panel — slides in beside the jar */}
-        <div className="pc-panel absolute inset-y-3 right-3 hidden w-[54%] rounded-[18px] bg-brand-roast/95 p-4 text-brand-cream backdrop-blur-sm md:flex md:items-center">
-          <dl className="w-full space-y-1.5">
-            {rows.map((r) => (
-              <div key={r.label.en} className="flex gap-3 text-[13px] leading-snug">
-                <dt className="shrink-0 font-label text-[10px] uppercase tracking-widest text-brand-toast pt-[3px]">
-                  {r.label[lang]}
-                </dt>
-                <dd className="min-w-0 flex-1 text-right text-brand-cream/90">{r.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
       </div>
 
       <div className="mt-5 flex items-start justify-between gap-4 md:mb-auto">
