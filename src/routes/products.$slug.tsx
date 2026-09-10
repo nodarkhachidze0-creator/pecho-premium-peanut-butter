@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { ArrowLeft } from "lucide-react";
 import { getProduct, getRelated } from "@/data/products";
@@ -7,6 +7,7 @@ import { useT } from "@/lib/i18n";
 import { useCart, formatGEL } from "@/lib/cart";
 import { QuantityStepper } from "@/components/QuantityStepper";
 import { ProductCard } from "@/components/ProductCard";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => {
@@ -76,7 +77,13 @@ function ProductDetail() {
   const { add } = useCart();
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<Tab>("description");
+  const gallery = product.detailImages ?? [product.detailImage ?? product.image];
+  const [selectedImage, setSelectedImage] = useState(gallery[0]);
   const related = getRelated(product.slug);
+
+  useEffect(() => {
+    setSelectedImage(gallery[0]);
+  }, [product.slug]);
 
   const handleAdd = () => {
     add(
@@ -104,14 +111,38 @@ function ProductDetail() {
           </Link>
 
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
-              <div>
-              <div className="bg-brand-paper rounded-[20px] overflow-hidden">
+            <div>
+              <div className="overflow-hidden rounded-[20px] bg-brand-paper">
                 <img
-                  src={product.detailImage ?? product.image}
+                  src={selectedImage}
                   alt={product.name[lang]}
                   className="w-full aspect-[4/5] object-cover"
                 />
               </div>
+              {gallery.length > 1 && (
+                <div className="mt-4 grid grid-cols-2 gap-4" aria-label={lang === "ka" ? "პროდუქტის ფოტოები" : "Product photos"}>
+                  {gallery.map((image, index) => (
+                    <Button
+                      key={image}
+                      type="button"
+                      variant="ghost"
+                      onClick={() => setSelectedImage(image)}
+                      aria-label={lang === "ka" ? `ფოტო ${index + 1}` : `Photo ${index + 1}`}
+                      aria-pressed={selectedImage === image}
+                      className={`h-auto overflow-hidden rounded-[20px] p-0 ring-offset-2 ring-offset-brand-cream hover:bg-transparent ${
+                        selectedImage === image ? "ring-2 ring-brand-toast" : "ring-1 ring-brand-roast/10"
+                      }`}
+                    >
+                      <img
+                        src={image}
+                        alt=""
+                        loading="lazy"
+                        className="aspect-[4/3] w-full object-cover"
+                      />
+                    </Button>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="space-y-6">

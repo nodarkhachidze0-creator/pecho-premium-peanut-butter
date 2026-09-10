@@ -56,6 +56,16 @@ export function ProductCoverFlow() {
 
   if (!activeProduct || !previousProduct || !nextProduct) return null;
 
+  const imageClass = (slug: string, side = false) => {
+    if (slug === "crunchy-450g") {
+      return side ? "max-h-[64%] max-w-[70%]" : "max-h-[80%] max-w-[80%]";
+    }
+    if (slug.endsWith("-1kg")) {
+      return side ? "max-h-[82%] max-w-[88%]" : "max-h-[98%] max-w-[98%]";
+    }
+    return side ? "max-h-[72%] max-w-[78%]" : "max-h-[88%] max-w-[88%]";
+  };
+
   const handleTouchEnd = (event: React.TouchEvent<HTMLElement>) => {
     if (touchStartX.current === null) return;
     const distance = event.changedTouches[0]?.clientX - touchStartX.current;
@@ -124,7 +134,7 @@ export function ProductCoverFlow() {
             <img
               src={previousProduct.image}
               alt=""
-              className="max-h-[72%] max-w-[78%] object-contain"
+              className={`${imageClass(previousProduct.slug, true)} object-contain`}
             />
           </Button>
 
@@ -139,7 +149,7 @@ export function ProductCoverFlow() {
             <img
               src={activeProduct.image}
               alt={activeProduct.name[lang]}
-              className="coverflow-float max-h-[88%] max-w-[88%] object-contain"
+              className={`coverflow-float ${imageClass(activeProduct.slug)} object-contain`}
             />
           </Link>
 
@@ -153,7 +163,7 @@ export function ProductCoverFlow() {
             <img
               src={nextProduct.image}
               alt=""
-              className="max-h-[72%] max-w-[78%] object-contain"
+              className={`${imageClass(nextProduct.slug, true)} object-contain`}
             />
           </Button>
         </div>
