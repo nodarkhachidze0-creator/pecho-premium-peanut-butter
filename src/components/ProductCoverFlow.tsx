@@ -26,10 +26,7 @@ const features = [
 
 export function ProductCoverFlow() {
   const { lang } = useT();
-  const carouselProducts = useMemo(
-    () => products.filter((product) => product.category !== "bundle"),
-    [],
-  );
+  const carouselProducts = useMemo(() => products, []);
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
   const touchStartX = useRef<number | null>(null);
