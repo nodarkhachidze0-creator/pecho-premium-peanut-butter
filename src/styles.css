@@ -247,6 +247,15 @@
   }
 }
 
+@keyframes product-gallery-enter {
+  from { opacity: 0; transform: translateY(8px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.product-gallery-image {
+  animation: product-gallery-enter 300ms ease-in-out both;
+}
+
 /* ============ Gloss shine (drip highlight) ============ */
 @keyframes gloss-shine {
   0% { transform: translateX(-100%) skewX(-20deg); opacity: 0; }
@@ -595,6 +604,7 @@
   .badge-pop {
     animation: none !important;
   }
+  .product-gallery-image { animation: none !important; }
   .pecho-drip-hidden { clip-path: inset(0 0 0 0); opacity: 1; transition: none; }
   .tilt-card:hover .tilt-card-inner { transform: none; }
   .btn-premium:hover { transform: none; }
