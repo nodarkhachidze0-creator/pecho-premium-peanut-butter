@@ -479,18 +479,22 @@
 
 /* ============ Hero peanut particles ============ */
 @keyframes hero-peanut-appear {
-  0%, 12% {
+  0% {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(0.5);
   }
-  28%, 66% {
-    opacity: 0.78;
+  18%, 82% {
+    opacity: 1;
     transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(1);
   }
-  84%, 100% {
+  100% {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(0.5);
   }
+}
+.hero-peanuts {
+  contain: paint;
+  clip-path: inset(0);
 }
 .hero-peanut {
   left: var(--peanut-x);
@@ -498,12 +502,12 @@
   width: var(--peanut-size);
   opacity: 0;
   filter: drop-shadow(0 10px 14px rgba(42, 24, 16, 0.12));
-  animation: hero-peanut-appear var(--peanut-duration) ease-in-out var(--peanut-delay) infinite;
+  animation: hero-peanut-appear var(--peanut-duration) ease-in-out var(--peanut-delay) infinite both;
   will-change: opacity, transform;
 }
 @media (max-width: 767px) {
   .hero-peanut { opacity: 0; }
-  .hero-peanut:nth-child(even) { display: none; }
+  .hero-peanut:nth-child(n + 11) { display: none; }
 }
 
 /* ============ Homepage product cover-flow ============ */
@@ -603,6 +607,11 @@
 .nav-overlay-link:focus-visible {
   background-color: var(--brand-cream);
   color: var(--brand-roast);
+}
+.nav-overlay-link {
+  transition-property: background-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
 }
 @media (max-width: 767px) {
   .coverflow-stage { min-height: 680px; }
