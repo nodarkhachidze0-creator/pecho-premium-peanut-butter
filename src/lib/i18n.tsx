@@ -24,10 +24,10 @@ const en: Dict = {
   "cta.placeOrder": "Place Order",
   "cta.send": "Send Message",
 
-  "home.hero.eyebrow": "Limited time only",
+  "home.hero.eyebrow": "100% natural",
   "home.hero.title": "Natural peanut butter",
   "home.hero.subtitle":
-    "Buy 2 jars and get the third one free — while the promotion lasts.",
+    "Slow-roasted Georgian peanuts, a pinch of sea salt — and nothing else.",
 
   "nav.recipes": "Recipes",
   "nav.partners": "Partners",
@@ -75,7 +75,6 @@ const en: Dict = {
   "products.cat.all": "All",
   "products.cat.classic": "Classic",
   "products.cat.crunchy": "Crunchy",
-  "products.cat.bundle": "Bundle",
   "products.cat.flavored": "Flavored",
   "products.cat.limited": "Limited",
   "products.empty": "No products match your search.",
@@ -87,6 +86,10 @@ const en: Dict = {
   "pdp.related": "You may also like",
   "pdp.quantity": "Quantity",
   "pdp.notFound": "Product not found.",
+  "pdp.chooseFlavor": "Choose flavour",
+  "pdp.chooseWeight": "Choose size",
+  "pdp.new": "New",
+  "pdp.save": "Save",
 
   "cart.title": "Your Cart",
   "cart.empty": "Your cart is empty.",
@@ -216,10 +219,10 @@ const ka: Dict = {
   "cta.placeOrder": "შეკვეთის დადასტურება",
   "cta.send": "შეტყობინების გაგზავნა",
 
-  "home.hero.eyebrow": "ლიმიტირებული დროით",
+  "home.hero.eyebrow": "100% ნატურალური",
   "home.hero.title": "ნატურალური მიწისთხილის კარაქი",
   "home.hero.subtitle":
-    "იყიდე 2, მიიღე 1 საჩუქრად — ლიმიტირებული დროით.",
+    "ნელა მოხალული ქართული მიწისთხილი და ცოტა ზღვის მარილი — მეტი არაფერი.",
 
   "nav.recipes": "რეცეპტები",
   "nav.partners": "პარტნიორები",
@@ -268,7 +271,6 @@ const ka: Dict = {
   "products.cat.all": "ყველა",
   "products.cat.classic": "კლასიკური",
   "products.cat.crunchy": "ხრაშუნა",
-  "products.cat.bundle": "შეთავაზება",
   "products.cat.flavored": "არომატიზირებული",
   "products.cat.limited": "ლიმიტირებული",
   "products.empty": "შედეგი ვერ მოიძებნა.",
@@ -280,6 +282,10 @@ const ka: Dict = {
   "pdp.related": "შესაძლოა მოგეწონოს",
   "pdp.quantity": "რაოდენობა",
   "pdp.notFound": "პროდუქტი ვერ მოიძებნა.",
+  "pdp.chooseFlavor": "აირჩიე გემო",
+  "pdp.chooseWeight": "აირჩიე წონა",
+  "pdp.new": "ახალი",
+  "pdp.save": "დაზოგეთ",
 
   "cart.title": "შენი კალათა",
   "cart.empty": "კალათა ცარიელია.",

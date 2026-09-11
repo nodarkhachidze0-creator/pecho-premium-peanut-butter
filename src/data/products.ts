@@ -10,9 +10,12 @@ import classic450Gallery from "@/assets/classic-450g-gallery.webp.asset.json";
 import classic1kgGallery from "@/assets/classic-1kg-gallery.webp.asset.json";
 import crunchy450Gallery from "@/assets/crunchy-450g-gallery.webp.asset.json";
 import crunchy1kgGallery from "@/assets/crunchy-1kg-gallery.webp.asset.json";
-import bundleImg from "@/assets/pecho-promo-2plus1.png.asset.json";
+import classic450Spoon from "@/assets/classic-450g-spoon.webp.asset.json";
+import classic1kgSpoon from "@/assets/classic-1kg-spoon.webp.asset.json";
+import crunchy450Spoon from "@/assets/crunchy-450g-spoon.webp.asset.json";
+import crunchy1kgSpoon from "@/assets/crunchy-1kg-spoon.webp.asset.json";
 
-export type Category = "classic" | "crunchy" | "bundle";
+export type Category = "classic" | "crunchy";
 
 export type Product = {
   slug: string;
@@ -68,46 +71,24 @@ const crunchyDesc = {
   ka: "მათთვის, ვინც ხრაშუნას ეთაყვანება. ღრმად მოხალული მიწისთხილი დიდი ნაჭრებით.",
 };
 
-const bundleName = {
-  en: "Pecho 2+1 Bundle",
-  ka: "Pecho 2+1 შეთავაზება",
-};
-const bundleShort = {
-  en: "Buy 2 jars, get the 3rd free — limited time.",
-  ka: "იყიდე 2 ქილა, მიიღე მე-3 საჩუქრად — ლიმიტირებული დროით.",
-};
-const bundleDesc = {
-  en: "Our best-value pack: three jars of Pecho peanut butter for the price of two. Mix Classic and Crunchy — our team will contact you to confirm your selection.",
-  ka: "საუკეთესო ღირებულების შეთავაზება: სამი ქილა Pecho მიწისთხილის კარაქი ორის ფასად. აირჩიე Classic ან Crunchy — ჩვენი გუნდი დაგიკავშირდება არჩევანის დასაზუსტებლად.",
-};
-
 export const products: Product[] = [
-  {
-    slug: "bundle-2plus1",
-    name: bundleName,
-    short: bundleShort,
-    description: bundleDesc,
-    price: 38,
-    originalPrice: 57,
-    weight: "3 × 1kg",
-    category: "bundle",
-    image: bundleImg.url,
-    ingredients,
-    nutrition: classicNutrition,
-    protein: "25",
-    featured: true,
-  },
   {
     slug: "classic-450g",
     name: classicName,
     short: classicShort,
     description: classicDesc,
     price: 9,
+    originalPrice: 12,
     weight: "450g",
     category: "classic",
     image: classic450.url,
     detailImage: classic450Detail.url,
-    detailImages: [classic450Detail.url, classic450Gallery.url],
+    detailImages: [
+      classic450.url,
+      classic450Detail.url,
+      classic450Gallery.url,
+      classic450Spoon.url,
+    ],
     ingredients,
     nutrition: classicNutrition,
     protein: "25",
@@ -119,11 +100,17 @@ export const products: Product[] = [
     short: classicShort,
     description: classicDesc,
     price: 19,
+    originalPrice: 24.9,
     weight: "1kg",
     category: "classic",
     image: classic1kg.url,
     detailImage: classic1kgDetail.url,
-    detailImages: [classic1kgDetail.url, classic1kgGallery.url],
+    detailImages: [
+      classic1kg.url,
+      classic1kgDetail.url,
+      classic1kgGallery.url,
+      classic1kgSpoon.url,
+    ],
     ingredients,
     nutrition: classicNutrition,
     protein: "25",
@@ -135,11 +122,17 @@ export const products: Product[] = [
     short: crunchyShort,
     description: crunchyDesc,
     price: 9,
+    originalPrice: 12,
     weight: "450g",
     category: "crunchy",
     image: crunchy450.url,
     detailImage: crunchy450Detail.url,
-    detailImages: [crunchy450Detail.url, crunchy450Gallery.url],
+    detailImages: [
+      crunchy450.url,
+      crunchy450Detail.url,
+      crunchy450Gallery.url,
+      crunchy450Spoon.url,
+    ],
     ingredients,
     nutrition: classicNutrition,
     protein: "25",
@@ -151,11 +144,17 @@ export const products: Product[] = [
     short: crunchyShort,
     description: crunchyDesc,
     price: 19,
+    originalPrice: 24.9,
     weight: "1kg",
     category: "crunchy",
     image: crunchy1kg.url,
     detailImage: crunchy1kgDetail.url,
-    detailImages: [crunchy1kgDetail.url, crunchy1kgGallery.url],
+    detailImages: [
+      crunchy1kg.url,
+      crunchy1kgDetail.url,
+      crunchy1kgGallery.url,
+      crunchy1kgSpoon.url,
+    ],
     ingredients,
     nutrition: classicNutrition,
     protein: "25",

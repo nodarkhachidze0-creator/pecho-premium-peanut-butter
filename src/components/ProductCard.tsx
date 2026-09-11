@@ -9,9 +9,7 @@ function specs(product: Product, lang: "en" | "ka") {
   const kind =
     product.category === "crunchy"
       ? { en: "Crunchy", ka: "ხრაშუნა" }
-      : product.category === "bundle"
-        ? { en: "Bundle", ka: "შეთავაზება" }
-        : { en: "Classic", ka: "კლასიკური" };
+      : { en: "Classic", ka: "კლასიკური" };
   const texture =
     product.category === "crunchy"
       ? { en: "Crunchy", ka: "ხრაშუნა" }
@@ -88,12 +86,6 @@ export function ProductCard({ product }: { product: Product }) {
             className={`${imageSize} w-auto object-contain drop-shadow-[0_16px_20px_rgba(42,24,16,0.16)] transition-transform duration-500 group-hover:scale-[1.03]`}
           />
         </div>
-
-        {product.originalPrice && (
-          <span className="absolute left-4 top-4 rounded-full bg-brand-toast px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-            2+1
-          </span>
-        )}
 
       </div>
 

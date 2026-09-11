@@ -8,7 +8,7 @@ import { StoreMap } from "@/components/StoreMap";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
 import { ProductCoverFlow } from "@/components/ProductCoverFlow";
 
-import promoImg from "@/assets/pecho-promo-2plus1.png.asset.json";
+import heroImg from "@/assets/classic-1kg-lifestyle.webp.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
 export const Route = createFileRoute("/")({
@@ -53,14 +53,13 @@ function Home() {
           </div>
           <div className="relative hero-float mx-auto w-full max-w-md lg:max-w-lg">
             <Link
-              to="/products/$slug"
-              params={{ slug: "bundle-2plus1" }}
+              to="/products"
               className="block rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-paper"
             >
               <img
-                src={promoImg.url}
-                alt="Pecho 2+1 promotional offer"
-                className="block w-full h-auto object-contain"
+                src={heroImg.url}
+                alt="Pecho natural peanut butter jar"
+                className="block w-full h-auto object-cover"
               />
             </Link>
 
