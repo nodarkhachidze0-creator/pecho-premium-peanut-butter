@@ -124,7 +124,7 @@ export function Header() {
             aria-label={t("nav.cart")}
             aria-expanded={drawer === "cart"}
             data-cart-icon
-            className="relative size-12 rounded-lg border-2 border-brand-roast bg-brand-paper text-brand-roast shadow-none hover:bg-brand-cream hover:text-brand-roast"
+            className="menu-shake relative size-12 rounded-lg border-2 border-brand-roast bg-brand-paper text-brand-roast shadow-none hover:bg-brand-cream hover:text-brand-roast"
           >
             <div className={`relative ${bump ? "cart-bump" : ""}`}>
               <ShoppingBag className="size-6 shrink-0" strokeWidth={1.6} />
@@ -168,7 +168,7 @@ export function Header() {
                       to={l.to}
                       activeOptions={{ exact: l.to === "/" }}
                       onClick={() => setDrawer(null)}
-                      className="nav-overlay-link group flex items-baseline justify-between gap-6 border-b border-primary-foreground/20 px-3 py-3 text-primary-foreground transition-colors sm:px-5 sm:py-4"
+                      className="nav-overlay-link group flex items-baseline justify-between gap-6 border-b border-primary-foreground/20 px-3 py-3 text-primary-foreground transition-colors duration-300 ease-in-out sm:px-5 sm:py-4"
                     >
                       <span className="min-w-0 font-display font-extrabold leading-none text-2xl sm:text-4xl lg:text-5xl">
                         {l.label}
