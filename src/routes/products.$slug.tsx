@@ -161,7 +161,7 @@ function ProductDetail() {
                 ))}
               </div>
 
-              <div className="flex-1 overflow-hidden rounded-[20px] bg-brand-paper ring-1 ring-brand-roast/5">
+              <div className="w-full max-w-[520px] flex-1 overflow-hidden rounded-[20px] bg-brand-paper ring-1 ring-brand-roast/5">
                 <div className="flex aspect-square w-full items-center justify-center p-4 sm:p-6">
                   <img
                     src={selectedImage}
