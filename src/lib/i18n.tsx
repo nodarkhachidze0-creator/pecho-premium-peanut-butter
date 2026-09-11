@@ -24,10 +24,10 @@ const en: Dict = {
   "cta.placeOrder": "Place Order",
   "cta.send": "Send Message",
 
-  "home.hero.eyebrow": "Limited time only",
+  "home.hero.eyebrow": "100% natural",
   "home.hero.title": "Natural peanut butter",
   "home.hero.subtitle":
-    "Buy 2 jars and get the third one free — while the promotion lasts.",
+    "Slow-roasted Georgian peanuts, a pinch of sea salt — and nothing else.",
 
   "nav.recipes": "Recipes",
   "nav.partners": "Partners",
@@ -216,10 +216,10 @@ const ka: Dict = {
   "cta.placeOrder": "შეკვეთის დადასტურება",
   "cta.send": "შეტყობინების გაგზავნა",
 
-  "home.hero.eyebrow": "ლიმიტირებული დროით",
+  "home.hero.eyebrow": "100% ნატურალური",
   "home.hero.title": "ნატურალური მიწისთხილის კარაქი",
   "home.hero.subtitle":
-    "იყიდე 2, მიიღე 1 საჩუქრად — ლიმიტირებული დროით.",
+    "ნელა მოხალული ქართული მიწისთხილი და ცოტა ზღვის მარილი — მეტი არაფერი.",
 
   "nav.recipes": "რეცეპტები",
   "nav.partners": "პარტნიორები",
