@@ -42,11 +42,9 @@ export function ProductCard({ product }: { product: Product }) {
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const rows = specs(product, lang);
   const imageSize =
-    product.slug === "crunchy-450g"
-      ? "max-h-[70%] max-w-[60%] scale-x-[1.27]"
-      : product.weight === "1kg"
-        ? "max-h-[90%] max-w-[62%]"
-        : "max-h-[78%] max-w-[52%]";
+    product.weight === "1kg"
+      ? "max-h-[90%] max-w-[62%]"
+      : "max-h-[78%] max-w-[52%]";
 
   const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

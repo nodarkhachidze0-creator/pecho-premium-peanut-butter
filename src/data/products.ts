@@ -2,7 +2,7 @@ import classic450 from "@/assets/classic-450g-transparent.webp.asset.json";
 import classic450Detail from "@/assets/classic-450g-lifestyle.webp.asset.json";
 import classic1kg from "@/assets/classic-1kg-transparent.webp.asset.json";
 import classic1kgDetail from "@/assets/classic-1kg-lifestyle.webp.asset.json";
-import crunchy450 from "@/assets/crunchy-450g-transparent.webp.asset.json";
+import crunchy450 from "@/assets/crunchy-450g-packshot.webp.asset.json";
 import crunchy450Detail from "@/assets/crunchy-450g-lifestyle.webp.asset.json";
 import crunchy1kg from "@/assets/crunchy-1kg-transparent.webp.asset.json";
 import crunchy1kgDetail from "@/assets/crunchy-1kg-lifestyle.webp.asset.json";
