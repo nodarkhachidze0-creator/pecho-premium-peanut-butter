@@ -108,13 +108,10 @@ export function ProductCoverFlow() {
       </Button>
 
       <div className="mx-auto max-w-7xl">
-        <header className="relative z-10 mx-auto min-h-24 max-w-3xl text-center" aria-live="polite">
+        <header className="relative z-10 mx-auto min-h-16 max-w-3xl text-center" aria-live="polite">
           <h2 className="font-display text-3xl font-extrabold leading-tight text-brand-roast sm:text-4xl md:text-5xl">
             {activeProduct.name[lang]}
           </h2>
-          <p className="mt-3 font-ui text-sm text-brand-roast/60 sm:text-base">
-            {activeProduct.weight}
-          </p>
         </header>
 
         <div className="relative mt-4 grid h-[390px] grid-cols-[1fr_minmax(230px,360px)_1fr] items-center sm:h-[470px] md:h-[520px]">

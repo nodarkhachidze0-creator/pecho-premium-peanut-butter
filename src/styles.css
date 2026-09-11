@@ -477,6 +477,35 @@
 }
 .hero-float { animation: hero-float 6s ease-in-out infinite; }
 
+/* ============ Hero peanut particles ============ */
+@keyframes hero-peanut-appear {
+  0%, 12% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(0.5);
+  }
+  28%, 66% {
+    opacity: 0.78;
+    transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(1);
+  }
+  84%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(0.5);
+  }
+}
+.hero-peanut {
+  left: var(--peanut-x);
+  top: var(--peanut-y);
+  width: var(--peanut-size);
+  opacity: 0;
+  filter: drop-shadow(0 10px 14px rgba(42, 24, 16, 0.12));
+  animation: hero-peanut-appear var(--peanut-duration) ease-in-out var(--peanut-delay) infinite;
+  will-change: opacity, transform;
+}
+@media (max-width: 767px) {
+  .hero-peanut { opacity: 0; }
+  .hero-peanut:nth-child(even) { display: none; }
+}
+
 /* ============ Homepage product cover-flow ============ */
 @keyframes coverflow-float {
   0%, 100% { transform: translateY(0); }
@@ -588,6 +617,7 @@
   .pm-blink,
   .jar-float,
   .hero-float,
+  .hero-peanut,
     .coverflow-active,
     .coverflow-float,
   .menu-shake:hover,
@@ -609,6 +639,10 @@
   .tilt-card:hover .tilt-card-inner { transform: none; }
   .btn-premium:hover { transform: none; }
   .smart-header { transition: none; }
+  .hero-peanut {
+    opacity: 0.42;
+    transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(0.78);
+  }
   * { transition-duration: 0ms !important; }
 }
 

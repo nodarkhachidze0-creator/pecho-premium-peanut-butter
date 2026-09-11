@@ -1,12 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useT } from "@/lib/i18n";
-import { formatDate } from "@/lib/format-date";
-import { news } from "@/data/news";
 import { Reveal } from "@/components/Reveal";
 import { StoreMap } from "@/components/StoreMap";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
 import { ProductCoverFlow } from "@/components/ProductCoverFlow";
+import { HeroPeanuts } from "@/components/HeroPeanuts";
 
 import heroImg from "@/assets/classic-1kg-lifestyle.webp.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
@@ -33,14 +32,14 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const { t, lang } = useT();
-  const latest = news.slice(0, 3);
 
 
   return (
     <>
       {/* Hero */}
-      <section className="relative px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20 lg:pb-24">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <section className="relative isolate overflow-hidden px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20 lg:pb-24">
+        <HeroPeanuts />
+        <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="space-y-6 lg:space-y-8">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-toast">
               {t("home.hero.eyebrow")}
@@ -134,41 +133,6 @@ function Home() {
             >
               {t("cta.ourStory")} <ArrowRight className="size-4" />
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* News */}
-      <section className="px-4 sm:px-6 py-20 md:py-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-10 md:mb-14 gap-6">
-            <h2 className="text-3xl md:text-4xl font-display font-extrabold">{t("home.news.title")}</h2>
-            <Link
-              to="/news"
-              className="text-sm font-semibold border-b border-brand-roast pb-1 hover:border-brand-toast shrink-0"
-            >
-              {t("cta.viewAll")}
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            {latest.map((post) => (
-              <Link
-                key={post.slug}
-                to="/news/$slug"
-                params={{ slug: post.slug }}
-                className="group block bg-brand-beige rounded-2xl p-8 ring-1 ring-black/5 hover:ring-brand-toast/40 transition-all"
-              >
-                <span className="text-[10px] font-mono uppercase tracking-widest text-brand-roast/50">
-                  {formatDate(post.date, lang)}
-                </span>
-                <h3 className="text-xl font-display mt-3 group-hover:text-brand-toast transition-colors">
-                  {post.title[lang]}
-                </h3>
-                <p className="text-sm text-brand-roast/60 mt-3 leading-relaxed">
-                  {post.excerpt[lang]}
-                </p>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
