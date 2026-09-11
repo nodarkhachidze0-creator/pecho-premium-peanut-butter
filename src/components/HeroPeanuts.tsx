@@ -37,14 +37,14 @@ export function HeroPeanuts() {
           alt=""
           className="hero-peanut absolute h-auto select-none object-contain"
           style={
-            {
+            ({
               "--peanut-x": peanut.x,
               "--peanut-y": peanut.y,
               "--peanut-size": peanut.size,
               "--peanut-rotation": peanut.rotation,
               "--peanut-duration": peanut.duration,
               "--peanut-delay": peanut.delay,
-            } satisfies PeanutStyle
+            } as PeanutStyle)
           }
         />
       ))}
