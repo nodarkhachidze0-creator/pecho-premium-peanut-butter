@@ -1,13 +1,12 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { ArrowLeft } from "lucide-react";
-import { getProduct, getRelated } from "@/data/products";
+import { getProduct, getRelated, products, type Category } from "@/data/products";
 import { useT } from "@/lib/i18n";
 import { useCart, formatGEL } from "@/lib/cart";
 import { QuantityStepper } from "@/components/QuantityStepper";
 import { ProductCard } from "@/components/ProductCard";
-import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => {
@@ -32,7 +31,6 @@ export const Route = createFileRoute("/products/$slug")({
         { property: "og:description", content: loaderData.short.en },
         { property: "og:type", content: "product" },
         { property: "og:url", content: `/products/${params.slug}` },
-        { property: "og:image", content: loaderData.image },
         { property: "product:price:amount", content: String(loaderData.price) },
         { property: "product:price:currency", content: "GEL" },
       ],
@@ -45,7 +43,6 @@ export const Route = createFileRoute("/products/$slug")({
             "@type": "Product",
             name: loaderData.name.en,
             description: loaderData.description.en,
-            image: loaderData.image,
             brand: { "@type": "Brand", name: "Pecho" },
             offers: {
               "@type": "Offer",
@@ -69,10 +66,25 @@ export const Route = createFileRoute("/products/$slug")({
   component: ProductDetail,
 });
 
-type Tab = "description" | "ingredients" | "nutrition" | "weight";
+type Tab = "description" | "ingredients" | "nutrition";
+
+const FLAVORS: { key: Category; label: { en: string; ka: string }; isNew?: boolean }[] = [
+  { key: "classic", label: { en: "Classic", ka: "კლასიკური" } },
+  { key: "crunchy", label: { en: "Crunchy", ka: "ხრაშუნა" }, isNew: true },
+];
+
+const WEIGHTS: { key: string; label: { en: string; ka: string } }[] = [
+  { key: "450g", label: { en: "450 g", ka: "450 გ" } },
+  { key: "1kg", label: { en: "1 kg", ka: "1 კგ" } },
+];
+
+function findVariant(flavor: Category, weight: string) {
+  return products.find((p) => p.category === flavor && p.weight === weight);
+}
 
 function ProductDetail() {
   const product = Route.useLoaderData();
+  const navigate = useNavigate();
   const { t, lang } = useT();
   const { add } = useCart();
   const [qty, setQty] = useState(1);
@@ -80,10 +92,19 @@ function ProductDetail() {
   const gallery = product.detailImages ?? [product.detailImage ?? product.image];
   const [selectedImage, setSelectedImage] = useState(gallery[0]);
   const related = getRelated(product.slug);
+  const savings = product.originalPrice ? product.originalPrice - product.price : 0;
 
   useEffect(() => {
     setSelectedImage(gallery[0]);
+    setQty(1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product.slug]);
+
+  const switchTo = (flavor: Category, weight: string) => {
+    const next = findVariant(flavor, weight);
+    if (!next || next.slug === product.slug) return;
+    navigate({ to: "/products/$slug", params: { slug: next.slug } });
+  };
 
   const handleAdd = () => {
     add(
@@ -111,43 +132,50 @@ function ProductDetail() {
           </Link>
 
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
-            <div>
-              <div className="overflow-hidden rounded-[20px] bg-brand-paper">
-                <img
-                  src={selectedImage}
-                  alt={product.name[lang]}
-                  className="w-full aspect-[4/5] object-cover"
-                />
+            {/* Media panel */}
+            <div className="flex flex-col-reverse gap-4 sm:flex-row">
+              <div
+                className="flex flex-row gap-3 sm:flex-col"
+                aria-label={lang === "ka" ? "პროდუქტის ფოტოები" : "Product photos"}
+              >
+                {gallery.map((image, index) => (
+                  <button
+                    key={image}
+                    type="button"
+                    onClick={() => setSelectedImage(image)}
+                    aria-label={lang === "ka" ? `ფოტო ${index + 1}` : `Photo ${index + 1}`}
+                    aria-pressed={selectedImage === image}
+                    className={`size-16 shrink-0 overflow-hidden rounded-[14px] bg-brand-paper sm:size-20 ${
+                      selectedImage === image
+                        ? "ring-2 ring-brand-toast"
+                        : "ring-1 ring-brand-roast/10 hover:ring-brand-roast/25"
+                    }`}
+                  >
+                    <img
+                      src={image}
+                      alt=""
+                      loading="lazy"
+                      className="size-full object-contain p-1"
+                    />
+                  </button>
+                ))}
               </div>
-              {gallery.length > 1 && (
-                <div className="mt-4 grid grid-cols-2 gap-4" aria-label={lang === "ka" ? "პროდუქტის ფოტოები" : "Product photos"}>
-                  {gallery.map((image, index) => (
-                    <Button
-                      key={image}
-                      type="button"
-                      variant="ghost"
-                      onClick={() => setSelectedImage(image)}
-                      aria-label={lang === "ka" ? `ფოტო ${index + 1}` : `Photo ${index + 1}`}
-                      aria-pressed={selectedImage === image}
-                      className={`h-auto overflow-hidden rounded-[20px] p-0 ring-offset-2 ring-offset-brand-cream hover:bg-transparent ${
-                        selectedImage === image ? "ring-2 ring-brand-toast" : "ring-1 ring-brand-roast/10"
-                      }`}
-                    >
-                      <img
-                        src={image}
-                        alt=""
-                        loading="lazy"
-                        className="aspect-[4/3] w-full object-cover"
-                      />
-                    </Button>
-                  ))}
+
+              <div className="flex-1 overflow-hidden rounded-[20px] bg-brand-paper ring-1 ring-brand-roast/5">
+                <div className="flex aspect-square w-full items-center justify-center p-4 sm:p-6">
+                  <img
+                    src={selectedImage}
+                    alt={product.name[lang]}
+                    className="max-h-full max-w-full object-contain"
+                  />
                 </div>
-              )}
+              </div>
             </div>
 
+            {/* Details panel */}
             <div className="space-y-6">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
+                <span className="font-label text-xs font-bold uppercase tracking-widest text-brand-toast">
                   {t(`products.cat.${product.category}`)}
                 </span>
                 <h1 className="text-3xl md:text-5xl font-display font-extrabold mt-2 leading-tight">
@@ -157,27 +185,116 @@ function ProductDetail() {
               </div>
 
               <div className="flex items-baseline gap-3 flex-wrap">
-                <span className="text-3xl font-display text-brand-toast">
-                  {formatGEL(product.price)}
-                </span>
                 {product.originalPrice && (
                   <span className="text-lg text-brand-roast/40 line-through">
                     {formatGEL(product.originalPrice)}
                   </span>
                 )}
+                <span className="text-3xl font-display text-brand-toast">
+                  {formatGEL(product.price)}
+                </span>
+                {savings > 0 && (
+                  <span className="rounded-full bg-brand-toast px-3 py-1 text-xs font-semibold text-white">
+                    {t("pdp.save")} {formatGEL(savings)}
+                  </span>
+                )}
                 <span className="text-sm text-brand-roast/50">/ {product.weight}</span>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4 pt-4">
+              {/* Flavor selector */}
+              <div>
+                <span className="mb-2 block font-label text-xs font-semibold uppercase tracking-widest text-brand-roast/60">
+                  {t("pdp.chooseFlavor")}
+                </span>
+                <div className="grid gap-3">
+                  {FLAVORS.map((flavor) => {
+                    const variant = findVariant(flavor.key, product.weight);
+                    const active = product.category === flavor.key;
+                    return (
+                      <button
+                        key={flavor.key}
+                        type="button"
+                        onClick={() => switchTo(flavor.key, product.weight)}
+                        aria-pressed={active}
+                        className={`flex items-center justify-between gap-3 rounded-2xl px-5 py-4 text-left transition-colors ${
+                          active
+                            ? "bg-brand-paper ring-2 ring-brand-toast"
+                            : "bg-brand-paper/60 ring-1 ring-brand-roast/10 hover:ring-brand-roast/25"
+                        }`}
+                      >
+                        <span className="flex items-center gap-3">
+                          {variant && (
+                            <img
+                              src={variant.image}
+                              alt=""
+                              className="h-10 w-8 object-contain"
+                              loading="lazy"
+                            />
+                          )}
+                          <span className="font-semibold">{flavor.label[lang]}</span>
+                        </span>
+                        {flavor.isNew && (
+                          <span className="rounded-full bg-brand-toast px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+                            {t("pdp.new")}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Weight selector */}
+              <div>
+                <span className="mb-2 block font-label text-xs font-semibold uppercase tracking-widest text-brand-roast/60">
+                  {t("pdp.chooseWeight")}
+                </span>
+                <div className="flex flex-wrap gap-3">
+                  {WEIGHTS.map((w) => {
+                    const variant = findVariant(product.category, w.key);
+                    const active = product.weight === w.key;
+                    return (
+                      <button
+                        key={w.key}
+                        type="button"
+                        onClick={() => switchTo(product.category, w.key)}
+                        aria-pressed={active}
+                        className={`flex w-28 flex-col items-center gap-2 rounded-2xl px-4 py-3 transition-colors ${
+                          active
+                            ? "bg-brand-paper ring-2 ring-brand-toast"
+                            : "bg-brand-paper/60 ring-1 ring-brand-roast/10 hover:ring-brand-roast/25"
+                        }`}
+                      >
+                        {variant && (
+                          <img
+                            src={variant.image}
+                            alt=""
+                            className="h-14 w-auto object-contain"
+                            loading="lazy"
+                          />
+                        )}
+                        <span className="text-sm font-semibold">{w.label[lang]}</span>
+                        {variant && (
+                          <span className="text-xs text-brand-roast/60">
+                            {formatGEL(variant.price)}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-end gap-4 pt-2">
                 <div>
-                  <span className="block text-xs font-semibold uppercase tracking-widest text-brand-roast/60 mb-2">
+                  <span className="mb-2 block font-label text-xs font-semibold uppercase tracking-widest text-brand-roast/60">
                     {t("pdp.quantity")}
                   </span>
                   <QuantityStepper value={qty} onChange={setQty} />
                 </div>
                 <button
                   onClick={handleAdd}
-                  className="mt-6 flex-1 min-w-[200px] bg-brand-roast text-brand-cream px-7 py-4 rounded-full font-semibold hover:bg-brand-toast transition-colors"
+                  className="flex-1 min-w-[200px] bg-brand-roast text-brand-cream px-7 py-4 rounded-full font-semibold hover:bg-brand-toast transition-colors"
                 >
                   {t("cta.addToCart")} · {formatGEL(product.price * qty)}
                 </button>
@@ -185,7 +302,7 @@ function ProductDetail() {
 
               <div className="pt-8 border-t border-brand-roast/10">
                 <div className="flex gap-6 border-b border-brand-roast/10 -mb-px">
-                  {(["description", "ingredients", "nutrition", "weight"] as Tab[]).map((k) => (
+                  {(["description", "ingredients", "nutrition"] as Tab[]).map((k) => (
                     <button
                       key={k}
                       onClick={() => setTab(k)}
@@ -213,11 +330,6 @@ function ProductDetail() {
                         ))}
                       </tbody>
                     </table>
-                  )}
-                  {tab === "weight" && (
-                    <p>
-                      {product.weight} — {lang === "ka" ? "შუშის ქილა" : "glass jar"}
-                    </p>
                   )}
                 </div>
               </div>
