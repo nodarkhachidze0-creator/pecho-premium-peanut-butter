@@ -7,6 +7,7 @@ import { useT } from "@/lib/i18n";
 import { useCart, formatGEL } from "@/lib/cart";
 import { QuantityStepper } from "@/components/QuantityStepper";
 import { ProductCard } from "@/components/ProductCard";
+import nutritionFacts from "@/assets/nutrition-facts.png.asset.json";
 
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => {
@@ -66,7 +67,7 @@ export const Route = createFileRoute("/products/$slug")({
   component: ProductDetail,
 });
 
-type Tab = "description" | "ingredients" | "nutrition";
+type Tab = "description" | "ingredients" | "storage" | "nutrition";
 
 const FLAVORS: { key: Category; label: { en: string; ka: string }; isNew?: boolean }[] = [
   { key: "classic", label: { en: "Classic", ka: "კლასიკური" } },
@@ -131,9 +132,9 @@ function ProductDetail() {
             <ArrowLeft className="size-4" /> {t("nav.products")}
           </Link>
 
-          <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
+          <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
             {/* Media panel */}
-            <div className="flex flex-col-reverse gap-4 sm:flex-row">
+            <div className="flex flex-col-reverse gap-4 sm:flex-row md:sticky md:top-24">
               <div
                 className="flex flex-row gap-3 sm:flex-col"
                 aria-label={lang === "ka" ? "პროდუქტის ფოტოები" : "Product photos"}
@@ -161,12 +162,13 @@ function ProductDetail() {
                 ))}
               </div>
 
-              <div className="w-full max-w-[520px] flex-1 overflow-hidden rounded-[20px] bg-brand-paper ring-1 ring-brand-roast/5">
+              <div className="w-full max-w-[520px] flex-1 overflow-hidden rounded-[20px] bg-brand-paper shadow-lg ring-1 ring-brand-roast/5">
                 <div className="flex aspect-square w-full items-center justify-center p-4 sm:p-6">
                   <img
+                    key={selectedImage}
                     src={selectedImage}
                     alt={product.name[lang]}
-                    className="max-h-full max-w-full object-contain"
+                    className="product-gallery-image max-h-full max-w-full object-contain"
                   />
                 </div>
               </div>
@@ -301,8 +303,8 @@ function ProductDetail() {
               </div>
 
               <div className="pt-8 border-t border-brand-roast/10">
-                <div className="flex gap-6 border-b border-brand-roast/10 -mb-px">
-                  {(["description", "ingredients", "nutrition"] as Tab[]).map((k) => (
+                <div className="flex flex-wrap gap-x-6 gap-y-3 border-b border-brand-roast/10 -mb-px">
+                  {(["description", "ingredients", "storage", "nutrition"] as Tab[]).map((k) => (
                     <button
                       key={k}
                       onClick={() => setTab(k)}
@@ -316,20 +318,22 @@ function ProductDetail() {
                     </button>
                   ))}
                 </div>
-                <div className="pt-6 text-sm leading-relaxed text-brand-roast/80">
-                  {tab === "description" && <p>{product.description[lang]}</p>}
-                  {tab === "ingredients" && <p>{product.ingredients[lang]}</p>}
+                <div className="pt-6 text-base leading-relaxed text-brand-roast/80">
+                  {tab === "description" && <p className="whitespace-pre-line">{t("pdp.descriptionContent")}</p>}
+                  {tab === "ingredients" && <p className="whitespace-pre-line">{t("pdp.ingredientsContent")}</p>}
+                  {tab === "storage" && <p className="whitespace-pre-line">{t("pdp.storageContent")}</p>}
                   {tab === "nutrition" && (
-                    <table className="w-full">
-                      <tbody>
-                        {product.nutrition.map((n: { label: { en: string; ka: string }; value: string }) => (
-                          <tr key={n.value} className="border-b border-brand-roast/5">
-                            <td className="py-2 text-brand-roast/60">{n.label[lang]}</td>
-                            <td className="py-2 text-right font-medium">{n.value}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                    <div className="space-y-5">
+                      <p>{t("pdp.nutritionContent")}</p>
+                      <div className="overflow-hidden rounded-[20px] bg-brand-paper shadow-lg">
+                        <img
+                          src={nutritionFacts.url}
+                          alt={lang === "ka" ? "კვებითი ღირებულება 100 გრამ პროდუქტზე" : "Nutritional values per 100 grams"}
+                          loading="lazy"
+                          className="h-auto w-full object-contain"
+                        />
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>

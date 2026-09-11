@@ -10,8 +10,8 @@ export function Footer() {
     <footer className="bg-brand-roast text-brand-cream mt-24 pt-20 pb-10 px-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
         <div className="md:col-span-2 space-y-6">
-          <PechoLogo className="h-14 w-auto brightness-0 invert" />
-          <p className="max-w-sm text-brand-cream/60 text-pretty leading-relaxed">
+          <PechoLogo className="h-16 w-auto" />
+          <p className="max-w-sm text-base text-brand-cream/70 text-pretty leading-relaxed">
             {t("footer.tagline")}
           </p>
           <div className="flex gap-3 pt-2">
@@ -44,8 +44,8 @@ export function Footer() {
         </div>
 
         <div className="space-y-5">
-          <h4 className="text-xs font-bold uppercase tracking-widest">{t("footer.quickLinks")}</h4>
-          <ul className="space-y-3 text-sm text-brand-cream/60">
+          <h4 className="text-sm font-bold uppercase tracking-widest">{t("footer.quickLinks")}</h4>
+          <ul className="space-y-3 text-base text-brand-cream/70">
             <li><Link to="/products" className="hover:text-brand-cream transition-colors">{t("nav.products")}</Link></li>
             <li><Link to="/recipes" className="hover:text-brand-cream transition-colors">{t("nav.recipes")}</Link></li>
             <li><Link to="/partners" className="hover:text-brand-cream transition-colors">{t("nav.partners")}</Link></li>
@@ -58,8 +58,8 @@ export function Footer() {
         </div>
 
         <div className="space-y-5">
-          <h4 className="text-xs font-bold uppercase tracking-widest">{t("footer.contact")}</h4>
-          <ul className="space-y-3 text-sm text-brand-cream/60">
+          <h4 className="text-sm font-bold uppercase tracking-widest">{t("footer.contact")}</h4>
+          <ul className="space-y-3 text-base text-brand-cream/70">
             <li>Pecho.official@gmail.com</li>
             <li><a href="tel:+995598522240" className="hover:text-brand-cream transition-colors">598 52 22 40</a></li>
             <li>ქ. გორი, შინდისის გმირების 17ბ</li>
@@ -67,8 +67,8 @@ export function Footer() {
 
 
           <div className="pt-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-3">{t("footer.delivery")}</h4>
-            <p className="text-sm text-brand-cream/60 leading-relaxed">{t("footer.deliveryBody")}</p>
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-3">{t("footer.delivery")}</h4>
+            <p className="text-base text-brand-cream/70 leading-relaxed">{t("footer.deliveryBody")}</p>
           </div>
         </div>
       </div>
