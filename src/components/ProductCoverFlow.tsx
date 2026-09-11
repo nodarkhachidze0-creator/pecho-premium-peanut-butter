@@ -57,11 +57,6 @@ export function ProductCoverFlow() {
   if (!activeProduct || !previousProduct || !nextProduct) return null;
 
   const imageClass = (slug: string, side = false) => {
-    if (slug === "crunchy-450g") {
-      return side
-        ? "max-h-[64%] max-w-[88%] scale-x-[1.27]"
-        : "max-h-[80%] max-w-[98%] scale-x-[1.27]";
-    }
     if (slug.endsWith("-1kg")) {
       return side ? "max-h-[82%] max-w-[88%]" : "max-h-[98%] max-w-[98%]";
     }
