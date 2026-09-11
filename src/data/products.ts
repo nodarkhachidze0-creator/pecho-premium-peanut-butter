@@ -71,35 +71,7 @@ const crunchyDesc = {
   ka: "მათთვის, ვინც ხრაშუნას ეთაყვანება. ღრმად მოხალული მიწისთხილი დიდი ნაჭრებით.",
 };
 
-const bundleName = {
-  en: "Pecho 2+1 Bundle",
-  ka: "Pecho 2+1 შეთავაზება",
-};
-const bundleShort = {
-  en: "Buy 2 jars, get the 3rd free — limited time.",
-  ka: "იყიდე 2 ქილა, მიიღე მე-3 საჩუქრად — ლიმიტირებული დროით.",
-};
-const bundleDesc = {
-  en: "Our best-value pack: three jars of Pecho peanut butter for the price of two. Mix Classic and Crunchy — our team will contact you to confirm your selection.",
-  ka: "საუკეთესო ღირებულების შეთავაზება: სამი ქილა Pecho მიწისთხილის კარაქი ორის ფასად. აირჩიე Classic ან Crunchy — ჩვენი გუნდი დაგიკავშირდება არჩევანის დასაზუსტებლად.",
-};
-
 export const products: Product[] = [
-  {
-    slug: "bundle-2plus1",
-    name: bundleName,
-    short: bundleShort,
-    description: bundleDesc,
-    price: 38,
-    originalPrice: 57,
-    weight: "3 × 1kg",
-    category: "bundle",
-    image: bundleImg.url,
-    ingredients,
-    nutrition: classicNutrition,
-    protein: "25",
-    featured: true,
-  },
   {
     slug: "classic-450g",
     name: classicName,
