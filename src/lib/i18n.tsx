@@ -8,7 +8,6 @@ const en: Dict = {
   "nav.home": "Home",
   "nav.products": "Products",
   "nav.about": "About",
-  "nav.news": "News",
   "nav.faq": "FAQ",
   "nav.contact": "Contact",
   "nav.cart": "Cart",
@@ -55,7 +54,6 @@ const en: Dict = {
   "home.about.body":
     "Pecho was born in Tbilisi from a simple belief: peanut butter deserves to be treated like fine food. Small batches. Honest ingredients. Bold flavor.",
 
-  "home.news.title": "Latest News",
   "home.delivery.title": "Straight to your door across Georgia.",
   "home.delivery.item1": "Delivery in 2–3 business days",
   "home.delivery.item2": "Cash or Card on Delivery",
@@ -128,8 +126,6 @@ const en: Dict = {
     "Pecho started as a kitchen experiment: could peanut butter — a pantry staple most of us stop noticing — actually taste like something remarkable? We roast Kakheti-grown peanuts in small batches, blend without shortcuts, and jar within hours. No palm oil, no stabilizers, no added sugar in our classic line. Just the pure, glossy ribbon of what peanut butter should be.",
   "about.values.title": "What we believe",
 
-  "news.title": "News & Journal",
-  "news.subtitle": "Recipes, announcements, and stories from the Pecho kitchen.",
 
   "faq.title": "Frequently Asked Questions",
   "faq.subtitle": "Everything you might want to know before you order.",
@@ -207,7 +203,6 @@ const ka: Dict = {
   "nav.home": "მთავარი",
   "nav.products": "პროდუქცია",
   "nav.about": "ჩვენს შესახებ",
-  "nav.news": "სიახლეები",
   "nav.faq": "კითხვები",
   "nav.contact": "კონტაქტი",
   "nav.cart": "კალათა",
@@ -255,7 +250,6 @@ const ka: Dict = {
     "Pecho შეიქმნა ერთი იდეით — შეგვექმნა პროდუქტი, რომელიც ყოველდღიურ არჩევანს უფრო ჯანსაღს და სასიამოვნოს გახდიდა.",
 
 
-  "home.news.title": "სიახლეები",
   "home.delivery.title": "მიწოდება მთელ საქართველოში.",
   "home.delivery.item1": "მიწოდება 2–3 სამუშაო დღეში",
   "home.delivery.item2": "გადახდა ადგილზე — ნაღდი ან ბარათი",
@@ -328,8 +322,6 @@ const ka: Dict = {
     "Pecho დაიწყო სამზარეულოს ექსპერიმენტით: შეიძლება თუ არა მიწისთხილის კარაქი — ყოველდღიური საკვები, რომელსაც უკვე ვეღარ ვამჩნევთ — გახდეს ნამდვილად აღსანიშნავი. კახეთის მიწისთხილს ვხალავთ მცირე პარტიებით და ვათავსებთ ქილაში საათებში. პალმის ზეთის, სტაბილიზატორისა და კლასიკურ ვერსიაში დამატებული შაქრის გარეშე.",
   "about.values.title": "რაშიც გვჯერა",
 
-  "news.title": "სიახლეები და ჟურნალი",
-  "news.subtitle": "რეცეპტები, სიახლეები და ისტორიები Pecho-ს სამზარეულოდან.",
 
   "faq.title": "ხშირად დასმული კითხვები",
   "faq.subtitle": "ყველაფერი, რაც უნდა იცოდე შეკვეთამდე.",

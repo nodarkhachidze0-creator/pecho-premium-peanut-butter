@@ -50,7 +50,6 @@ export function Footer() {
             <li><Link to="/recipes" className="hover:text-brand-cream transition-colors">{t("nav.recipes")}</Link></li>
             <li><Link to="/partners" className="hover:text-brand-cream transition-colors">{t("nav.partners")}</Link></li>
             <li><Link to="/about" className="hover:text-brand-cream transition-colors">{t("nav.about")}</Link></li>
-            <li><Link to="/news" className="hover:text-brand-cream transition-colors">{t("nav.news")}</Link></li>
             <li><Link to="/faq" className="hover:text-brand-cream transition-colors">{t("nav.faq")}</Link></li>
             <li><Link to="/contact" className="hover:text-brand-cream transition-colors">{t("nav.contact")}</Link></li>
           </ul>
