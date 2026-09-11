@@ -94,14 +94,16 @@ function Home() {
 
 
       {/* About preview */}
-      <section className="px-4 sm:px-6 py-20 md:py-24 bg-brand-paper">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <img
-            src={aboutTexture}
-            alt="Peanut butter texture on wooden spoon"
-            loading="lazy"
-            className="w-full aspect-square object-cover rounded-3xl ring-1 ring-black/5"
-          />
+      <section className="bg-brand-paper px-4 py-14 sm:px-6 md:py-16">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12">
+          <div className="mx-auto w-full max-w-md overflow-hidden rounded-3xl ring-1 ring-brand-roast/5">
+            <img
+              src={aboutTexture}
+              alt="Peanut butter texture on wooden spoon"
+              loading="lazy"
+              className="aspect-[4/3] w-full object-cover"
+            />
+          </div>
           <div className="space-y-6">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
               {t("home.about.eyebrow")}
@@ -155,63 +157,6 @@ function Home() {
         </div>
       </section>
 
-      {/* FAQ preview */}
-      <section className="px-4 sm:px-6 py-20 md:py-24">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-display font-extrabold text-center mb-12">
-            {t("home.faq.title")}
-          </h2>
-          <div className="divide-y divide-brand-roast/10 border-y border-brand-roast/10">
-            {[
-              {
-                q: lang === "ka" ? "რამდენ ხანში მოვა შეკვეთა?" : "How long does delivery take?",
-                a:
-                  lang === "ka"
-                    ? "2–3 სამუშაო დღე მთელ საქართველოში."
-                    : "2–3 business days anywhere in Georgia.",
-              },
-              {
-                q: lang === "ka" ? "როგორ შევინახო?" : "How should I store the peanut butter?",
-                a:
-                  lang === "ka"
-                    ? "მშრალ, გრილ ადგილას. გახსნის შემდეგ — მაცივარში."
-                    : "In a cool, dry place. After opening, refrigerate for freshness.",
-              },
-              {
-                q: lang === "ka" ? "აქვს დამატებული შაქარი?" : "Does it contain added sugar?",
-                a:
-                  lang === "ka"
-                    ? "კლასიკური და ხრაშუნა ვერსია — არა. თაფლის და შოკოლადის ვერსიაში ბუნებრივი დამატებებია."
-                    : "No — our Classic and Crunchy lines contain only peanuts and salt. Flavored lines contain honey or chocolate.",
-              },
-              {
-                q: lang === "ka" ? "სპორტსმენებისთვის გამოსადეგია?" : "Is it suitable for athletes?",
-                a:
-                  lang === "ka"
-                    ? "დიახ — 26გ ცილა 100 გრამზე, ბუნებრივი ცხიმები, დამატებული ცხიმების გარეშე."
-                    : "Yes — 26g of protein per 100g, natural fats, no added oils.",
-              },
-            ].map((item, i) => (
-              <details key={i} className="group py-5">
-                <summary className="list-none flex justify-between items-center cursor-pointer">
-                  <span className="text-sm md:text-base font-medium pr-4">{item.q}</span>
-                  <span className="text-2xl text-brand-toast transition-transform group-open:rotate-45 shrink-0">+</span>
-                </summary>
-                <p className="mt-3 text-sm text-brand-roast/70 leading-relaxed">{item.a}</p>
-              </details>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/faq"
-              className="text-sm font-semibold border-b border-brand-roast pb-1 hover:border-brand-toast"
-            >
-              {t("cta.viewAll")}
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Where to buy */}
       <section className="px-4 sm:px-6 py-16 md:py-20">
         <div className="max-w-7xl mx-auto">
@@ -226,6 +171,56 @@ function Home() {
           <Reveal>
             <StoreMap />
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ preview */}
+      <section className="px-4 py-20 sm:px-6 md:py-24">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-12 text-center text-3xl font-display font-extrabold md:text-4xl">
+            {t("home.faq.title")}
+          </h2>
+          <div className="divide-y divide-brand-roast/10 border-y border-brand-roast/10">
+            {[
+              {
+                q: lang === "ka" ? "🚚 რამდენ ხანში ხდება მიწოდება?" : "🚚 How long does delivery take?",
+                a: lang === "ka"
+                  ? "თბილისში მიწოდება ხდება 2–3 სამუშაო დღეში, ხოლო საქართველოს სხვა რეგიონებში — 3–4 სამუშაო დღეში. შეკვეთის დადასტურების შემდეგ დავამზადებთ და კურიერი მოგაწვდით პროდუქტს ადგილზე."
+                  : "Delivery in Tbilisi takes 2–3 business days; other regions of Georgia — 3–4 business days. Once your order is confirmed, we prepare it and a courier delivers it to you.",
+              },
+              {
+                q: lang === "ka" ? "🥜 როგორ შევინახო მიწისთხილის კარაქი?" : "🥜 How should I store the peanut butter?",
+                a: lang === "ka"
+                  ? "ჩვენი ნატურალური მიწისთხილის კარაქის შენახვა შესაძლებელია როგორც ოთახის ტემპერატურაზე, ასევე მაცივარში. საუკეთესო ხარისხის შესანარჩუნებლად გირჩევთ, მოარიდოთ პირდაპირ მზის სხივებს და შეინახოთ მშრალ, გრილ ადგილას."
+                  : "Our natural peanut butter can be stored at room temperature or in the fridge. To preserve the best quality, keep it away from direct sunlight in a cool, dry place.",
+              },
+              {
+                q: lang === "ka" ? "🌿 შეიცავს თუ არა დანამატებს ან შაქარს?" : "🌿 Does it contain any additives or sugar?",
+                a: lang === "ka"
+                  ? "არა. Pecho-ის მიწისთხილის კარაქი მზადდება 100% ნატურალური მიწისთხილისგან. არ შეიცავს დამატებულ შაქარს, პალმის ზეთს, კონსერვანტებს, ხელოვნურ არომატიზატორებსა და სხვა დანამატებს."
+                  : "No. Pecho peanut butter is made from 100% natural peanuts. It contains no added sugar, palm oil, preservatives, artificial flavors, or other additives.",
+              },
+              {
+                q: lang === "ka" ? "💪 სპორტსმენებისთვის თუ არის რეკომენდებული?" : "💪 Is it recommended for athletes?",
+                a: lang === "ka"
+                  ? "დიახ. ჩვენი პროდუქტი შეიცავს 25 გრამ ცილას 100 გრამზე, ასევე ბუნებრივ ცხიმებსა და ენერგიის წყაროს, რაც მას შესანიშნავ არჩევანს ხდის სპორტსმენებისა და ჯანსაღი ცხოვრების წესის მიმდევრებისთვის."
+                  : "Yes. Our product contains 25g of protein per 100g, along with natural fats and a source of energy, making it an excellent choice for athletes and people following a healthy lifestyle.",
+              },
+            ].map((item, i) => (
+              <details key={i} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between">
+                  <span className="pr-4 text-sm font-medium md:text-base">{item.q}</span>
+                  <span className="shrink-0 text-2xl text-brand-toast transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-4 text-sm leading-7 text-brand-roast/70">{item.a}</p>
+              </details>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link to="/faq" className="border-b border-brand-roast pb-1 text-sm font-semibold hover:border-brand-toast">
+              {t("cta.viewAll")}
+            </Link>
+          </div>
         </div>
       </section>
 

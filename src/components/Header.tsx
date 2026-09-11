@@ -105,7 +105,7 @@ export function Header() {
             onClick={() => setDrawer("menu")}
             aria-label="Menu"
             aria-expanded={drawer === "menu"}
-            className="menu-shake size-11 rounded-full border-0 bg-transparent text-brand-toast shadow-none hover:bg-transparent hover:text-brand-roast"
+            className="menu-shake size-12 rounded-lg border-2 border-brand-roast bg-brand-toast text-primary-foreground shadow-none hover:bg-brand-toast hover:text-primary-foreground"
           >
             <Menu className="size-7" strokeWidth={1.8} />
           </Button>
@@ -125,7 +125,7 @@ export function Header() {
             aria-label={t("nav.cart")}
             aria-expanded={drawer === "cart"}
             data-cart-icon
-            className="relative size-11 rounded-full border-0 bg-transparent text-brand-roast shadow-none hover:bg-transparent hover:text-brand-toast"
+            className="relative size-12 rounded-lg border-2 border-brand-roast bg-brand-paper text-brand-roast shadow-none hover:bg-brand-cream hover:text-brand-roast"
           >
             <div className={`relative ${bump ? "cart-bump" : ""}`}>
               <ShoppingBag className="size-6 shrink-0" strokeWidth={1.6} />
