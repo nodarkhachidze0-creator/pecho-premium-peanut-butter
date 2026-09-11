@@ -87,6 +87,10 @@ const en: Dict = {
   "pdp.related": "You may also like",
   "pdp.quantity": "Quantity",
   "pdp.notFound": "Product not found.",
+  "pdp.chooseFlavor": "Choose flavour",
+  "pdp.chooseWeight": "Choose size",
+  "pdp.new": "New",
+  "pdp.save": "Save",
 
   "cart.title": "Your Cart",
   "cart.empty": "Your cart is empty.",
@@ -280,6 +284,10 @@ const ka: Dict = {
   "pdp.related": "შესაძლოა მოგეწონოს",
   "pdp.quantity": "რაოდენობა",
   "pdp.notFound": "პროდუქტი ვერ მოიძებნა.",
+  "pdp.chooseFlavor": "აირჩიე გემო",
+  "pdp.chooseWeight": "აირჩიე წონა",
+  "pdp.new": "ახალი",
+  "pdp.save": "დაზოგეთ",
 
   "cart.title": "შენი კალათა",
   "cart.empty": "კალათა ცარიელია.",
