@@ -83,6 +83,18 @@ function findVariant(flavor: Category, weight: string) {
   return products.find((p) => p.category === flavor && p.weight === weight);
 }
 
+function ProductCopy({ content }: { content: string }) {
+  return (
+    <div className="space-y-4">
+      {content.split("\n").map((paragraph) => (
+        <p key={paragraph} className="leading-7 md:leading-8">
+          {paragraph}
+        </p>
+      ))}
+    </div>
+  );
+}
+
 function ProductDetail() {
   const product = Route.useLoaderData();
   const navigate = useNavigate();
@@ -136,7 +148,7 @@ function ProductDetail() {
             {/* Media panel */}
             <div className="flex flex-col-reverse gap-4 sm:flex-row md:sticky md:top-24">
               <div
-                className="flex flex-row gap-3 sm:flex-col"
+                className="flex flex-row gap-3 sm:self-center sm:flex-col"
                 aria-label={lang === "ka" ? "პროდუქტის ფოტოები" : "Product photos"}
               >
                 {gallery.map((image, index) => (
@@ -183,7 +195,7 @@ function ProductDetail() {
                 <h1 className="text-3xl md:text-5xl font-display font-extrabold mt-2 leading-tight">
                   {product.name[lang]}
                 </h1>
-                <p className="text-brand-roast/70 mt-3 text-lg">{product.short[lang]}</p>
+                <p className="mt-4 max-w-xl text-lg leading-8 text-brand-roast/70">{product.short[lang]}</p>
               </div>
 
               <div className="flex items-baseline gap-3 flex-wrap">
@@ -318,10 +330,10 @@ function ProductDetail() {
                     </button>
                   ))}
                 </div>
-                <div className="pt-6 text-base leading-relaxed text-brand-roast/80">
-                  {tab === "description" && <p className="whitespace-pre-line">{t("pdp.descriptionContent")}</p>}
-                  {tab === "ingredients" && <p className="whitespace-pre-line">{t("pdp.ingredientsContent")}</p>}
-                  {tab === "storage" && <p className="whitespace-pre-line">{t("pdp.storageContent")}</p>}
+                <div className="pt-7 text-base text-brand-roast/80">
+                  {tab === "description" && <ProductCopy content={t("pdp.descriptionContent")} />}
+                  {tab === "ingredients" && <ProductCopy content={t("pdp.ingredientsContent")} />}
+                  {tab === "storage" && <ProductCopy content={t("pdp.storageContent")} />}
                   {tab === "nutrition" && (
                     <div className="space-y-5">
                       <p>{t("pdp.nutritionContent")}</p>

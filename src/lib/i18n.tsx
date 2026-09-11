@@ -51,7 +51,7 @@ const en: Dict = {
     "Made in small batches weekly to ensure the oils stay fresh and the flavor stays vibrant.",
 
   "home.about.eyebrow": "About Pecho",
-  "home.about.title": "A jar with a story.",
+  "home.about.title": "Why was Pecho created?",
   "home.about.body":
     "Pecho was born in Tbilisi from a simple belief: peanut butter deserves to be treated like fine food. Small batches. Honest ingredients. Bold flavor.",
 
@@ -250,7 +250,7 @@ const ka: Dict = {
     "მცირე პარტიებით ვამზადებთ ყოველკვირეულად, რომ გემო და სიახლე შენარჩუნდეს.",
 
   "home.about.eyebrow": "Pecho-ს შესახებ",
-  "home.about.title": "ქილა თავისი ისტორიით.",
+  "home.about.title": "რატომ შეიქმნა Pecho?",
   "home.about.body":
     "Pecho შეიქმნა ერთი იდეით — შეგვექმნა პროდუქტი, რომელიც ყოველდღიურ არჩევანს უფრო ჯანსაღს და სასიამოვნოს გახდიდა.",
 
