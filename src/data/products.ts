@@ -10,9 +10,12 @@ import classic450Gallery from "@/assets/classic-450g-gallery.webp.asset.json";
 import classic1kgGallery from "@/assets/classic-1kg-gallery.webp.asset.json";
 import crunchy450Gallery from "@/assets/crunchy-450g-gallery.webp.asset.json";
 import crunchy1kgGallery from "@/assets/crunchy-1kg-gallery.webp.asset.json";
-import bundleImg from "@/assets/pecho-promo-2plus1.png.asset.json";
+import classic450Spoon from "@/assets/classic-450g-spoon.webp.asset.json";
+import classic1kgSpoon from "@/assets/classic-1kg-spoon.webp.asset.json";
+import crunchy450Spoon from "@/assets/crunchy-450g-spoon.webp.asset.json";
+import crunchy1kgSpoon from "@/assets/crunchy-1kg-spoon.webp.asset.json";
 
-export type Category = "classic" | "crunchy" | "bundle";
+export type Category = "classic" | "crunchy";
 
 export type Product = {
   slug: string;
