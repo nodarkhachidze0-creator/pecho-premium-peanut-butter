@@ -12,6 +12,22 @@ import heroImg from "@/assets/classic-1kg-lifestyle.webp.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Pecho — ნატურალური მიწისთხილის კარაქი" },
+      {
+        name: "description",
+        content: "აღმოაჩინეთ Pecho-ს 100% ნატურალური მიწისთხილის კარაქი, რეცეპტები და შეძენის ადგილები საქართველოში.",
+      },
+      { property: "og:title", content: "Pecho — ნატურალური მიწისთხილის კარაქი" },
+      {
+        property: "og:description",
+        content: "Pecho-ს ბუნებრივი მიწისთხილის კარაქი — შაქრის, პალმის ზეთისა და ხელოვნური დანამატების გარეშე.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Home,
 });
 
