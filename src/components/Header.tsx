@@ -6,7 +6,6 @@ import { useT } from "@/lib/i18n";
 import { PechoLogo } from "@/components/PechoLogo";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/CartDrawer";
-import drawerPhoto from "@/assets/classic-450g-drawer.png.asset.json";
 
 export function Header() {
   const { t, lang, setLang } = useT();
@@ -161,7 +160,7 @@ export function Header() {
                 </Button>
               </div>
 
-            <div className="grid flex-1 gap-6 pb-8 lg:grid-cols-[minmax(0,1fr)_minmax(140px,0.72fr)] lg:items-center">
+            <div className="flex flex-1 pb-8">
               <nav className="flex min-w-0 flex-col self-stretch">
                 <ul>
                 {links.map((l, i) => (
@@ -190,13 +189,6 @@ export function Header() {
                 </div>
               </nav>
 
-              <div className="order-last overflow-hidden rounded-2xl bg-brand-paper/25 lg:self-center">
-                <img
-                  src={drawerPhoto.url}
-                  alt="Pecho Classic 450g peanut butter"
-                  className="aspect-[4/5] w-full object-cover"
-                />
-              </div>
             </div>
             </div>
           </aside>
