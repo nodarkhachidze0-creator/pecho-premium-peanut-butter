@@ -386,7 +386,7 @@
   --peanut-gaze-x: 0px;
   --peanut-gaze-y: 0px;
   width: min(55vw, 220px);
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 4;
   flex: none;
   touch-action: pan-y;
 }
@@ -394,7 +394,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   animation: googly-peanut-float 3.8s ease-in-out infinite;
   will-change: transform;
 }
@@ -408,8 +407,8 @@
 }
 .googly-peanut-pupil {
   position: absolute;
-  top: 15.5%;
-  width: 13%;
+  top: 15.2%;
+  width: 25%;
   aspect-ratio: 1;
   border-radius: 9999px;
   background: radial-gradient(circle at 65% 25%, var(--brand-cream) 0 5%, var(--brand-roast) 7% 100%);
@@ -418,8 +417,8 @@
   pointer-events: none;
   will-change: transform;
 }
-.googly-peanut-pupil-left { left: 27.7%; }
-.googly-peanut-pupil-right { left: 58.7%; }
+.googly-peanut-pupil-left { left: 21.3%; }
+.googly-peanut-pupil-right { left: 52.7%; }
 @media (hover: none), (pointer: coarse) {
   .googly-peanut-pupil {
     animation: googly-peanut-drift 4.5s ease-in-out infinite;
