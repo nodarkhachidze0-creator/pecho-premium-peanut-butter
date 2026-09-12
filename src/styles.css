@@ -483,16 +483,17 @@
     opacity: 0;
     transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(0.5);
   }
-  18%, 82% {
+  10%, 40% {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(1);
   }
-  100% {
+  48%, 100% {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(0.5);
   }
 }
 .hero-peanuts {
+  overflow: hidden;
   contain: paint;
   clip-path: inset(0);
 }

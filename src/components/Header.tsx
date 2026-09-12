@@ -6,6 +6,7 @@ import { useT } from "@/lib/i18n";
 import { PechoLogo } from "@/components/PechoLogo";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/CartDrawer";
+import drawerPhoto from "@/assets/classic-450g-drawer.png.asset.json";
 
 export function Header() {
   const { t, lang, setLang } = useT();
@@ -160,8 +161,9 @@ export function Header() {
                 </Button>
               </div>
 
-            <nav className="flex flex-1 flex-col pb-8">
-              <ul>
+            <div className="grid flex-1 gap-6 pb-8 lg:grid-cols-[minmax(0,1fr)_minmax(140px,0.72fr)] lg:items-center">
+              <nav className="flex min-w-0 flex-col self-stretch">
+                <ul>
                 {links.map((l, i) => (
                   <li key={l.to}>
                     <Link
@@ -170,7 +172,7 @@ export function Header() {
                       onClick={() => setDrawer(null)}
                       className="nav-overlay-link group flex items-baseline justify-between gap-6 border-b border-primary-foreground/20 px-3 py-3 text-primary-foreground transition-colors duration-300 ease-in-out sm:px-5 sm:py-4"
                     >
-                      <span className="min-w-0 font-display font-extrabold leading-none text-2xl sm:text-4xl lg:text-5xl">
+                      <span className="min-w-0 font-display font-extrabold leading-none text-2xl sm:text-4xl lg:text-3xl xl:text-4xl">
                         {l.label}
                       </span>
                       <span className="font-ui text-xs sm:text-sm opacity-70 tabular-nums">
@@ -179,14 +181,23 @@ export function Header() {
                     </Link>
                   </li>
                 ))}
-              </ul>
+                </ul>
 
-              <div className="mt-auto flex items-center gap-3 px-3 pt-8 text-sm font-semibold uppercase text-primary-foreground sm:px-5">
-                <Button type="button" variant="ghost" size="sm" onClick={() => setLang("en")} className={`px-1 hover:bg-transparent hover:text-brand-roast ${lang === "en" ? "" : "opacity-60"}`}>EN</Button>
-                <span className="opacity-40">/</span>
-                <Button type="button" variant="ghost" size="sm" onClick={() => setLang("ka")} className={`px-1 hover:bg-transparent hover:text-brand-roast ${lang === "ka" ? "" : "opacity-60"}`}>KA</Button>
+                <div className="mt-auto flex items-center gap-3 px-3 pt-8 text-sm font-semibold uppercase text-primary-foreground sm:px-5">
+                  <Button type="button" variant="ghost" size="sm" onClick={() => setLang("en")} className={`px-1 hover:bg-transparent hover:text-brand-roast ${lang === "en" ? "" : "opacity-60"}`}>EN</Button>
+                  <span className="opacity-40">/</span>
+                  <Button type="button" variant="ghost" size="sm" onClick={() => setLang("ka")} className={`px-1 hover:bg-transparent hover:text-brand-roast ${lang === "ka" ? "" : "opacity-60"}`}>KA</Button>
+                </div>
+              </nav>
+
+              <div className="order-last overflow-hidden rounded-2xl bg-brand-paper/25 lg:self-center">
+                <img
+                  src={drawerPhoto.url}
+                  alt="Pecho Classic 450g peanut butter"
+                  className="aspect-[4/5] w-full object-cover"
+                />
               </div>
-            </nav>
+            </div>
             </div>
           </aside>
         </div>
