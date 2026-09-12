@@ -6,8 +6,8 @@ import { StoreMap } from "@/components/StoreMap";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
 import { ProductCoverFlow } from "@/components/ProductCoverFlow";
 import { HeroPeanuts } from "@/components/HeroPeanuts";
+import { HeroProductStand } from "@/components/HeroProductStand";
 
-import heroImg from "@/assets/classic-1kg-lifestyle.webp.asset.json";
 import aboutTexture from "@/assets/about-texture.jpg";
 
 export const Route = createFileRoute("/")({
@@ -66,19 +66,7 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative hero-float mx-auto w-full max-w-md lg:max-w-lg">
-            <Link
-              to="/products"
-              className="block rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-paper"
-            >
-              <img
-                src={heroImg.url}
-                alt="Pecho natural peanut butter jar"
-                className="block w-full h-auto object-cover"
-              />
-            </Link>
-
-          </div>
+          <HeroProductStand />
 
 
         </div>
