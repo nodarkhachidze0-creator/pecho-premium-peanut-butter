@@ -1,5 +1,5 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useT } from "@/lib/i18n";
@@ -27,11 +27,34 @@ const schema = z.object({
   notes: z.string().trim().max(500).optional(),
 });
 
+const CITY_ZONE_TERMS = [
+  "თბილის",
+  "რუსთავ",
+  "გორ",
+  "tbilisi",
+  "tiflis",
+  "rustavi",
+  "roustavi",
+  "gori",
+];
+
+function detectsCityZone(address: string) {
+  const normalized = address.toLocaleLowerCase().replace(/[.,/\\-]/g, " ");
+  return CITY_ZONE_TERMS.some((term) => normalized.includes(term));
+}
+
 function Checkout() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  if (pathname === "/checkout/success") return <Outlet />;
+
+  return <CheckoutForm />;
+}
+
+function CheckoutForm() {
   const { t, lang } = useT();
   const nav = useNavigate();
   const { items, subtotal, count, clear } = useCart();
-  const [zone] = useDeliveryZone();
+  const [zone, setZone] = useDeliveryZone();
   const fee = deliveryFee(zone, count);
   const total = subtotal + fee;
 
@@ -43,6 +66,11 @@ function Checkout() {
     notes: "",
   });
   const [submitting, setSubmitting] = useState(false);
+  const cityAddressDetected = detectsCityZone(form.address);
+
+  useEffect(() => {
+    if (cityAddressDetected && zone === "regions") setZone("city");
+  }, [cityAddressDetected, setZone, zone]);
 
   if (count === 0) {
     return (
@@ -147,6 +175,16 @@ function Checkout() {
                 onChange={(e) => setForm({ ...form, address: e.target.value })}
                 className="input"
               />
+              <p
+                className={`mt-2 min-h-5 text-xs text-brand-toast transition-opacity ${
+                  cityAddressDetected ? "opacity-100" : "opacity-0"
+                }`}
+                aria-live="polite"
+              >
+                {lang === "ka"
+                  ? "მისამართი ამოვიცანით — ქალაქის მიწოდების ტარიფი ავტომატურად ავირჩიეთ."
+                  : "Address recognized — the city delivery rate was selected automatically."}
+              </p>
             </Field>
             <Field label={t("checkout.apt")}>
               <input
