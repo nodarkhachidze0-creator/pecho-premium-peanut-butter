@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -44,6 +44,13 @@ function detectsCityZone(address: string) {
 }
 
 function Checkout() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  if (pathname === "/checkout/success") return <Outlet />;
+
+  return <CheckoutForm />;
+}
+
+function CheckoutForm() {
   const { t, lang } = useT();
   const nav = useNavigate();
   const { items, subtotal, count, clear } = useCart();
