@@ -483,16 +483,23 @@
     opacity: 0;
     transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(0.5);
   }
-  10%, 40% {
+  3.333%, 96.667% {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(1);
   }
-  48%, 100% {
+  100% {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(var(--peanut-rotation)) scale(0.5);
   }
 }
+.hero-particle-boundary {
+  position: relative;
+  overflow: hidden;
+  contain: paint;
+  isolation: isolate;
+}
 .hero-peanuts {
+  max-height: 100vh;
   overflow: hidden;
   contain: paint;
   clip-path: inset(0);
@@ -503,7 +510,7 @@
   width: var(--peanut-size);
   opacity: 0;
   filter: drop-shadow(0 10px 14px rgba(42, 24, 16, 0.12));
-  animation: hero-peanut-appear var(--peanut-duration) ease-in-out var(--peanut-delay) infinite both;
+  animation: hero-peanut-appear var(--peanut-duration) linear var(--peanut-delay) infinite both;
   will-change: opacity, transform;
 }
 @media (max-width: 767px) {
