@@ -372,26 +372,17 @@
   animation: pm-blink 5s ease-in-out infinite;
 }
 
-/* ============ Empty-cart googly peanut ============ */
+/* ============ Empty-cart peanut sticker ============ */
 @keyframes googly-peanut-float {
   0%, 100% { transform: translateY(0) rotate(-0.5deg); }
   50% { transform: translateY(-7px) rotate(0.5deg); }
 }
-@keyframes googly-peanut-drift {
-  0%, 100% { transform: translate(-2px, 0); }
-  35% { transform: translate(3px, -2px); }
-  70% { transform: translate(1px, 3px); }
-}
 .googly-peanut-frame {
-  --peanut-gaze-x: 0px;
-  --peanut-gaze-y: 0px;
   width: min(55vw, 220px);
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   flex: none;
-  touch-action: pan-y;
 }
 .googly-peanut-float {
-  position: relative;
   width: 100%;
   height: 100%;
   animation: googly-peanut-float 3.8s ease-in-out infinite;
@@ -402,29 +393,9 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transform: scale(1.65);
   user-select: none;
 }
-.googly-peanut-pupil {
-  position: absolute;
-  top: 15.2%;
-  width: 25%;
-  aspect-ratio: 1;
-  border-radius: 9999px;
-  background: radial-gradient(circle at 65% 25%, var(--brand-cream) 0 5%, var(--brand-roast) 7% 100%);
-  transform: translate(var(--peanut-gaze-x), var(--peanut-gaze-y));
-  transition: transform 100ms ease-out;
-  pointer-events: none;
-  will-change: transform;
-}
-.googly-peanut-pupil-left { left: 21.3%; }
-.googly-peanut-pupil-right { left: 52.7%; }
-@media (hover: none), (pointer: coarse) {
-  .googly-peanut-pupil {
-    animation: googly-peanut-drift 4.5s ease-in-out infinite;
-  }
-  .googly-peanut-pupil-right { animation-delay: -0.35s; }
-}
+
 
 /* ============ Product jar float + tilt ============ */
 @keyframes jar-float {
