@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
-import aboutJar from "@/assets/classic-450g-about.png.asset.json";
+import aboutTexture from "@/assets/about-texture.jpg";
 import classicJar from "@/assets/pecho-classic-1kg.png.asset.json";
 import { Leaf, Ban, Star, Zap, Sparkles, Utensils } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
@@ -74,10 +74,10 @@ function About() {
           <Reveal>
             <div className="relative">
               <img
-                src={aboutJar.url}
-                alt="Pecho Classic 450g peanut butter jar surrounded by peanuts"
+                src={aboutTexture}
+                alt="Peanut butter texture"
                 loading="lazy"
-                className="w-full aspect-square object-contain rounded-2xl ring-1 ring-black/5 shadow-xl"
+                className="w-full aspect-square object-cover rounded-3xl ring-1 ring-black/5 shadow-xl"
               />
               <div className="absolute -bottom-6 -right-6 hidden md:flex size-28 rounded-full bg-brand-toast text-white items-center justify-center font-display text-lg text-center leading-tight shadow-lg rotate-6">
                 100%

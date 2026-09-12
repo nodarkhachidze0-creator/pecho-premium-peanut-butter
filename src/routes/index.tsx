@@ -8,7 +8,7 @@ import { ProductCoverFlow } from "@/components/ProductCoverFlow";
 import { HeroPeanuts } from "@/components/HeroPeanuts";
 
 import heroImg from "@/assets/classic-1kg-lifestyle.webp.asset.json";
-import aboutLogo from "@/assets/pecho-logo-transparent.png.asset.json";
+import aboutLogo from "@/assets/pecho-about-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,7 +37,7 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-particle-boundary relative isolate overflow-hidden px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20 lg:pb-24">
+      <section className="relative isolate overflow-hidden px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20 lg:pb-24">
         <HeroPeanuts />
         <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="space-y-6 lg:space-y-8">
@@ -111,12 +111,12 @@ function Home() {
       {/* About preview */}
       <section className="bg-brand-paper px-4 py-14 sm:px-6 md:py-16">
         <div className="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12">
-          <div className="mx-auto w-full max-w-md">
+          <div className="mx-auto w-full max-w-md overflow-hidden rounded-3xl ring-1 ring-brand-roast/5">
             <img
               src={aboutLogo.url}
               alt="Pecho logo"
               loading="lazy"
-              className="block h-auto w-full object-contain"
+              className="aspect-[4/3] w-full object-contain"
             />
           </div>
           <div className="space-y-6">
