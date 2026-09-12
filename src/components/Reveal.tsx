@@ -13,7 +13,7 @@ type Props = {
  * Uses a single IntersectionObserver per instance; cheap and 60fps.
  * Respects prefers-reduced-motion by immediately marking as visible.
  */
-export function Reveal({ children, delay = 0, as: Tag = "div", className = "", y = 24 }: Props) {
+export function Reveal({ children, delay = 0, as: Tag = "div", className = "", y = 14 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -45,7 +45,7 @@ export function Reveal({ children, delay = 0, as: Tag = "div", className = "", y
   const style: React.CSSProperties = {
     transform: visible ? "translate3d(0,0,0)" : `translate3d(0, ${y}px, 0)`,
     opacity: visible ? 1 : 0,
-    transition: `opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 800ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
+    transition: `opacity 320ms ease-out ${Math.min(delay, 120)}ms, transform 380ms cubic-bezier(0.22, 1, 0.36, 1) ${Math.min(delay, 120)}ms`,
     willChange: visible ? "auto" : "opacity, transform",
   };
 

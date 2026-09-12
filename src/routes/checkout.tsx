@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useT } from "@/lib/i18n";
@@ -31,7 +31,7 @@ function Checkout() {
   const { t, lang } = useT();
   const nav = useNavigate();
   const { items, subtotal, count, clear } = useCart();
-  const [zone] = useDeliveryZone();
+  const [zone, setZone] = useDeliveryZone();
   const fee = deliveryFee(zone, count);
   const total = subtotal + fee;
 
@@ -43,6 +43,11 @@ function Checkout() {
     notes: "",
   });
   const [submitting, setSubmitting] = useState(false);
+  const cityAddressDetected = detectsCityZone(form.address);
+
+  useEffect(() => {
+    if (cityAddressDetected && zone === "regions") setZone("city");
+  }, [cityAddressDetected, setZone, zone]);
 
   if (count === 0) {
     return (
