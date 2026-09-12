@@ -3,7 +3,9 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useT } from "@/lib/i18n";
-import { useCart, formatGEL, DELIVERY_FEE } from "@/lib/cart";
+import { useCart, formatGEL } from "@/lib/cart";
+import { deliveryFee, useDeliveryZone } from "@/lib/delivery";
+import { DeliveryCalculator } from "@/components/DeliveryCalculator";
 import { saveOrder } from "@/lib/orders";
 
 export const Route = createFileRoute("/checkout")({
@@ -26,10 +28,12 @@ const schema = z.object({
 });
 
 function Checkout() {
-  const { t } = useT();
+  const { t, lang } = useT();
   const nav = useNavigate();
   const { items, subtotal, count, clear } = useCart();
-  const total = subtotal + DELIVERY_FEE;
+  const [zone] = useDeliveryZone();
+  const fee = deliveryFee(zone, count);
+  const total = subtotal + fee;
 
   const [form, setForm] = useState({
     fullName: "",
@@ -76,7 +80,8 @@ function Checkout() {
             weight: i.weight,
           })),
           subtotal,
-          delivery: DELIVERY_FEE,
+          delivery: fee,
+          zone,
           total,
           payment: "cod",
         }),
@@ -89,7 +94,7 @@ function Checkout() {
         customer: parsed.data,
         items,
         subtotal,
-        delivery: DELIVERY_FEE,
+        delivery: fee,
         total,
         status: "new",
       });
@@ -192,8 +197,9 @@ function Checkout() {
             </ul>
             <div className="space-y-2 text-sm">
               <Row label={t("cart.subtotal")} value={formatGEL(subtotal)} />
-              <Row label={t("cart.delivery")} value={formatGEL(DELIVERY_FEE)} />
+              <Row label={t("cart.delivery")} value={fee === 0 ? (lang === "ka" ? "უფასო" : "Free") : formatGEL(fee)} />
             </div>
+            <DeliveryCalculator compact />
             <div className="flex justify-between items-baseline border-t border-brand-roast/10 pt-4">
               <span className="font-ui font-semibold text-lg">{t("cart.total")}</span>
               <span className="font-ui font-bold text-2xl text-brand-toast">{formatGEL(total)}</span>
