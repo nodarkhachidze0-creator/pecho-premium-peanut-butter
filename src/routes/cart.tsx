@@ -5,13 +5,17 @@ import { useCart, formatGEL } from "@/lib/cart";
 import { deliveryFee, useDeliveryZone } from "@/lib/delivery";
 import { DeliveryCalculator } from "@/components/DeliveryCalculator";
 import { QuantityStepper } from "@/components/QuantityStepper";
-import { PeanutMascot } from "@/components/PeanutMascot";
+import { GooglyPeanutSticker } from "@/components/GooglyPeanutSticker";
 
 export const Route = createFileRoute("/cart")({
   head: () => ({
     meta: [
       { title: "Cart — Pecho" },
       { name: "description", content: "Your Pecho cart." },
+      { property: "og:title", content: "Cart — Pecho" },
+      { property: "og:description", content: "Your Pecho cart." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -27,7 +31,7 @@ function CartPage() {
 
   const emptyMsg =
     lang === "ka"
-      ? "შენი კალათა გემრიელი რაღაცის მოლოდინშია."
+      ? "შენი კალათა გემრიელი ჩასუსვის მოლოდინშია."
       : "Your cart is waiting for something delicious.";
 
   return (
@@ -37,7 +41,7 @@ function CartPage() {
 
         {items.length === 0 ? (
           <div className="flex flex-col items-center text-center py-10 space-y-6 animate-in fade-in duration-500">
-            <PeanutMascot className="w-44 h-52 sm:w-56 sm:h-64" />
+            <GooglyPeanutSticker />
             <p className="text-brand-roast text-xl font-display max-w-md">{emptyMsg}</p>
             <Link
               to="/products"
