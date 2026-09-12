@@ -1,45 +1,45 @@
-# Recipe video view + tiered delivery pricing widget
+# Recipe video + delivery price calculator
 
-## 1. Recipe detail page video (list page untouched)
+## 1. Recipe detail video
 
-- `src/routes/recipes.$slug.tsx`: remove the `poster={recipe.imageUrl}` attribute from the video so no static cover image sits above the player.
-- Set `preload="auto"` and add `autoPlay muted loop playsInline` so the video starts playing immediately when the page opens (muted, as browsers require).
-- The sticky two-column layout, 9:16 framing, and all right-column content stay exactly as they are.
-- `src/routes/recipes.index.tsx` and the recipe cards (photo + play icon) are NOT touched.
+On a single recipe page the video currently shows a static cover photo until you press play.
 
-## 2. Tiered delivery pricing
+- Remove the cover photo so the player shows the video's first frame right away.
+- The player loads the beginning of the video and starts muted autoplay in a loop where the browser allows it; controls stay available so people can unmute, pause, or scrub.
+- On phones it behaves the same, muted and inline, so it never takes over the screen.
+- The recipes list page and its cards with play icons stay exactly as they are.
 
-New shared logic in `src/lib/cart.tsx` (replacing the flat `DELIVERY_FEE = 5`):
+## 2. Delivery price widget
 
-```text
-zone "city"  (თბილისი / რუსთავი / გორი):  1 jar → 7₾ · 2 → 5₾ · 3 → 3₾ · 4+ → free
-zone "region" (რეგიონები):                1 jar → 9₾ · 2 → 8₾ · 3 → 7₾ · 4+ → 5₾
-```
+A new beige, rounded Pecho-styled panel that shows delivery cost based on how many jars are in the cart.
 
-- `getDeliveryFee(jarCount, zone)` — counts every cart item quantity as one jar, regardless of 450g/1kg size.
-- Georgian + English labels added to `src/lib/i18n.tsx`.
+Where it appears: cart page (inside the summary column), cart drawer, and checkout summary — the same component everywhere, so the number the customer sees never changes between steps.
 
-## 3. Delivery widget (`src/components/DeliveryWidget.tsx`)
+Zone selector: two pill buttons — "თბილისი / რუსთავი / გორი" and "რეგიონები". Choice is remembered on the device and pre-selects on the next visit; default is the city zone.
 
-A branded beige card (`bg-brand-paper`, `rounded-3xl`, ring border) containing:
+Pricing by total jar count (any size counts as one jar):
 
-- Zone selector: two pill buttons — „თბილისი / რუსთავი / გორი" and „რეგიონები".
-- Current fee display: „მიწოდება: 7₾" or „უფასო მიწოდება 🎉" when free.
-- Progress bar tracking jar count toward the tiers (marks at 1/2/3/4 jars), animated width, no layout shift (fixed-height track).
-- Friendly prompt: e.g. „კიდევ 1 ქილა და მიწოდება დაგიჯდებათ 3₾" / „კიდევ N ქილა უფასო მიწოდებამდე".
-- Quick-add button: „+ ქილის დამატება" linking to `/products`.
+| Jars | City zone | Regions |
+| --- | --- | --- |
+| 1 | 7₾ | 9₾ |
+| 2 | 5₾ | 8₾ |
+| 3 | 3₾ | 7₾ |
+| 4+ | უფასო მიწოდება | 5₾ |
 
-Widget is placed:
+Inside the panel:
+- Progress bar filling toward 4 jars.
+- A friendly prompt, e.g. "დაამატე კიდევ 1 ქილა და მიწოდება იქნება 3₾" / at 4+: "მიწოდება უფასოა 🎉" (regions: lowest 5₾ tier message).
+- A quick-add button that adds one more jar of the best seller straight from the widget.
+- Both Georgian and English copy.
 
-- Inside the **cart drawer** (above the totals) and on the **cart page** (above the order summary), sharing the selected zone through a small context value in `CartProvider` so both stay in sync.
+Checkout: the order total and the saved order record use the calculated fee and the chosen zone instead of the current flat 5₾.
 
-## 4. Checkout + totals updated
-
-- `src/routes/cart.tsx`, `src/components/CartDrawer.tsx`, `src/routes/checkout.tsx`: replace the hardcoded `DELIVERY_FEE` with `getDeliveryFee(count, zone)`.
-- Checkout summary shows the zone name and the computed fee (or „უფასო"); the order payload sent to `/api/public/order` and saved locally includes the zone and computed fee.
+Layout: fixed-height prompt line and reserved progress-bar space so nothing jumps when the count changes; stacks cleanly on mobile.
 
 ## Technical notes
 
-- Files: `src/lib/cart.tsx` (fee logic + zone state), `src/lib/i18n.tsx` (strings), new `src/components/DeliveryWidget.tsx`, `src/components/CartDrawer.tsx`, `src/routes/cart.tsx`, `src/routes/checkout.tsx`, `src/routes/recipes.$slug.tsx`.
-- No changes to recipe listing, products, header, or admin.
-- Verification: typecheck + Playwright pass on a recipe detail page (video playing, no poster), cart drawer/cart/checkout fee math for both zones at 1, 2, 3, and 4 jars, and a mobile-width check for the widget.
+- `src/lib/delivery.ts`: `DeliveryZone` type, tier table, `deliveryFee(zone, jarCount)`, localStorage-backed `useDeliveryZone()` hook (hydration-safe).
+- `src/components/DeliveryCalculator.tsx`: the shared widget; jar count from `useCart().count`, quick-add via `useCart().add` with the Classic 450g product.
+- Replace `DELIVERY_FEE` usages in `src/routes/cart.tsx`, `src/routes/checkout.tsx`, and `src/components/CartDrawer.tsx` with the computed fee; keep the constant exported as a fallback only if still referenced.
+- `src/routes/recipes.$slug.tsx`: drop `poster`, add `autoPlay muted loop playsInline preload="auto"`; keep `controls` and the 9/16 sticky frame.
+- New i18n keys for zone labels, tier prompts, and the quick-add button.
