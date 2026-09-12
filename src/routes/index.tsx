@@ -8,7 +8,7 @@ import { ProductCoverFlow } from "@/components/ProductCoverFlow";
 import { HeroPeanuts } from "@/components/HeroPeanuts";
 
 import heroImg from "@/assets/classic-1kg-lifestyle.webp.asset.json";
-import aboutLogo from "@/assets/pecho-about-logo.png.asset.json";
+import aboutTexture from "@/assets/about-texture.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -113,10 +113,10 @@ function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12">
           <div className="mx-auto w-full max-w-md overflow-hidden rounded-3xl ring-1 ring-brand-roast/5">
             <img
-              src={aboutLogo.url}
-              alt="Pecho logo"
+              src={aboutTexture}
+              alt="Peanut butter texture on wooden spoon"
               loading="lazy"
-              className="aspect-[4/3] w-full object-contain"
+              className="aspect-[4/3] w-full object-cover"
             />
           </div>
           <div className="space-y-6">

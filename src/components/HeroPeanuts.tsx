@@ -18,20 +18,20 @@ type PeanutStyle = CSSProperties & {
 };
 
 const peanuts = [
-  { id: "yellow-top-left", image: yellowPeanut.url, x: "5%", y: "12%", size: "clamp(52px, 7vw, 104px)", rotation: "-18deg", duration: "6.4s", delay: "-0.8s" },
-  { id: "pink-lower-left", image: pinkPeanut.url, x: "16%", y: "78%", size: "clamp(46px, 6vw, 86px)", rotation: "14deg", duration: "6.8s", delay: "-3.7s" },
-  { id: "blue-upper-mid", image: bluePeanut.url, x: "31%", y: "8%", size: "clamp(44px, 5vw, 76px)", rotation: "-8deg", duration: "7.2s", delay: "-5.4s" },
-  { id: "orange-lower-mid", image: orangePeanut.url, x: "44%", y: "86%", size: "clamp(50px, 6vw, 92px)", rotation: "21deg", duration: "6.6s", delay: "-2.4s" },
-  { id: "purple-top-right", image: purplePeanut.url, x: "62%", y: "9%", size: "clamp(48px, 6vw, 90px)", rotation: "17deg", duration: "7.4s", delay: "-6.1s" },
-  { id: "red-mid-right", image: redPeanut.url, x: "79%", y: "55%", size: "clamp(46px, 6vw, 84px)", rotation: "-20deg", duration: "6.5s", delay: "-4.9s" },
-  { id: "green-upper-right", image: greenPeanut.url, x: "94%", y: "17%", size: "clamp(42px, 5vw, 72px)", rotation: "9deg", duration: "7s", delay: "-1.7s" },
-  { id: "purple-mid-left", image: purplePeanut.url, x: "7%", y: "49%", size: "clamp(38px, 4vw, 68px)", rotation: "28deg", duration: "6.9s", delay: "-5.8s" },
-  { id: "green-center", image: greenPeanut.url, x: "39%", y: "48%", size: "clamp(40px, 5vw, 74px)", rotation: "-25deg", duration: "7.3s", delay: "-3.1s" },
-  { id: "yellow-mid-right", image: yellowPeanut.url, x: "67%", y: "79%", size: "clamp(44px, 5vw, 80px)", rotation: "11deg", duration: "6.7s", delay: "-0.2s" },
-  { id: "blue-right", image: bluePeanut.url, x: "89%", y: "84%", size: "clamp(42px, 5vw, 76px)", rotation: "-14deg", duration: "7.1s", delay: "-4.2s" },
-  { id: "red-upper-left", image: redPeanut.url, x: "23%", y: "31%", size: "clamp(38px, 4vw, 66px)", rotation: "19deg", duration: "6.3s", delay: "-2.9s" },
-  { id: "orange-upper-right", image: orangePeanut.url, x: "74%", y: "26%", size: "clamp(40px, 5vw, 72px)", rotation: "-11deg", duration: "7.5s", delay: "-6.8s" },
-  { id: "pink-lower-right", image: pinkPeanut.url, x: "96%", y: "63%", size: "clamp(44px, 5vw, 82px)", rotation: "24deg", duration: "6.6s", delay: "-1.4s" },
+  { id: "yellow-top-left", image: yellowPeanut.url, x: "4%", y: "13%", size: "clamp(52px, 7vw, 104px)", rotation: "-18deg", duration: "10.8s", delay: "-2.1s" },
+  { id: "pink-lower-left", image: pinkPeanut.url, x: "17%", y: "76%", size: "clamp(46px, 6vw, 86px)", rotation: "14deg", duration: "12.6s", delay: "-7.4s" },
+  { id: "blue-upper-mid", image: bluePeanut.url, x: "32%", y: "9%", size: "clamp(44px, 5vw, 76px)", rotation: "-8deg", duration: "8.9s", delay: "-5.2s" },
+  { id: "orange-lower-mid", image: orangePeanut.url, x: "45%", y: "84%", size: "clamp(50px, 6vw, 92px)", rotation: "21deg", duration: "14.4s", delay: "-9.6s" },
+  { id: "purple-top-right", image: purplePeanut.url, x: "63%", y: "8%", size: "clamp(48px, 6vw, 90px)", rotation: "17deg", duration: "12.1s", delay: "-3.8s" },
+  { id: "red-mid-right", image: redPeanut.url, x: "78%", y: "57%", size: "clamp(46px, 6vw, 84px)", rotation: "-20deg", duration: "10.3s", delay: "-6.5s" },
+  { id: "green-upper-right", image: greenPeanut.url, x: "93%", y: "18%", size: "clamp(42px, 5vw, 72px)", rotation: "9deg", duration: "13.7s", delay: "-11.2s" },
+  { id: "purple-mid-left", image: purplePeanut.url, x: "8%", y: "48%", size: "clamp(38px, 4vw, 68px)", rotation: "28deg", duration: "9.4s", delay: "-8.2s" },
+  { id: "green-center", image: greenPeanut.url, x: "38%", y: "49%", size: "clamp(40px, 5vw, 74px)", rotation: "-25deg", duration: "14.8s", delay: "-13.1s" },
+  { id: "yellow-mid-right", image: yellowPeanut.url, x: "68%", y: "77%", size: "clamp(44px, 5vw, 80px)", rotation: "11deg", duration: "11.4s", delay: "-4.7s" },
+  { id: "blue-right", image: bluePeanut.url, x: "88%", y: "82%", size: "clamp(42px, 5vw, 76px)", rotation: "-14deg", duration: "8.4s", delay: "-7.1s" },
+  { id: "red-upper-left", image: redPeanut.url, x: "25%", y: "29%", size: "clamp(38px, 4vw, 66px)", rotation: "19deg", duration: "13.2s", delay: "-10.8s" },
+  { id: "orange-upper-right", image: orangePeanut.url, x: "73%", y: "27%", size: "clamp(40px, 5vw, 72px)", rotation: "-11deg", duration: "9.8s", delay: "-1.6s" },
+  { id: "pink-lower-right", image: pinkPeanut.url, x: "96%", y: "61%", size: "clamp(44px, 5vw, 82px)", rotation: "24deg", duration: "14.1s", delay: "-12.3s" },
 ] as const;
 
 export function HeroPeanuts() {
