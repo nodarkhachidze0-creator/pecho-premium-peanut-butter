@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
 import aboutTexture from "@/assets/about-texture.jpg";
-import classicJar from "@/assets/pecho-classic-1kg.png.asset.json";
+import classicJar from "@/assets/pecho-classic-450g-lifestyle.png.asset.json";
 import { Leaf, Ban, Star, Zap, Sparkles, Utensils } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
@@ -107,9 +107,9 @@ function About() {
             <div className="relative">
               <img
                 src={classicJar.url}
-                alt="Pecho classic jar"
+                alt="Pecho Classic 450g peanut butter jar"
                 loading="lazy"
-                className="w-full aspect-square object-contain rounded-3xl"
+                className="w-full aspect-[4/5] object-cover rounded-2xl ring-1 ring-brand-roast/5"
               />
             </div>
           </Reveal>

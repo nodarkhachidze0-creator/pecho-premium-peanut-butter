@@ -87,11 +87,14 @@ function Home() {
 
 
       {/* Featured Products */}
-      <ProductCoverFlow />
+      <Reveal>
+        <ProductCoverFlow />
+      </Reveal>
 
       {/* Where you'll find us — partner marquee */}
       <section className="px-4 sm:px-6 py-14 md:py-16 bg-brand-cream">
-        <div className="max-w-7xl mx-auto">
+        <Reveal className="max-w-7xl mx-auto">
+        <div>
           <header className="text-center mb-8 md:mb-10">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
               {lang === "ka" ? "პარტნიორები" : "Partners"}
@@ -102,6 +105,7 @@ function Home() {
           </header>
           <PartnerMarquee />
         </div>
+        </Reveal>
       </section>
 
 
@@ -110,6 +114,7 @@ function Home() {
 
       {/* About preview */}
       <section className="bg-brand-paper px-4 py-14 sm:px-6 md:py-16">
+        <Reveal>
         <div className="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12">
           <div className="mx-auto w-full max-w-md overflow-hidden rounded-3xl ring-1 ring-brand-roast/5">
             <img
@@ -135,11 +140,13 @@ function Home() {
             </Link>
           </div>
         </div>
+        </Reveal>
       </section>
 
       {/* Where to buy */}
       <section className="px-4 sm:px-6 py-16 md:py-20">
-        <div className="max-w-7xl mx-auto">
+        <Reveal className="max-w-7xl mx-auto">
+        <div>
           <header className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-3xl md:text-4xl font-display font-extrabold text-balance">
               სად შეგიძლიათ ჩვენი პროდუქტის შეძენა
@@ -148,14 +155,14 @@ function Home() {
               იპოვეთ თქვენთან ყველაზე ახლოს არსებული მაღაზია.
             </p>
           </header>
-          <Reveal>
-            <StoreMap />
-          </Reveal>
+          <StoreMap />
         </div>
+        </Reveal>
       </section>
 
       {/* FAQ preview */}
       <section className="px-4 py-20 sm:px-6 md:py-24">
+        <Reveal>
         <div className="mx-auto max-w-3xl">
           <h2 className="mb-12 text-center text-3xl font-display font-extrabold md:text-4xl">
             {t("home.faq.title")}
@@ -202,11 +209,13 @@ function Home() {
             </Link>
           </div>
         </div>
+        </Reveal>
       </section>
 
       {/* Contact strip */}
 
       <section className="px-4 sm:px-6 pb-20">
+        <Reveal>
         <div className="max-w-7xl mx-auto bg-brand-roast text-brand-cream rounded-3xl p-8 md:p-14 grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-3">
             <h2 className="text-2xl md:text-3xl font-display font-extrabold">{t("home.contact.title")}</h2>
@@ -221,6 +230,7 @@ function Home() {
             </Link>
           </div>
         </div>
+        </Reveal>
       </section>
     </>
   );
