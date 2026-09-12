@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { useT } from "@/lib/i18n";
-import { useCart, formatGEL, DELIVERY_FEE } from "@/lib/cart";
+import { useCart, formatGEL } from "@/lib/cart";
+import { deliveryFee, useDeliveryZone } from "@/lib/delivery";
+import { DeliveryCalculator } from "@/components/DeliveryCalculator";
 import { QuantityStepper } from "@/components/QuantityStepper";
 import { PeanutMascot } from "@/components/PeanutMascot";
 
@@ -19,7 +21,9 @@ export const Route = createFileRoute("/cart")({
 function CartPage() {
   const { t, lang } = useT();
   const { items, remove, setQty, subtotal, count } = useCart();
-  const total = count > 0 ? subtotal + DELIVERY_FEE : 0;
+  const [zone] = useDeliveryZone();
+  const fee = deliveryFee(zone, count);
+  const total = count > 0 ? subtotal + fee : 0;
 
   const emptyMsg =
     lang === "ka"
@@ -67,10 +71,10 @@ function CartPage() {
 
             <aside className="bg-brand-paper rounded-3xl p-8 h-fit space-y-5 sticky top-24">
               <h2 className="text-xl font-display">{t("checkout.summary")}</h2>
+              <DeliveryCalculator />
               <div className="space-y-3 text-sm border-b border-brand-roast/10 pb-5">
                 <Row label={t("cart.subtotal")} value={formatGEL(subtotal)} />
-                <Row label={t("cart.delivery")} value={formatGEL(DELIVERY_FEE)} />
-                <p className="text-xs text-brand-roast/50 pt-1">{t("cart.deliveryNote")}</p>
+                <Row label={t("cart.delivery")} value={fee === 0 ? (lang === "ka" ? "უფასო" : "Free") : formatGEL(fee)} />
               </div>
               <div className="flex justify-between items-baseline">
                 <span className="font-ui font-semibold text-lg">{t("cart.total")}</span>

@@ -50,10 +50,12 @@ function RecipeDetail() {
             <div className="rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-roast mx-auto w-full max-w-[420px]">
               <video
                 src={recipe.videoUrl}
-                poster={recipe.imageUrl}
                 controls
+                autoPlay
+                muted
+                loop
                 playsInline
-                preload="metadata"
+                preload="auto"
                 className="w-full max-h-[760px] object-contain bg-brand-roast"
                 style={{ aspectRatio: "9 / 16" }}
               />

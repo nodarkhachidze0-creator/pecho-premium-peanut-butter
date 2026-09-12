@@ -3,7 +3,9 @@ import { ShoppingBag, Trash2, X } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { QuantityStepper } from "@/components/QuantityStepper";
-import { DELIVERY_FEE, formatGEL, useCart } from "@/lib/cart";
+import { formatGEL, useCart } from "@/lib/cart";
+import { deliveryFee, useDeliveryZone } from "@/lib/delivery";
+import { DeliveryCalculator } from "@/components/DeliveryCalculator";
 import { useT } from "@/lib/i18n";
 
 type CartDrawerProps = {
@@ -15,7 +17,9 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
   const { items, count, subtotal, remove, setQty } = useCart();
   const { lang, t } = useT();
   const closeRef = useRef<HTMLButtonElement>(null);
-  const total = count > 0 ? subtotal + DELIVERY_FEE : 0;
+  const [zone] = useDeliveryZone();
+  const fee = deliveryFee(zone, count);
+  const total = count > 0 ? subtotal + fee : 0;
 
   useEffect(() => {
     if (open) closeRef.current?.focus();
@@ -92,9 +96,10 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
             </ul>
 
             <div className="space-y-4 px-5 py-6 sm:px-8">
+              <DeliveryCalculator compact />
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between gap-4 text-brand-roast/65"><span>{t("cart.subtotal")}</span><span>{formatGEL(subtotal)}</span></div>
-                <div className="flex justify-between gap-4 text-brand-roast/65"><span>{t("cart.delivery")}</span><span>{formatGEL(DELIVERY_FEE)}</span></div>
+                <div className="flex justify-between gap-4 text-brand-roast/65"><span>{t("cart.delivery")}</span><span>{fee === 0 ? (lang === "ka" ? "უფასო" : "Free") : formatGEL(fee)}</span></div>
                 <div className="flex justify-between gap-4 border-t border-brand-roast/10 pt-3 text-lg font-bold text-brand-roast"><span>{t("cart.total")}</span><span>{formatGEL(total)}</span></div>
               </div>
               <Button asChild className="h-12 w-full rounded-full bg-brand-roast text-brand-cream hover:bg-brand-toast">
