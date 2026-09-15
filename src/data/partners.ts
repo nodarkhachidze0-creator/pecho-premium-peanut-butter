@@ -8,8 +8,8 @@ export type Partner = {
   name: { ka: string; en: string };
   logo: string;
   accent: "blue" | "purple" | "red" | "mono";
-  placement: "top-left" | "top-right" | "bottom-left" | "bottom-right";
-  size: "large" | "medium" | "small";
+  placement: "top-left" | "focus" | "bottom-left" | "bottom-right";
+  size: "primary" | "standard";
 };
 
 export const partners: Partner[] = [
@@ -19,7 +19,7 @@ export const partners: Partner[] = [
     logo: jini.url,
     accent: "blue",
     placement: "top-left",
-    size: "large",
+    size: "standard",
   },
   {
     id: "abga",
@@ -27,15 +27,15 @@ export const partners: Partner[] = [
     logo: abga.url,
     accent: "purple",
     placement: "bottom-left",
-    size: "medium",
+    size: "standard",
   },
   {
     id: "billion",
     name: { ka: "ბილიონი", en: "Billion" },
     logo: billion.url,
     accent: "red",
-    placement: "top-right",
-    size: "medium",
+    placement: "focus",
+    size: "primary",
   },
   {
     id: "panda",
@@ -43,6 +43,6 @@ export const partners: Partner[] = [
     logo: panda.url,
     accent: "mono",
     placement: "bottom-right",
-    size: "small",
+    size: "standard",
   },
 ];

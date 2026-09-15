@@ -5,15 +5,14 @@ import { useT } from "@/lib/i18n";
 
 const placementClasses: Record<Partner["placement"], string> = {
   "top-left": "left-[5%] top-[8%] sm:left-[9%] sm:top-[9%]",
-  "top-right": "right-[5%] top-[20%] sm:right-[12%] sm:top-[12%]",
+  focus: "right-[14%] top-[26%] sm:right-[26%] sm:top-[26%]",
   "bottom-left": "bottom-[9%] left-[15%] sm:bottom-[10%] sm:left-[27%]",
   "bottom-right": "bottom-[13%] right-[10%] sm:bottom-[12%] sm:right-[29%]",
 };
 
 const sizeClasses: Record<Partner["size"], string> = {
-  large: "size-28 sm:size-40",
-  medium: "size-24 sm:size-32",
-  small: "size-20 sm:size-28",
+  primary: "size-32 sm:size-40",
+  standard: "size-24 sm:size-28",
 };
 
 const drift: Record<Partner["id"], { x: number[]; y: number[]; rotate: number[]; duration: number }> = {
