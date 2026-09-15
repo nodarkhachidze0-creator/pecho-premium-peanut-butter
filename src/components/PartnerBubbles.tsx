@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import { partners, type Partner } from "@/data/partners";
 import { useT } from "@/lib/i18n";
+import pechoLogo from "@/assets/pecho-logo-main.png.asset.json";
 
 const placementClasses: Record<Partner["placement"], string> = {
   "top-left": "left-[5%] top-[8%] sm:left-[9%] sm:top-[9%]",
