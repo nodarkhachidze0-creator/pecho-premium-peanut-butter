@@ -52,8 +52,8 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
         onClick={onClose}
         aria-label={lang === "ka" ? "კალათის დახურვა" : "Close cart"}
       />
-      <aside className="drawer-panel drawer-panel-right absolute inset-y-0 right-0 flex w-[85vw] flex-col bg-brand-cream shadow-2xl md:w-1/2" onKeyDown={keepFocusInDrawer}>
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 sm:px-8">
+      <aside className="drawer-panel drawer-panel-right absolute right-0 top-0 flex h-[100dvh] w-[85vw] flex-col bg-brand-cream shadow-2xl md:w-1/2" onKeyDown={keepFocusInDrawer}>
+        <div className="grid shrink-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 sm:px-8">
           <div className="min-w-0">
             <p className="truncate font-display text-2xl font-extrabold text-brand-roast">{t("cart.title")}</p>
             <p className="mt-1 font-ui text-xs text-brand-roast/55">
@@ -66,7 +66,7 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
         </div>
 
         {items.length === 0 ? (
-          <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
+          <div className="flex min-h-0 flex-1 touch-pan-y flex-col items-center justify-center overflow-y-auto px-6 text-center">
             <ShoppingBag className="size-10 text-brand-toast" strokeWidth={1.4} />
             <p className="mt-5 max-w-sm text-brand-roast/70">
               {lang === "ka" ? "შენი კალათა გემრიელი რაღაცის მოლოდინშია." : "Your cart is waiting for something delicious."}
@@ -76,8 +76,8 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
             </Button>
           </div>
         ) : (
-          <>
-            <ul className="flex-1 overflow-y-auto border-y border-brand-roast/10 px-5 sm:px-8">
+          <div className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain">
+            <ul className="border-y border-brand-roast/10 px-5 sm:px-8">
               {items.map((item) => (
                 <li key={item.id} className="grid grid-cols-[72px_minmax(0,1fr)_auto] items-center gap-4 border-b border-brand-roast/10 py-5 last:border-b-0">
                   <div className="grid size-[72px] place-items-center overflow-hidden rounded-lg bg-brand-paper p-2">
@@ -109,7 +109,7 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
                 <Link to="/cart" onClick={onClose}>{lang === "ka" ? "სრული კალათის ნახვა" : "View full cart"}</Link>
               </Button>
             </div>
-          </>
+          </div>
         )}
       </aside>
     </div>
