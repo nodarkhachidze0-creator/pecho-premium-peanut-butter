@@ -26,7 +26,7 @@ const en: Dict = {
   "home.hero.eyebrow": "100% natural",
   "home.hero.title": "Natural peanut butter",
   "home.hero.subtitle":
-    "Slow-roasted Georgian peanuts, a pinch of sea salt — and nothing else.",
+    "Healthy living starts with one spoonful",
 
   "nav.recipes": "Recipes",
   "nav.partners": "Partners",
@@ -169,7 +169,7 @@ const en: Dict = {
   "partners.type.hotel": "Hotels & Guesthouses",
   "partners.contactTitle": "Contact us",
   "partners.contactNote":
-    "Reach out any time. Our team will get back to you as quickly as possible.",
+    "Get in touch any time, and our team will aim to reply as quickly as possible.",
 
   "about.hero.eyebrow": "About Pecho",
   "about.hero.title": "Healthy living starts with one spoonful.",
@@ -221,7 +221,7 @@ const ka: Dict = {
   "home.hero.eyebrow": "100% ნატურალური",
   "home.hero.title": "ნატურალური მიწისთხილის კარაქი",
   "home.hero.subtitle":
-    "ნელა მოხალული ქართული მიწისთხილი და ცოტა ზღვის მარილი — მეტი არაფერი.",
+    "ჯანსაღი ცხოვრება იწყება ერთი კოვზიდან",
 
   "nav.recipes": "რეცეპტები",
   "nav.partners": "პარტნიორები",
@@ -365,7 +365,7 @@ const ka: Dict = {
   "partners.type.hotel": "სასტუმროები და გესთჰაუსები",
   "partners.contactTitle": "დაგვიკავშირდი",
   "partners.contactNote":
-    "დაგვიკავშირდით ნებისმიერ დროს. ჩვენს გუნდს მაქსიმალურად სწრაფად გიპასუხებთ.",
+    "დაგვიკავშირდით ნებისმიერ დროს, ჩვენი გუნდი კი შეეცდება უმოკლეს დროში გიპასუხოთ.",
 
   "about.hero.eyebrow": "Pecho-ს შესახებ",
   "about.hero.title": "ჯანსაღი ცხოვრება იწყება ერთი კოვზიდან.",

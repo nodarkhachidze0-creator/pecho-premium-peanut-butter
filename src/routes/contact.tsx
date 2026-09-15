@@ -66,7 +66,7 @@ function ContactPage() {
 
             <div className="mt-8 flex gap-3">
               <a
-                href="https://www.instagram.com/pecho.official"
+                href="https://www.instagram.com/pecho_geo?stkn=MWF4dHpjdXJlZ25q"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -75,7 +75,7 @@ function ContactPage() {
                 <Instagram className="size-4" />
               </a>
               <a
-                href="https://www.facebook.com/pecho.official"
+                href="https://www.facebook.com/share/1JYF8pGtRU/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"

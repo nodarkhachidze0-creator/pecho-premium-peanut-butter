@@ -31,7 +31,7 @@ function CartPage() {
 
   const emptyMsg =
     lang === "ka"
-      ? "შენი კალათა გემრიელი ჩასუსვის მოლოდინშია."
+      ? "შენი კალათა გემრიელობების მოლოდინშია."
       : "Your cart is waiting for something delicious.";
 
   return (
