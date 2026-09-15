@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useT } from "@/lib/i18n";
 import aboutTexture from "@/assets/about-texture.jpg";
 import classicJar from "@/assets/pecho-classic-450g-lifestyle.png.asset.json";
-import { Leaf, Ban, Star, Zap, Sparkles, Utensils } from "lucide-react";
+import { Sparkles, Utensils } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/about")({
@@ -30,10 +30,10 @@ function About() {
   const { t } = useT();
 
   const whys = [
-    { icon: Leaf, emoji: "🌿", title: t("about.why.1.title"), body: t("about.why.1.body") },
-    { icon: Ban, emoji: "🚫", title: t("about.why.2.title"), body: t("about.why.2.body") },
-    { icon: Star, emoji: "⭐", title: t("about.why.3.title"), body: t("about.why.3.body") },
-    { icon: Zap, emoji: "⚡", title: t("about.why.4.title"), body: t("about.why.4.body") },
+    { emoji: "🌿", title: t("about.why.1.title"), body: t("about.why.1.body") },
+    { emoji: "🚫", title: t("about.why.2.title"), body: t("about.why.2.body") },
+    { emoji: "⭐", title: t("about.why.3.title"), body: t("about.why.3.body") },
+    { emoji: "⚡", title: t("about.why.4.title"), body: t("about.why.4.body") },
   ];
 
   return (
@@ -145,11 +145,10 @@ function About() {
             {whys.map((w, i) => (
               <Reveal key={i} delay={i * 80}>
                 <div className="group h-full bg-brand-paper rounded-3xl p-7 ring-1 ring-black/5 hover:ring-brand-toast/40 hover:-translate-y-1 transition-all">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center">
                     <span className="size-12 rounded-2xl bg-brand-toast/10 flex items-center justify-center text-2xl group-hover:bg-brand-toast/20 transition-colors">
                       {w.emoji}
                     </span>
-                    <w.icon className="size-5 text-brand-toast" strokeWidth={1.5} />
                   </div>
                   <h3 className="mt-5 text-lg md:text-xl font-display leading-snug">
                     {w.title}

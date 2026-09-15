@@ -16,7 +16,7 @@ export function Footer() {
           </p>
           <div className="flex gap-3 pt-2">
             <a
-              href="https://www.instagram.com/pecho.official"
+              href="https://www.instagram.com/pecho_geo?stkn=MWF4dHpjdXJlZ25q"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -25,7 +25,7 @@ export function Footer() {
               <Instagram className="size-4" />
             </a>
             <a
-              href="https://www.facebook.com/pecho.official"
+              href="https://www.facebook.com/share/1JYF8pGtRU/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -34,7 +34,7 @@ export function Footer() {
               <Facebook className="size-4" />
             </a>
             <a
-              href="mailto:Pecho.official@gmail.com"
+              href="mailto:pecho.official@gmail.com"
               aria-label="Email"
               className="p-2.5 rounded-full border border-brand-cream/10 hover:bg-brand-cream/5 transition-colors"
             >
@@ -59,7 +59,7 @@ export function Footer() {
         <div className="space-y-5">
           <h4 className="text-sm font-bold uppercase tracking-widest">{t("footer.contact")}</h4>
           <ul className="space-y-3 text-base text-brand-cream/70">
-            <li>Pecho.official@gmail.com</li>
+            <li>pecho.official@gmail.com</li>
             <li><a href="tel:+995598522240" className="hover:text-brand-cream transition-colors">598 52 22 40</a></li>
             <li>ქ. გორი, შინდისის გმირების 17ბ</li>
           </ul>
