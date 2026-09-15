@@ -13,10 +13,10 @@ export function PartnerMarquee() {
     <div className="marquee-mask overflow-hidden">
       <div className="marquee-track items-center gap-12 sm:gap-20">
         {track.map((p, i) => (
-          <div key={`${p.name}-${i}`} className="shrink-0" aria-hidden={i >= base.length}>
+          <div key={`${p.id}-${i}`} className="shrink-0" aria-hidden={i >= base.length}>
             <img
               src={p.logo}
-              alt={p.name}
+              alt={p.name.ka}
               loading="lazy"
               draggable={false}
               className="h-14 w-auto object-contain sm:h-20"

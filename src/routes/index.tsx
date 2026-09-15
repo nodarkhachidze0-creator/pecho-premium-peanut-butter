@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { Reveal } from "@/components/Reveal";
 import { StoreMap } from "@/components/StoreMap";
-import { PartnerMarquee } from "@/components/PartnerMarquee";
+import { PartnerBubbles } from "@/components/PartnerBubbles";
 import { ProductCoverFlow } from "@/components/ProductCoverFlow";
 import { HeroPeanuts } from "@/components/HeroPeanuts";
 
@@ -91,22 +91,10 @@ function Home() {
         <ProductCoverFlow />
       </Reveal>
 
-      {/* Where you'll find us — partner marquee */}
-      <section className="px-4 sm:px-6 py-14 md:py-16 bg-brand-cream">
-        <Reveal className="max-w-7xl mx-auto">
-        <div>
-          <header className="text-center mb-8 md:mb-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-toast">
-              {lang === "ka" ? "პარტნიორები" : "Partners"}
-            </span>
-            <h2 className="mt-2 text-3xl md:text-4xl font-display font-extrabold">
-              {lang === "ka" ? "სად შეგხვდებით" : "Where to find us"}
-            </h2>
-          </header>
-          <PartnerMarquee />
-        </div>
-        </Reveal>
-      </section>
+      {/* Where you'll find us — interactive partner bubbles */}
+      <Reveal>
+        <PartnerBubbles />
+      </Reveal>
 
 
 

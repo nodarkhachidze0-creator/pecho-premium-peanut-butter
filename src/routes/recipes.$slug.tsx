@@ -47,7 +47,7 @@ function RecipeDetail() {
         <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-14 items-start">
           {/* Video — sticky on desktop */}
           <div className="lg:sticky lg:top-[120px] lg:self-start">
-            <div className="rounded-3xl overflow-hidden ring-1 ring-black/5 shadow-2xl bg-brand-roast mx-auto w-full max-w-[420px]">
+            <div className="mx-auto aspect-[9/16] w-full max-w-[420px] overflow-hidden rounded-3xl bg-brand-roast shadow-2xl ring-1 ring-black/5">
               <video
                 src={recipe.videoUrl}
                 controls
@@ -56,8 +56,7 @@ function RecipeDetail() {
                 loop
                 playsInline
                 preload="auto"
-                className="w-full max-h-[760px] object-contain bg-brand-roast"
-                style={{ aspectRatio: "9 / 16" }}
+                className="recipe-video-player size-full aspect-[9/16] bg-brand-roast object-contain"
               />
             </div>
           </div>

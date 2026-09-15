@@ -158,6 +158,10 @@
   --brand-backdrop: rgb(0 0 0 / 0.6);
   --brand-spotlight: rgba(253, 230, 138, 0.55);
   --brand-spotlight-soft: rgba(253, 230, 138, 0.85);
+  --partner-blue: #0066ff;
+  --partner-purple: #8a2be2;
+  --partner-red: #e50914;
+  --partner-mono: #111111;
 
   --background: #fdf8f0;
   --foreground: #2a1810;
@@ -707,6 +711,34 @@
   will-change: transform;
 }
 .marquee-mask:hover .marquee-track { animation-duration: 90s; }
+
+/* ============ Recipe portrait video ============ */
+.recipe-video-player:fullscreen,
+.recipe-video-player:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  background: var(--brand-stage);
+}
+
+/* ============ Partner bubbles ============ */
+.partner-bubbles-stage {
+  contain: layout paint;
+  isolation: isolate;
+}
+.partner-bubble {
+  z-index: 1;
+  will-change: transform;
+}
+.partner-bubble-surface {
+  border: 3px solid var(--partner-accent);
+  box-shadow: 0 14px 34px -18px var(--partner-accent), 0 8px 20px -14px var(--brand-roast);
+}
+.partner-bubble-blue { --partner-accent: var(--partner-blue); }
+.partner-bubble-purple { --partner-accent: var(--partner-purple); }
+.partner-bubble-red { --partner-accent: var(--partner-red); }
+.partner-bubble-mono { --partner-accent: var(--partner-mono); }
 
 /* ============ Order success celebration ============ */
 @keyframes success-modal-enter {

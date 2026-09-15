@@ -94,7 +94,7 @@ export function RecipeVideoCarousel() {
                       if (!active) activate(recipe.slug);
                     }}
                     aria-label={recipe.title[lang]}
-                    className="size-full cursor-pointer object-cover"
+                    className="recipe-video-player size-full aspect-[9/16] cursor-pointer object-cover"
                   />
                   {!active && (
                     <Button
