@@ -90,7 +90,9 @@ export function RecipeVideoCarousel() {
                     playsInline
                     muted={!active}
                     controls={active}
-                    onClick={() => activate(recipe.slug)}
+                    onClick={() => {
+                      if (!active) activate(recipe.slug);
+                    }}
                     aria-label={recipe.title[lang]}
                     className="size-full cursor-pointer object-cover"
                   />
