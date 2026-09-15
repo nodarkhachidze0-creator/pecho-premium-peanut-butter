@@ -52,7 +52,7 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
         onClick={onClose}
         aria-label={lang === "ka" ? "კალათის დახურვა" : "Close cart"}
       />
-      <aside className="drawer-panel drawer-panel-right absolute inset-y-0 right-0 flex h-full w-[85vw] flex-col bg-brand-cream shadow-2xl md:w-1/2" onKeyDown={keepFocusInDrawer}>
+      <aside className="drawer-panel drawer-panel-right absolute right-0 top-0 flex h-[100dvh] w-[85vw] flex-col bg-brand-cream shadow-2xl md:w-1/2" onKeyDown={keepFocusInDrawer}>
         <div className="grid shrink-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 sm:px-8">
           <div className="min-w-0">
             <p className="truncate font-display text-2xl font-extrabold text-brand-roast">{t("cart.title")}</p>

@@ -95,16 +95,17 @@ export function RecipeVideoCarousel() {
                     className="size-full cursor-pointer object-cover"
                   />
                   {!active && (
-                    <button
+                    <Button
                       type="button"
                       onClick={() => activate(recipe.slug)}
-                      className="absolute inset-0 grid place-items-center bg-brand-roast/20 text-brand-cream transition-colors hover:bg-brand-roast/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-toast"
+                      variant="ghost"
+                      className="absolute inset-0 h-full w-full rounded-none bg-brand-roast/20 text-brand-cream transition-colors hover:bg-brand-roast/10 hover:text-brand-cream focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-toast"
                       aria-label={lang === "ka" ? `${recipe.title.ka} — ხმით დაკვრა` : `${recipe.title.en} — play with sound`}
                     >
                       <span className="grid size-14 place-items-center rounded-full bg-brand-paper/90 text-brand-roast shadow-lg">
                         <Play className="ml-1 size-6" fill="currentColor" />
                       </span>
-                    </button>
+                    </Button>
                   )}
                 </div>
                 <Link to="/recipes/$slug" params={{ slug: recipe.slug }} className="mt-4 block font-display text-lg font-bold leading-snug text-brand-roast transition-colors hover:text-brand-toast">
