@@ -7,6 +7,8 @@ import { useT } from "@/lib/i18n";
 import { useCart, formatGEL } from "@/lib/cart";
 import { QuantityStepper } from "@/components/QuantityStepper";
 import { ProductCard } from "@/components/ProductCard";
+import { FAQSection } from "@/components/FAQSection";
+import { RecipeVideoCarousel } from "@/components/RecipeVideoCarousel";
 import nutritionFacts from "@/assets/nutrition-facts.png.asset.json";
 
 export const Route = createFileRoute("/products/$slug")({
@@ -366,6 +368,9 @@ function ProductDetail() {
           </div>
         </div>
       </section>
+
+      <RecipeVideoCarousel />
+      <FAQSection />
     </>
   );
 }
