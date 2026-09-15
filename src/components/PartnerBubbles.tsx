@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import { partners, type Partner } from "@/data/partners";
 import { useT } from "@/lib/i18n";
+import pechoLogo from "@/assets/pecho-logo-main.png.asset.json";
 
 const placementClasses: Record<Partner["placement"], string> = {
   "top-left": "left-[5%] top-[8%] sm:left-[9%] sm:top-[9%]",
@@ -44,9 +45,12 @@ export function PartnerBubbles() {
           ref={constraintsRef}
           className="partner-bubbles-stage relative h-[420px] overflow-hidden rounded-3xl border border-brand-roast/10 bg-brand-paper/45 sm:h-[500px]"
         >
-          <div className="pointer-events-none absolute inset-x-6 top-1/2 -translate-y-1/2 text-center text-brand-roast/10">
-            <span className="font-display text-5xl font-extrabold sm:text-7xl">PECHO</span>
-          </div>
+          <img
+            src={pechoLogo.url}
+            alt=""
+            draggable={false}
+            className="pointer-events-none absolute left-1/2 top-1/2 z-0 w-40 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-15 md:w-56"
+          />
 
           {partners.map((partner, index) => {
             const isDragging = dragging === partner.id;
