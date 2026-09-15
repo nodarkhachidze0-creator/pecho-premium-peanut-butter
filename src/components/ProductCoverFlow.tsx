@@ -55,9 +55,9 @@ export function ProductCoverFlow() {
 
   const imageClass = (slug: string, side = false) => {
     if (slug.endsWith("-1kg")) {
-      return side ? "max-h-[82%] max-w-[88%]" : "max-h-[98%] max-w-[98%]";
+      return side ? "max-h-[82%] max-w-[88%]" : "max-h-[50vh] max-w-[85vw] object-contain md:max-h-[98%] md:max-w-[98%]";
     }
-    return side ? "max-h-[72%] max-w-[78%]" : "max-h-[88%] max-w-[88%]";
+    return side ? "max-h-[72%] max-w-[78%]" : "max-h-[50vh] max-w-[85vw] object-contain md:max-h-[88%] md:max-w-[88%]";
   };
 
   const handleTouchEnd = (event: React.TouchEvent<HTMLElement>) => {
@@ -114,7 +114,7 @@ export function ProductCoverFlow() {
           </h2>
         </header>
 
-        <div className="relative mt-4 grid h-[390px] grid-cols-[1fr_minmax(230px,360px)_1fr] items-center sm:h-[470px] md:h-[520px]">
+        <div className="relative z-10 mt-6 grid h-[min(390px,54vh)] grid-cols-[1fr_minmax(0,360px)_1fr] items-center px-8 sm:h-[470px] sm:px-10 md:mt-4 md:h-[520px] md:px-0">
           <Button
             type="button"
             variant="ghost"
@@ -135,7 +135,7 @@ export function ProductCoverFlow() {
             params={{ slug: activeProduct.slug }}
             aria-label={`${activeProduct.name[lang]} — ${lang === "ka" ? "პროდუქტის ნახვა" : "view product"}`}
             data-dir={direction}
-            className="coverflow-active relative z-10 col-start-2 flex h-full items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-toast focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream"
+            className="coverflow-active relative z-10 col-start-2 flex h-full min-w-0 items-center justify-center px-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-toast focus-visible:ring-offset-4 focus-visible:ring-offset-brand-cream md:px-0"
           >
             <img
               src={activeProduct.image}
@@ -159,7 +159,7 @@ export function ProductCoverFlow() {
           </Button>
         </div>
 
-        <ul className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-x-5 gap-y-5 sm:flex sm:flex-wrap sm:justify-center sm:gap-8 md:mt-8 md:gap-12">
+        <ul className="relative z-10 mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-x-5 gap-y-5 sm:flex sm:flex-wrap sm:justify-center sm:gap-8 md:mt-8 md:gap-12">
           {features.map(({ icon: Icon, label }) => (
             <li key={label.en} className="flex items-center justify-center gap-2 font-ui text-[11px] uppercase text-brand-roast/75 sm:text-xs">
               <Icon className="size-4 shrink-0 text-brand-toast" strokeWidth={1.7} aria-hidden="true" />
